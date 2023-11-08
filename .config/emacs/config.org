@@ -3,59 +3,6 @@
 #+DESCRIPTION: Personal Emacs configuration
 #+STARTUP: show2levels
 
-#+begin_src emacs-lisp
-(setq initial-buffer-choice t) ;;*scratch*
-#+end_src
-* Elpaca
-#+begin_src emacs-lisp
-(defvar elpaca-installer-version 0.6)
-(defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
-(defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
-(defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
-(defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
-                              :ref nil
-                              :files (:defaults "elpaca-test.el" (:exclude "extensions"))
-                              :build (:not elpaca--activate-package)))
-(let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
-       (build (expand-file-name "elpaca/" elpaca-builds-directory))
-       (order (cdr elpaca-order))
-       (default-directory repo))
-  (add-to-list 'load-path (if (file-exists-p build) build repo))
-  (unless (file-exists-p repo)
-    (make-directory repo t)
-    (when (< emacs-major-version 28) (require 'subr-x))
-    (condition-case-unless-debug err
-        (if-let ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
-                 ((zerop (call-process "git" nil buffer t "clone"
-                                       (plist-get order :repo) repo)))
-                 ((zerop (call-process "git" nil buffer t "checkout"
-                                       (or (plist-get order :ref) "--"))))
-                 (emacs (concat invocation-directory invocation-name))
-                 ((zerop (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
-                                       "--eval" "(byte-recompile-directory \".\" 0 'force)")))
-                 ((require 'elpaca))
-                 ((elpaca-generate-autoloads "elpaca" repo)))
-            (progn (message "%s" (buffer-string)) (kill-buffer buffer))
-          (error "%s" (with-current-buffer buffer (buffer-string))))
-      ((error) (warn "%s" err) (delete-directory repo 'recursive))))
-  (unless (require 'elpaca-autoloads nil t)
-    (require 'elpaca)
-    (elpaca-generate-autoloads "elpaca" repo)
-    (load "./elpaca-autoloads")))
-(add-hook 'after-init-hook #'elpaca-process-queues)
-(elpaca `(,@elpaca-order))
-#+end_src
-
-** use-package support
-#+begin_src emacs-lisp
-;; Install use-package support
-(elpaca elpaca-use-package
-  ;; Enable :elpaca use-package keyword.
-  (elpaca-use-package-mode)
-  ;; Assume :elpaca t unless otherwise specified.
-  (setq elpaca-use-package-by-default t))
-#+end_src
-
 * General Settings
 ** Backups
 #+begin_src emacs-lisp
@@ -72,8 +19,8 @@
 (add-to-list 'default-frame-alist '(font . "Iosevka-16"))
 (set-face-attribute 'default t :font "Iosevka-16")
 ; Change default font for the current frame, as well as future frames:
-(set-face-attribute 'default nil :font "Iosevka-18")
-(set-frame-font "Iosevka-18" nil t)
+(set-face-attribute 'default nil :font "Iosevka-16")
+(set-frame-font "Iosevka-16" nil t)
 #+end_src
 ** Frame size
 #+begin_src emacs-lisp
@@ -167,7 +114,7 @@
 ** Auto-package-update
 #+begin_src emacs-lisp
 (use-package auto-package-update
-  :ensure nil
+  :ensure t
   :config
   (setq auto-package-update-delete-old-versions t)
   (setq auto-package-update-hide-results t)
@@ -220,10 +167,10 @@
 #+end_src
 *** Savehist
 #+begin_src emacs-lisp
-;(use-package savehist
-;  :init
-;  (savehist-mode)
-;  )
+(use-package savehist
+  :init
+  (savehist-mode)
+  )
 #+end_src
 *** Vertico
 #+begin_src emacs-lisp
@@ -264,6 +211,9 @@
   (load-theme 'doom-rouge t)
   (doom-themes-org-config)
   )
+#+end_src
+** Emacs
+#+begin_src emacs-lisp
 #+end_src
 ** Meow
 #+begin_src emacs-lisp
@@ -475,20 +425,8 @@
   :hook
   (org-mode . org-mode-visual-fill))
 #+end_src
-* Tree-sitter
-#+begin_src emacs-lisp
-(setq treesit-language-source-alist
-      '(
-        (bash "https://github.com/tree-sitter/tree-sitter-bash")
-        (css "https://github.com/tree-sitter/tree-sitter-css")
-        (elisp "https://github.com/Wilfred/tree-sitter-elisp")
-        (go "https://github.com/tree-sitter/tree-sitter-go")
-        (html "https://github.com/tree-sitter/tree-sitter-html")
-        (markdown "https://github.com/ikatyang/tree-sitter-markdown")
-        (python "https://github.com/tree-sitter/tree-sitter-python")
-     )
-   )
-#+end_src
 * Eglot
 #+begin_src emacs-lisp
+(add-hook 'c-mode-hook 'eglot-ensure)
+(add-hook 'go-mode-hook 'eglot-ensure)
 #+end_src
