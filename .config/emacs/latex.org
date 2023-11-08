@@ -1,0 +1,19 @@
+#+LaTeX_CLASS: org-plain-latex
+#+LaTeX_CLASS_OPTIONS: [letter, 12pt]
+
+#+LATEX_HEADER: \usepackage{lmodern}
+#+LATEX_HEADER: \usepackage[AUTO]{inputenc}
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_HEADER: \usepackage{nopageno}
+#+LATEX_HEADER: \usepackage{titling}
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \frenchspacing
+% Moving up the title.
+#+LATEX_HEADER: \setlength{\droptitle}{-6em}
+% Title customization
+#+LATEX_HEADER: \pretitle{\begin{center}\fontsize{20pt}{20pt}\selectfont}
+#+LATEX_HEADER: \posttitle{\par\end{center}}
+#+LATEX_HEADER: \preauthor{\begin{center}\vspace{-6bp}\fontsize{14pt}{14pt}\selectfont}
+#+LATEX_HEADER: \postauthor{\par\end{center}\vspace{-25bp}}
