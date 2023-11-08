@@ -16,6 +16,10 @@ alias grep='grep --color=auto'
 alias mkcd='mkdir -p $1 && cd $1'
 alias rm='trash'
 PS1='[\u@\h \W]\$ '
+
+if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+    exec tmux new-session -A -s ${USER} >/dev/null 2>&1
+fi
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/daniel/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
