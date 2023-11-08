@@ -4,19 +4,18 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
 export EDITOR=/usr/bin/nvim
 export VISUAL=$EDITOR
 export PATH=$PATH:~/go/bin
+
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' 
 alias ls='ls --color=auto'
 alias ll='ls -ahl --group-directories-first --color=auto'
 alias grep='grep --color=auto'
+alias mkcd='mkdir -p $1 && cd $1'
 alias rm='trash'
-<<<<<<< HEAD
-
-=======
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' 
 PS1='[\u@\h \W]\$ '
->>>>>>> 28d232b (Update .bashrc)
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/daniel/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -31,4 +30,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
