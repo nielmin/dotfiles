@@ -212,8 +212,16 @@
   (doom-themes-org-config)
   )
 #+end_src
-** Emacs
+** Jinx
 #+begin_src emacs-lisp
+(use-package jinx
+  :ensure t
+  :init
+  (add-hook 'emacs-startup-hook #'global-jinx-mode)
+  :bind
+  ("M-$" . #'jinx-correct)
+  ("C-M-$" . #'jinx-languages)
+  )
 #+end_src
 ** Meow
 #+begin_src emacs-lisp
@@ -371,14 +379,6 @@
 (setq org-src-window-setup 'current-window)
 (add-hook 'org-mode-hook 'org-indent-mode)
 #+end_src
-** Flyspell
-#+begin_src emacs-lisp
-(add-hook 'org-mode-hook 'turn-on-flyspell)
-(dolist (hook '(text-mode-hook))
-  (add-hook hook (lambda () (flyspell-mode 1))))
-(dolist (hook '(change-log-mode-hook log-edit-mode-hook))
-  (add-hook hook (lambda () (flyspell-mode -1))))
-#+end_src
 ** Indentation
 #+begin_src emacs-lisp
 (setq org-edit-src-content-indentation 0
@@ -414,6 +414,7 @@
 		  #'(lambda ()
 			  (visual-line-mode 1)))
 #+end_src
+
 #+begin_src emacs-lisp
 (defun org-mode-visual-fill ()
   (setq visual-fill-column-width 100
