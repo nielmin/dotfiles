@@ -223,6 +223,12 @@
   ("C-M-$" . #'jinx-languages)
   )
 #+end_src
+** Magit
+#+begin_src emacs-lisp
+(use-package magit
+  :ensure t
+  )
+#+end_src
 ** Meow
 #+begin_src emacs-lisp
 (defun meow-setup ()
@@ -408,23 +414,11 @@
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 #+end_src
-** Line wrapping and Visual fill
+** Line wrapping
 #+begin_src emacs-lisp
 (add-hook 'org-mode-hook
 		  #'(lambda ()
 			  (visual-line-mode 1)))
-#+end_src
-
-#+begin_src emacs-lisp
-(defun org-mode-visual-fill ()
-  (setq visual-fill-column-width 100
-		visual-fill-column-center-text t)
-  (visual-fill-column-mode 1))
-
-(use-package visual-fill-column
-  :ensure t
-  :hook
-  (org-mode . org-mode-visual-fill))
 #+end_src
 * Eglot
 #+begin_src emacs-lisp
