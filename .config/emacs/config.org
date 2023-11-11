@@ -111,6 +111,17 @@
 (defalias 'yes-or-no-p 'y-or-n-p)  
 #+end_src
 * Packages
+** Auto-compile
+#+begin_src emacs-lisp
+(use-package auto-compile
+  :init
+  (package-initialize)
+  (auto-compile-on-load-mode)
+  (auto-compile-on-save-mode)
+  :config
+  (setq load-prefer-newer t)
+  )
+#+end_src
 ** Auto-package-update
 #+begin_src emacs-lisp
 (use-package auto-package-update
@@ -136,8 +147,14 @@
   ("C-x C-b" . bufler)
 )
 #+end_src
-** Completion Frameworks
-*** Consult
+** Company
+#+begin_src emacs-lisp
+(use-package company
+  :ensure t
+  :init
+  (add-hook 'after-init-hook 'global-company-mode))
+#+end_src
+** Consult
 #+begin_src emacs-lisp
 (use-package consult
   :ensure t
@@ -146,47 +163,6 @@
   ("C-x b" . consult-buffer)
   :hook (completion-list-mode . consult-preview-at-point-mode)
   )
-#+end_src
-*** Marginalia
-#+begin_src emacs-lisp
-(use-package marginalia
-  :ensure t
-  :init (marginalia-mode)
-  )
-#+end_src
-*** Orderless
-#+begin_src emacs-lisp
-(use-package orderless
-  :ensure t
-  :init
-  (setq completion-styles '(orderless basic)
-        completion-category-defaults nil
-        completion-category-overrides '((file (styles partial-completion)))
-        )
-  )
-#+end_src
-*** Savehist
-#+begin_src emacs-lisp
-(use-package savehist
-  :init
-  (savehist-mode)
-  )
-#+end_src
-*** Vertico
-#+begin_src emacs-lisp
-(use-package vertico
-  :ensure t
-  :custom
-  (vertico-cycle t)
-  :init (vertico-mode)
-  )
-#+end_src
-** Company
-#+begin_src emacs-lisp
-(use-package company
-  :ensure t
-  :init
-  (add-hook 'after-init-hook 'global-company-mode))
 #+end_src
 ** Diminish
 #+begin_src emacs-lisp
@@ -227,6 +203,13 @@
 #+begin_src emacs-lisp
 (use-package magit
   :ensure t
+  )
+#+end_src
+** Marginalia
+#+begin_src emacs-lisp
+(use-package marginalia
+  :ensure t
+  :init (marginalia-mode)
   )
 #+end_src
 ** Meow
@@ -330,6 +313,17 @@
   (nerd-icons-font-family "Iosevka Nerd Font Mono")
   )
 #+end_src
+** Orderless
+#+begin_src emacs-lisp
+(use-package orderless
+  :ensure t
+  :init
+  (setq completion-styles '(orderless basic)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))
+        )
+  )
+#+end_src
 ** Org
 #+begin_src emacs-lisp
 (use-package org
@@ -354,6 +348,22 @@
   :ensure t
   :init
   (rainbow-delimiters-mode 1))
+#+end_src
+** Savehist
+#+begin_src emacs-lisp
+(use-package savehist
+  :init
+  (savehist-mode)
+  )
+#+end_src
+** Vertico
+#+begin_src emacs-lisp
+(use-package vertico
+  :ensure t
+  :custom
+  (vertico-cycle t)
+  :init (vertico-mode)
+  )
 #+end_src
 ** which-key
 #+begin_src emacs-lisp
