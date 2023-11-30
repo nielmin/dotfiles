@@ -5,10 +5,11 @@
 #+LATEX_HEADER: \usepackage[AUTO]{inputenc}
 #+LATEX_HEADER: \usepackage[margin=1in]{geometry}
 #+LATEX_HEADER: \usepackage{graphicx}
-#+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_HEADER: \usepackage[hidelinks]{hyperref}
 #+LATEX_HEADER: \usepackage{nopageno}
 #+LATEX_HEADER: \usepackage{titling}
 #+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \usepackage[normalem]{ulem}
 #+LATEX_HEADER: \frenchspacing
 % Moving up the title.
 #+LATEX_HEADER: \setlength{\droptitle}{-6em}
