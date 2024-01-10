@@ -16,7 +16,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias ls='ls --color=auto'
 alias ll='ls -ahl --group-directories-first --color=auto'
 alias grep='grep --color=auto'
-alias rm='trash'
+alias rm='gtrash'
 PS1='[\u@\h \W]\$ '
 
 # >>> conda initialize >>>
