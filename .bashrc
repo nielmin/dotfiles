@@ -16,7 +16,8 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias ls='ls --color=auto'
 alias ll='ls -ahl --group-directories-first --color=auto'
 alias grep='grep --color=auto'
-alias rm='gtrash'
+alias gp='gtrash put' # gtrash put
+alias rm="echo -e 'If you want to use rm really, then use \"\\\\rm\" instead.'; false"
 PS1='[\u@\h \W]\$ '
 
 # >>> conda initialize >>>
