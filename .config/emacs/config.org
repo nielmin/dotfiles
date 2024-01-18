@@ -164,28 +164,18 @@
   :hook (completion-list-mode . consult-preview-at-point-mode)
   )
 #+end_src
+** Emacs
+#+begin_src emacs-lisp
+  (use-package emacs
+    :ensure t
+    :config
+    (load-theme 'modus-vivendi-tinted t)
+    )
+#+end_src
 ** Diminish
 #+begin_src emacs-lisp
 (use-package diminish
   :ensure t
-  )
-#+end_src
-** Doom modeline
-#+begin_src emacs-lisp
-(use-package doom-modeline
-  :ensure t
-  :init (doom-modeline-mode 1)
-  )
-#+end_src
-** Doom theme
-#+begin_src emacs-lisp
-(use-package doom-themes
-  :ensure t
-  :config
-  (setq doom-themes-enable-bold t
-        doom-themes-italic t)
-  (load-theme 'doom-rouge t)
-  (doom-themes-org-config)
   )
 #+end_src
 ** Jinx
@@ -305,13 +295,6 @@
   :config
   (meow-setup)
   (meow-global-mode 1))
-#+end_src
-** nerd-icons
-#+begin_src emacs-lisp
-(use-package nerd-icons
-  :custom
-  (nerd-icons-font-family "Iosevka Nerd Font Mono")
-  )
 #+end_src
 ** Orderless
 #+begin_src emacs-lisp
