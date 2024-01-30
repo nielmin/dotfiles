@@ -13,7 +13,7 @@ export LC_ALL\="en_US.UTF-8"
 export TERM\=xterm-256color
 
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' 
-alias ls='ls --color=auto'
+alias ls='ls --color=auto --group-directories-first'
 alias ll='ls -ahl --group-directories-first --color=auto'
 alias grep='grep --color=auto'
 alias gp='gtrash put' # gtrash put
