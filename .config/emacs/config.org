@@ -135,7 +135,7 @@
 ** Beacon
 #+begin_src emacs-lisp
 (use-package beacon
-  :ensure t
+  :ensure nil
   :init (beacon-mode 1)
   )
 #+end_src
@@ -147,12 +147,19 @@
   ("C-x C-b" . bufler)
 )
 #+end_src
+** Burly
+#+begin_src emacs-lisp
+(use-package burly
+  :ensure t
+  )
+#+end_src
 ** Company
 #+begin_src emacs-lisp
 (use-package company
   :ensure t
   :init
-  (add-hook 'after-init-hook 'global-company-mode))
+  (add-hook 'after-init-hook 'global-company-mode)
+  )
 #+end_src
 ** Consult
 #+begin_src emacs-lisp
@@ -182,11 +189,13 @@
 #+begin_src emacs-lisp
 (use-package jinx
   :ensure t
-  :init
-  (add-hook 'emacs-startup-hook #'global-jinx-mode)
   :bind
-  ("M-$" . #'jinx-correct)
-  ("C-M-$" . #'jinx-languages)
+  ("M-$" . jinx-correct)
+  ("C-M-$" . jinx-languages)
+  :hook
+  (org-mode . jinx-mode)
+  (text-mode . jinx-mode)
+  (conf-mode . jinx-mode)
   )
 #+end_src
 ** Magit
@@ -199,7 +208,8 @@
 #+begin_src emacs-lisp
 (use-package marginalia
   :ensure t
-  :init (marginalia-mode)
+  :init
+  (marginalia-mode)
   )
 #+end_src
 ** Meow
@@ -294,7 +304,8 @@
   :ensure t
   :config
   (meow-setup)
-  (meow-global-mode 1))
+  (meow-global-mode 1)
+  )
 #+end_src
 ** Orderless
 #+begin_src emacs-lisp
@@ -310,7 +321,8 @@
 ** Org
 #+begin_src emacs-lisp
 (use-package org
-  :ensure t)
+  :ensure t
+  )
 #+end_src
 ** Org Superstar
 #+begin_src emacs-lisp
@@ -330,7 +342,8 @@
 (use-package rainbow-delimiters
   :ensure t
   :init
-  (rainbow-delimiters-mode 1))
+  (rainbow-delimiters-mode 1)
+  )
 #+end_src
 ** Savehist
 #+begin_src emacs-lisp
@@ -339,13 +352,33 @@
   (savehist-mode)
   )
 #+end_src
+** Tree-sitter
+#+begin_src emacs-lisp
+(use-package tree-sitter
+  :ensure t
+  :config
+  (setq treesit-language-source-alist
+   '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+     (css "https://github.com/tree-sitter/tree-sitter-css")
+     (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+     (go "https://github.com/tree-sitter/tree-sitter-go")
+     (html "https://github.com/tree-sitter/tree-sitter-html")
+     (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
+     (json "https://github.com/tree-sitter/tree-sitter-json")
+     (make "https://github.com/alemuller/tree-sitter-make")
+     (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+     (python "https://github.com/tree-sitter/tree-sitter-python")
+     (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+  )
+#+end_src
 ** Vertico
 #+begin_src emacs-lisp
 (use-package vertico
   :ensure t
   :custom
   (vertico-cycle t)
-  :init (vertico-mode)
+  :init
+  (vertico-mode)
   )
 #+end_src
 ** which-key
@@ -363,7 +396,7 @@
 ** Agenda
 #+begin_src emacs-lisp
 (setq org-agenda-files
-	  '("~/Documents/utsa/fa23/todo.org"))
+	  '("~/Documents/utsa/todo.org"))
 (setq org-agenda-start-with-log-mode t)
 (setq org-log-done 'time)
 (setq org-log-into-drawer t)
@@ -389,8 +422,8 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
-   (C . t)
-   (python . t)))
+   )
+ )
 #+end_src
 ** LaTeX
 #+begin_src emacs-lisp
@@ -415,6 +448,14 @@
 #+end_src
 * Eglot
 #+begin_src emacs-lisp
-(add-hook 'c-mode-hook 'eglot-ensure)
-(add-hook 'go-mode-hook 'eglot-ensure)
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '((mhtml-mode html-mode) . ("vscode-html-language-server" "--stdio"))
+               '(css-mode . ("vscode-css-language-server" "--stdio"))
+               '(go-mode . ("gopls"))
+  )
+
+  (add-hook 'mhtml-mode 'eglot-ensure)
+  (add-hook 'html-mode 'eglot-ensure)
+  (add-hook 'css-mode 'eglot-ensure)
 #+end_src
