@@ -24,7 +24,7 @@
 #+end_src
 ** Frame size
 #+begin_src emacs-lisp
-(add-to-list 'default-frame-alist '(height . 28))
+(add-to-list 'default-frame-alist '(height . 24))
 (add-to-list 'default-frame-alist '(width . 80))
 #+end_src
 ** Key Bindings
@@ -62,10 +62,6 @@
 #+begin_src emacs-lisp
 (global-unset-key (kbd "C-c '"))
 (global-set-key (kbd "C-c '") 'org-edit-src-code)
-#+end_src
-** Line and column numbers
-#+begin_src emacs-lisp
-  (column-number-mode)
 #+end_src
 ** Line numbers for programming mode
 #+begin_src emacs-lisp
@@ -132,13 +128,6 @@
   (auto-package-update-maybe)
   )
 #+end_src
-** Beacon
-#+begin_src emacs-lisp
-(use-package beacon
-  :ensure nil
-  :init (beacon-mode 1)
-  )
-#+end_src
 ** Bufler
 #+begin_src emacs-lisp
 (use-package bufler
@@ -157,8 +146,10 @@
 #+begin_src emacs-lisp
 (use-package company
   :ensure t
-  :init
-  (add-hook 'after-init-hook 'global-company-mode)
+  :hook
+  ((prog-mode . company-mode)
+   (text-mode . company-mode)
+   )
   )
 #+end_src
 ** Consult
@@ -193,9 +184,9 @@
   ("M-$" . jinx-correct)
   ("C-M-$" . jinx-languages)
   :hook
-  (org-mode . jinx-mode)
+  ((org-mode . jinx-mode)
   (text-mode . jinx-mode)
-  (conf-mode . jinx-mode)
+  (conf-mode . jinx-mode))
   )
 #+end_src
 ** Magit
