@@ -73,6 +73,8 @@
 #+begin_src emacs-lisp
 (use-package emacs
   :init
+  ;; Follow symlinks (for git dotfiles)
+  (setq vc-follow-symlinks t)
   ;; Theme
   (load-theme 'modus-vivendi-tinted t)
   ;; Unneeded UI elemenets
@@ -319,7 +321,7 @@
   :config
   (setq org-superstar-special-todo-items t)
   (setq org-superstar-headline-bullets-list
-        '("◉" ("🞛" ?◈) "○" "▷"))
+        '("◉" "○"))
   )
 #+end_src
 * Rainbow-delimiters
