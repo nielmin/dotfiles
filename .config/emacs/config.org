@@ -1,113 +1,8 @@
 #+TITLE: Emacs Configuration
 #+AUTHOR: Daniel Hwang
 #+DESCRIPTION: Personal Emacs configuration
-#+STARTUP: show2levels
 
-* General Settings
-** Backups
-#+begin_src emacs-lisp
-(setq backup-directory-alist
-	  `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-	  `((".*" ,temporary-file-directory t)))
-(setq make-backup-files nil)
-(setq auto-save-default nil)
-#+end_src
-** Fonts
-#+begin_src emacs-lisp
-; Change default font for new (non special-display) frames:
-(add-to-list 'default-frame-alist '(font . "Iosevka-16"))
-(set-face-attribute 'default t :font "Iosevka-16")
-; Change default font for the current frame, as well as future frames:
-(set-face-attribute 'default nil :font "Iosevka-16")
-(set-frame-font "Iosevka-16" nil t)
-#+end_src
-** Frame size
-#+begin_src emacs-lisp
-(add-to-list 'default-frame-alist '(height . 24))
-(add-to-list 'default-frame-alist '(width . 80))
-#+end_src
-** Key Bindings
-*** Buffers
-**** Kill current buffer
-#+begin_src emacs-lisp
-(defun kill-cur-buffer ()
-  (interactive)
-  (kill-buffer (current-buffer)))
-(global-set-key (kbd "C-x k") 'kill-cur-buffer)
-#+end_src
-*** General
-#+begin_src emacs-lisp
-(global-set-key (kbd "M-o") 'other-window)
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-#+end_src
-*** Config edit/reload
-**** edit
-#+begin_src emacs-lisp
-(global-set-key (kbd "C-c c e") nil)
-(defun config-edit ()
-  (interactive)
-  (find-file "~/.config/emacs/config.org"))
-(global-set-key (kbd "C-c c e") 'config-edit)
-#+end_src
-**** reload
-#+begin_src emacs-lisp
-(global-set-key (kbd "C-c r") nil)
-(defun config-reload ()
-  (interactive)
-  (org-babel-load-file (expand-file-name "~/.config/emacs/config.org")))
-(global-set-key (kbd "C-c c r") 'config-reload)
-#+end_src
-*** Org
-#+begin_src emacs-lisp
-(global-unset-key (kbd "C-c '"))
-(global-set-key (kbd "C-c '") 'org-edit-src-code)
-#+end_src
-** Line numbers for programming mode
-#+begin_src emacs-lisp
-;; Enable line numbers for some modes
-(dolist (mode '(text-mode-hook
-				prog-mode-hook
-				conf-mode-hook))
-  (add-hook mode (lambda() (display-line-numbers-mode 1))))
-
-;; Override some modes which derive from the above
-(dolist (mode '(org-mode-hook))
-  (add-hook mode (lambda() (display-line-numbers-mode 0)))
-  )
-#+end_src
-** No splash screen
-#+begin_src emacs-lisp
-(setq inhibit-startup-message t)
-#+end_src
-** Set Tab indentation
-#+begin_src emacs-lisp
-(setq-default tab-width 4)
-(setq-default indent-tabs-mode nil)
-#+end_src
-** Scrolling
-#+begin_src emacs-lisp
-(setq scroll-conservatively 100)
-(setq scroll-margin 8)
-#+end_src
-** Source block
-#+begin_src emacs-lisp
-(setq org-src-window-setup 'current-window)
-#+end_src
-** Unneeded UI elements
-#+begin_src emacs-lisp
-(menu-bar-mode -1)       
-(tool-bar-mode -1)      
-(scroll-bar-mode -1)    
-(tooltip-mode -1)       
-(set-fringe-mode 10)    
-#+end_src
-** 'y' for 'Yes'
-#+begin_src emacs-lisp
-(defalias 'yes-or-no-p 'y-or-n-p)  
-#+end_src
-* Packages
-** Auto-compile
+* Auto-compile
 #+begin_src emacs-lisp
 (use-package auto-compile
   :init
@@ -118,68 +13,129 @@
   (setq load-prefer-newer t)
   )
 #+end_src
-** Auto-package-update
+* Auto-package-update
 #+begin_src emacs-lisp
 (use-package auto-package-update
-  :ensure t
   :config
   (setq auto-package-update-delete-old-versions t)
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe)
   )
 #+end_src
-** Bufler
+* Bufler
 #+begin_src emacs-lisp
 (use-package bufler
-  :ensure t
   :bind
   ("C-x C-b" . bufler)
 )
 #+end_src
-** Burly
-#+begin_src emacs-lisp
-(use-package burly
-  :ensure t
-  )
-#+end_src
-** Company
+* Company
 #+begin_src emacs-lisp
 (use-package company
-  :ensure t
   :hook
   ((prog-mode . company-mode)
-   (text-mode . company-mode)
-   )
+   (text-mode . company-mode))
   )
 #+end_src
-** Consult
+* Consult
 #+begin_src emacs-lisp
 (use-package consult
-  :ensure t
   :bind
   ("C-s" . consult-line)
   ("C-x b" . consult-buffer)
-  :hook (completion-list-mode . consult-preview-at-point-mode)
+  :hook
+  (completion-list-mode . consult-preview-at-point-mode)
   )
 #+end_src
-** Emacs
-#+begin_src emacs-lisp
-  (use-package emacs
-    :ensure t
-    :config
-    (load-theme 'modus-vivendi-tinted t)
-    )
-#+end_src
-** Diminish
+* Diminish
 #+begin_src emacs-lisp
 (use-package diminish
-  :ensure t
   )
 #+end_src
-** Jinx
+* Eglot
+#+begin_src emacs-lisp
+(use-package eglot
+  :hook
+  (mhtml-mode . eglot-ensure)
+  (css-mode . eglot-ensure)
+  (go-mode . eglot-ensure)
+  :config
+  (with-eval-after-load 'eglot
+    (add-to-list 'eglot-server-programs
+                 '((mhtml-mode html-mode) . ("vscode-html-language-server" "--stdio"))
+                 '(css-mode . ("vscode-css-language-server" "--stdio"))
+                 '(go-mode . ("gopls"))
+                 )
+    )
+ )
+#+end_src
+* Emacs
+#+begin_src emacs-lisp
+(use-package emacs
+  :init
+  ;; Theme
+  (load-theme 'modus-vivendi-tinted t)
+  ;; Unneeded UI elemenets
+  (menu-bar-mode -1)       
+  (tool-bar-mode -1)      
+  (scroll-bar-mode -1)    
+  (tooltip-mode -1)       
+  (set-fringe-mode 10)    
+  ;; No startup message
+  (setq inhibit-startup-message t)
+  ;; Backup
+  (setq backup-directory-alist
+	    `((".*" . ,temporary-file-directory)))
+  (setq auto-save-file-name-transforms
+	    `((".*" ,temporary-file-directory t)))
+  (setq make-backup-files nil)
+  (setq auto-save-default nil)
+  ;; Frame height and width
+  (add-to-list 'default-frame-alist '(height . 24))
+  (add-to-list 'default-frame-alist '(width . 80))
+  ;; Set tab width
+  (setq-default tab-width 4)
+  (setq-default indent-tabs-mode nil)
+  :bind
+  ("M-o" . other-window)
+  ("C-c '" . org-edit-src-code)
+  ("C-x k" . 'kill-cur-buffer)
+  ("C-c c e" . 'config-edit)
+  ("C-c c r" . 'config-reload)
+  :hook
+  ;; Enable line numbers for some modes
+  ((prog-mode . display-line-numbers-mode)
+   (conf-mode . display-line-numbers-mode))
+
+  :config
+  ;; Change default font for new (non special-display) frames:
+  (add-to-list 'default-frame-alist '(font . "Iosevka-16"))
+  (set-face-attribute 'default t :font "Iosevka-16")
+  
+  ;; Change default font for the current frame, as well as future frames:
+  (set-face-attribute 'default nil :font "Iosevka-16")
+  (set-frame-font "Iosevka-16" nil t)
+  
+  (setq scroll-conservatively 100)
+  (setq scroll-margin 8)
+  
+  (setq org-src-window-setup 'current-window)
+  
+  (defun kill-cur-buffer ()
+    (interactive)
+    (kill-buffer (current-buffer)))
+  (defun config-edit ()
+    (interactive)
+    (find-file "~/.config/emacs/config.org"))
+  (defun config-reload ()
+    (interactive)
+    (org-babel-load-file (expand-file-name "~/.config/emacs/config.org")))
+  (defalias 'yes-or-no-p 'y-or-n-p)  
+  )
+#+end_src
+* Jinx
 #+begin_src emacs-lisp
 (use-package jinx
-  :ensure t
   :bind
   ("M-$" . jinx-correct)
   ("C-M-$" . jinx-languages)
@@ -189,21 +145,19 @@
   (conf-mode . jinx-mode))
   )
 #+end_src
-** Magit
+* Magit
 #+begin_src emacs-lisp
 (use-package magit
-  :ensure t
   )
 #+end_src
-** Marginalia
+* Marginalia
 #+begin_src emacs-lisp
 (use-package marginalia
-  :ensure t
   :init
   (marginalia-mode)
   )
 #+end_src
-** Meow
+* Meow
 #+begin_src emacs-lisp
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
@@ -292,16 +246,14 @@
    '("<escape>" . ignore)))
 
 (use-package meow
-  :ensure t
   :config
   (meow-setup)
   (meow-global-mode 1)
   )
 #+end_src
-** Orderless
+* Orderless
 #+begin_src emacs-lisp
 (use-package orderless
-  :ensure t
   :init
   (setq completion-styles '(orderless basic)
         completion-category-defaults nil
@@ -309,16 +261,58 @@
         )
   )
 #+end_src
-** Org
+* Org
 #+begin_src emacs-lisp
 (use-package org
-  :ensure t
-  )
+  :init
+  ;; org settings
+  (setq org-ellipsis " ")
+  (setq org-src-fontify-natively t)
+  (setq org-src-tab-acts-natively t)
+  (setq org-confirm-babel-evaluate nil)
+  (setq org-export-with-smart-quotes t)
+  (setq org-src-window-setup 'current-window)
+  (setq org-log-into-drawer t)
+  :hook
+  (org-mode . org-indent-mode)
+  (org-mode . visual-line-mode)
+  :bind
+
+  :config
+  ;; org-agenda
+  (setq org-agenda-files
+	    '("~/Documents/utsa/todo.org"))
+  (setq org-agenda-start-with-log-mode t)
+  (setq org-log-done 'time)
+  ;; indentation
+  (setq org-edit-src-content-indentation 0
+	    org-src-tab-acts-natively t
+	    org-src-preserve-indentation t)
+  ;; org-babel
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     )
+   )
+  ;; latex
+  (with-eval-after-load 'ox-latex
+    (add-to-list 'org-latex-classes
+                 '("org-plain-latex"
+                   "\\documentclass{article}
+           [NO-DEFAULT-PACKAGES]
+           [PACKAGES]
+           [EXTRA]"
+                   ("\\section{%s}" . "\\section*{%s}")
+                   ("\\subsection{%s}" . "\\subsection*{%s}")
+                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                   ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                   ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+  
+)
 #+end_src
-** Org Superstar
+* Org Superstar
 #+begin_src emacs-lisp
 (use-package org-superstar
-  :ensure t
   :after org
   :hook
   (org-mode . org-superstar-mode)
@@ -328,25 +322,23 @@
         '("◉" ("🞛" ?◈) "○" "▷"))
   )
 #+end_src
-** Rainbow-delimiters
+* Rainbow-delimiters
 #+begin_src emacs-lisp
 (use-package rainbow-delimiters
-  :ensure t
   :init
-  (rainbow-delimiters-mode 1)
+  (rainbow-delimiters-mode)
   )
 #+end_src
-** Savehist
+* Savehist
 #+begin_src emacs-lisp
 (use-package savehist
   :init
   (savehist-mode)
   )
 #+end_src
-** Tree-sitter
+* Tree-sitter
 #+begin_src emacs-lisp
 (use-package tree-sitter
-  :ensure t
   :config
   (setq treesit-language-source-alist
    '((bash "https://github.com/tree-sitter/tree-sitter-bash")
@@ -362,91 +354,22 @@
      (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
   )
 #+end_src
-** Vertico
+* Vertico
 #+begin_src emacs-lisp
 (use-package vertico
-  :ensure t
   :custom
   (vertico-cycle t)
   :init
   (vertico-mode)
   )
 #+end_src
-** which-key
+* which-key
 #+begin_src emacs-lisp
 (use-package which-key
-  :ensure t
   :diminish which-key-mode
   :init
   (which-key-mode)
   :config
   (setq which-key-idle-delay 0.3)
   ) 
-#+end_src
-* Org
-** Agenda
-#+begin_src emacs-lisp
-(setq org-agenda-files
-	  '("~/Documents/utsa/todo.org"))
-(setq org-agenda-start-with-log-mode t)
-(setq org-log-done 'time)
-(setq org-log-into-drawer t)
-#+end_src
-** Common settings
-#+begin_src emacs-lisp
-(setq org-ellipsis " ")
-(setq org-src-fontify-natively t)
-(setq org-src-tab-acts-natively t)
-(setq org-confirm-babel-evaluate nil)
-(setq org-export-with-smart-quotes t)
-(setq org-src-window-setup 'current-window)
-(add-hook 'org-mode-hook 'org-indent-mode)
-#+end_src
-** Indentation
-#+begin_src emacs-lisp
-(setq org-edit-src-content-indentation 0
-	  org-src-tab-acts-natively t
-	  org-src-preserve-indentation t)
-#+end_src
-** Languages
-#+begin_src elisp
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   )
- )
-#+end_src
-** LaTeX
-#+begin_src emacs-lisp
-(with-eval-after-load 'ox-latex
-(add-to-list 'org-latex-classes
-             '("org-plain-latex"
-               "\\documentclass{article}
-           [NO-DEFAULT-PACKAGES]
-           [PACKAGES]
-           [EXTRA]"
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-               ("\\paragraph{%s}" . "\\paragraph*{%s}")
-               ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
-#+end_src
-** Line wrapping
-#+begin_src emacs-lisp
-(add-hook 'org-mode-hook
-		  #'(lambda ()
-			  (visual-line-mode 1)))
-#+end_src
-* Eglot
-#+begin_src emacs-lisp
-(with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs
-               '((mhtml-mode html-mode) . ("vscode-html-language-server" "--stdio"))
-               '(css-mode . ("vscode-css-language-server" "--stdio"))
-               '(go-mode . ("gopls"))
-  )
-
-  (add-hook 'mhtml-mode 'eglot-ensure)
-  (add-hook 'html-mode 'eglot-ensure)
-  (add-hook 'css-mode 'eglot-ensure)
 #+end_src
