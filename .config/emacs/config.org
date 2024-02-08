@@ -53,6 +53,13 @@
 (use-package diminish
   )
 #+end_src
+* doom-modeline
+#+begin_src emacs-lisp
+(use-package doom-modeline
+  :hook
+  (after-init . doom-modeline-mode)
+)
+#+end_src
 * Eglot
 #+begin_src emacs-lisp
 (use-package eglot
