@@ -1,6 +1,7 @@
 #+TITLE: Emacs Configuration
 #+AUTHOR: Daniel Hwang
 #+DESCRIPTION: Personal Emacs configuration
+#+STARTUP: show2levels
 
 * Auto-compile
 #+begin_src emacs-lisp
