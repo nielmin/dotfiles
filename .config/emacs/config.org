@@ -64,84 +64,10 @@
 #+begin_src emacs-lisp
 (use-package eglot
   :hook
-  (mhtml-mode . eglot-ensure)
+  ((mhtml-mode html-mode) . eglot-ensure)
   (css-mode . eglot-ensure)
-  (go-mode . eglot-ensure)
-  :config
-  (with-eval-after-load 'eglot
-    (add-to-list 'eglot-server-programs
-                 '((mhtml-mode html-mode) . ("vscode-html-language-server" "--stdio"))
-                 '(css-mode . ("vscode-css-language-server" "--stdio"))
-                 '(go-mode . ("gopls"))
-                 )
-    )
+  ((go-mode go-ts-mode) . eglot-ensure)
  )
-#+end_src
-* Emacs
-#+begin_src emacs-lisp
-(use-package emacs
-  :init
-  ;; Follow symlinks (for git dotfiles)
-  (setq vc-follow-symlinks t)
-  ;; Theme
-  (load-theme 'modus-vivendi-tinted t)
-  ;; Unneeded UI elemenets
-  (menu-bar-mode -1)       
-  (tool-bar-mode -1)      
-  (scroll-bar-mode -1)    
-  (tooltip-mode -1)       
-  (set-fringe-mode 10)    
-  ;; No startup message
-  (setq inhibit-startup-message t)
-  ;; Backup
-  (setq backup-directory-alist
-	    `((".*" . ,temporary-file-directory)))
-  (setq auto-save-file-name-transforms
-	    `((".*" ,temporary-file-directory t)))
-  (setq make-backup-files nil)
-  (setq auto-save-default nil)
-  ;; Frame height and width
-  (add-to-list 'default-frame-alist '(height . 24))
-  (add-to-list 'default-frame-alist '(width . 80))
-  ;; Set tab width
-  (setq-default tab-width 4)
-  (setq-default indent-tabs-mode nil)
-  :bind
-  ("M-o" . other-window)
-  ("C-c '" . org-edit-src-code)
-  ("C-x k" . 'kill-cur-buffer)
-  ("C-c c e" . 'config-edit)
-  ("C-c c r" . 'config-reload)
-  :hook
-  ;; Enable line numbers for some modes
-  ((prog-mode . display-line-numbers-mode)
-   (conf-mode . display-line-numbers-mode))
-
-  :config
-  ;; Change default font for new (non special-display) frames:
-  (add-to-list 'default-frame-alist '(font . "Iosevka-16"))
-  (set-face-attribute 'default t :font "Iosevka-16")
-  
-  ;; Change default font for the current frame, as well as future frames:
-  (set-face-attribute 'default nil :font "Iosevka-16")
-  (set-frame-font "Iosevka-16" nil t)
-  
-  (setq scroll-conservatively 100)
-  (setq scroll-margin 8)
-  
-  (setq org-src-window-setup 'current-window)
-  
-  (defun kill-cur-buffer ()
-    (interactive)
-    (kill-buffer (current-buffer)))
-  (defun config-edit ()
-    (interactive)
-    (find-file "~/dotfiles/.config/emacs/config.org"))
-  (defun config-reload ()
-    (interactive)
-    (org-babel-load-file (expand-file-name "~/dotfiles/.config/emacs/config.org")))
-  (defalias 'yes-or-no-p 'y-or-n-p)  
-  )
 #+end_src
 * Jinx
 #+begin_src emacs-lisp
@@ -286,8 +212,6 @@
   :hook
   (org-mode . org-indent-mode)
   (org-mode . visual-line-mode)
-  :bind
-
   :config
   ;; org-agenda
   (setq org-agenda-files
@@ -335,8 +259,8 @@
 * Rainbow-delimiters
 #+begin_src emacs-lisp
 (use-package rainbow-delimiters
-  :init
-  (rainbow-delimiters-mode)
+  :hook
+  (prog-mode . rainbow-delimiters-mode)
   )
 #+end_src
 * Savehist
@@ -346,9 +270,15 @@
   (savehist-mode)
   )
 #+end_src
-* Tree-sitter
+* Treesit
 #+begin_src emacs-lisp
-(use-package tree-sitter
+(use-package treesit
+  :preface
+  (dolist (mapping '((go-mode . go-ts-mode)))
+    (add-to-list 'major-mode-remap-alist mapping))
+  :init
+  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
+  (add-to-list 'auto-mode-alist '("/go\\.mod\\'" . go-mod-ts-mode))
   :config
   (setq treesit-language-source-alist
    '((bash "https://github.com/tree-sitter/tree-sitter-bash")
