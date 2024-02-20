@@ -23,13 +23,6 @@
   (auto-package-update-maybe)
   )
 #+end_src
-* Bufler
-#+begin_src emacs-lisp
-(use-package bufler
-  :bind
-  ("C-x C-b" . bufler)
-)
-#+end_src
 * Company
 #+begin_src emacs-lisp
 (use-package company
@@ -43,7 +36,7 @@
 (use-package consult
   :bind
   ("C-s" . consult-line)
-  ("C-x b" . consult-buffer)
+  ("C-x C-b" . consult-buffer)
   :hook
   (completion-list-mode . consult-preview-at-point-mode)
   )
@@ -53,6 +46,16 @@
 (use-package diminish
   )
 #+end_src
+* Dired
+#+begin_src emacs-lisp
+(use-package dired
+  :hook
+  (dired-mode . dired-hide-details-mode)
+  :config
+  (setq delete-by-moving-to-trash t)
+  (setq dired-dwim-target t)
+)
+#+End_src
 * doom-modeline
 #+begin_src emacs-lisp
 (use-package doom-modeline
