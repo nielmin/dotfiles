@@ -36,7 +36,7 @@
 (use-package consult
   :bind
   ("C-s" . consult-line)
-  ("C-x C-b" . consult-buffer)
+  ("C-x b" . consult-buffer)
   :hook
   (completion-list-mode . consult-preview-at-point-mode)
   )
@@ -67,10 +67,12 @@
 #+begin_src emacs-lisp
 (use-package eglot
   :hook
-  ((mhtml-mode html-mode) . eglot-ensure)
-  (css-mode . eglot-ensure)
+  ((html-mode html-ts-code) . eglot-ensure)
+  ((css-ts-mode css-mode) . eglot-ensure)
   ((go-mode go-ts-mode) . eglot-ensure)
- )
+  :config
+  (fset #'jsonrpc--log-event #'ignore)
+  )
 #+end_src
 * Jinx
 #+begin_src emacs-lisp
