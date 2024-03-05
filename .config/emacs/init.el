@@ -38,8 +38,9 @@
   (setq-default indent-tabs-mode nil)
   :bind
   ("M-o" . other-window)
-  ("C-c '" . org-edit-src-code)
   ("C-x k" . 'kill-cur-buffer)
+  ("C-x C-b" . ibuffer)
+  ("C-c '" . org-edit-src-code)
   ("C-c c e" . 'config-edit)
   ("C-c c r" . 'config-reload)
   :hook
@@ -81,7 +82,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(which-key vertico undo-tree tree-sitter rainbow-delimiters org-superstar orderless modus-themes meow marginalia magit jinx embark-consult doom-themes doom-modeline diminish company citeproc auto-package-update auto-compile)))
+   '(bufler which-key vertico undo-tree tree-sitter rainbow-delimiters org-superstar orderless modus-themes meow marginalia magit jinx embark-consult doom-themes doom-modeline diminish company citeproc auto-package-update auto-compile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
