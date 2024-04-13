@@ -69,10 +69,10 @@
     (kill-buffer (current-buffer)))
   (defun config-edit ()
     (interactive)
-    (find-file "~/dotfiles/.config/emacs/config.org"))
+    (find-file "~/.dotfiles/.config/emacs/config.org"))
   (defun config-reload ()
     (interactive)
-    (org-babel-load-file (expand-file-name "~/dotfiles/.config/emacs/config.org")))
+    (org-babel-load-file (expand-file-name "~/.dotfiles/.config/emacs/config.org")))
   (defalias 'yes-or-no-p 'y-or-n-p)  
   )
 
