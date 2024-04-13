@@ -1,5 +1,5 @@
 #+LaTeX_CLASS: org-plain-latex
-#+LaTeX_CLASS_OPTIONS: [letter, 12pt]
+#+LaTeX_CLASS_OPTIONS: [letter, 11pt]
 
 #+LATEX_HEADER: \usepackage{lmodern}
 #+LATEX_HEADER: \usepackage[AUTO]{inputenc}
@@ -13,10 +13,3 @@
 #+LATEX_HEADER: \usepackage[normalem]{ulem}
 #+LATEX_HEADER: \usepackage{setspace}
 #+LATEX_HEADER: \frenchspacing
-% Moving up the title.
-#+LATEX_HEADER: \setlength{\droptitle}{-6em}
-% Title customization
-#+LATEX_HEADER: \pretitle{\begin{center}\fontsize{20pt}{20pt}\selectfont}
-#+LATEX_HEADER: \posttitle{\par\end{center}}
-#+LATEX_HEADER: \preauthor{\begin{center}\vspace{-6bp}\fontsize{14pt}{14pt}\selectfont}
-#+LATEX_HEADER: \postauthor{\par\end{center}\vspace{-25bp}}
