@@ -1,0 +1,419 @@
+#+TITLE: Emacs Configuration
+#+AUTHOR: Daniel Hwang
+#+DESCRIPTION: Personal Emacs configuration
+* Early Init
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/early-init.el :mkdrip yes
+  ;; early-init.el --- Emacs pre package.el & GUI configuration -*- lexical-binding: t; -*-
+  ;; Code:
+
+  (setq backup-inhibited t
+	make-backup-files nil
+	auto-save-default nil)
+  (setq native-comp-async-report-warnings-errors nil)
+  ;; Unneeded UI elemenets
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)      
+  (scroll-bar-mode -1)    
+  (tooltip-mode -1)       
+  (set-fringe-mode 10)
+  (setq inhibit-splash-screen t)
+  (setq use-file-dialog nil)
+
+  (provide 'early-init)
+  #+end_src
+
+* Init
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
+  ;; -*- lexical-binding: t; -*-
+
+  ;; Add configuration modules to load path
+  (add-to-list 'load-path '"~/.dotfiles/.config/emacs/modules")
+
+  ;; Required Modules
+  (require 'el-package)
+  (require 'el-completion)
+  (require 'el-theme)
+  (require 'el-org)
+  (require 'el-ui)
+  (require 'el-meow)
+  (require 'el-dired)
+  (require 'el-eglot)
+  #+end_src
+
+* Use-Package
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-package.el :mkdirp yes
+  ;; -*- lexical-binding: t; -*-
+  (require 'package)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  (package-initialize)
+
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+
+  (eval-and-compile
+    (setq use-package-always-ensure t
+	  use-package-expand-minimally t))
+
+  (provide 'el-package)
+#+end_src
+
+* Vertico
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
+  ;; -*- lexical-binding: t; -*-
+  (use-package vertico
+    :ensure t
+    :init
+    (vertico-mode)
+  )
+
+  (provide 'el-completion)
+  #+end_src
+  
+* Savehist
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
+  (use-package savehist
+    :init
+    (savehist-mode))
+  (provide 'el-completion)
+#+end_src
+* Marginalia
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
+  (use-package marginalia 
+    :init
+    (marginalia-mode))
+
+  (provide 'el-completion)
+#+end_src
+* Consult
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
+  ;; -*- lexical-binding: t; -*-
+  (use-package consult 
+    :bind
+    ("C-s" . consult-line)
+    ("C-x b" . consult-buffer)
+    :hook
+    (completion-list-mode . consult-preview-at-point-mode)
+    )
+  (provide 'el-completion)
+#+end_src
+* Orderless
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
+  ;; -*- lexical-binding: t; -*-
+   (use-package orderless
+     :init
+     (setq completion-styles '(orderless basic)
+	   completion-category-defaults nil
+	   completion-category-overrides '((file (styles partial-completion)))
+	   )
+     )
+  (provide 'el-completion)
+#+end_src
+* Modus Themes
+  #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-theme.el
+    ;; -*- lexical-binding: t; -*-
+    (use-package modus-themes
+      :init
+      )
+
+    (provide 'el-theme)
+  #+end_src
+  
+* Diminish
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
+    (use-package diminish
+      )
+#+end_src
+* Emacs
+  #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
+    (use-package emacs
+      :init
+      ;; Follow symlinks (for git dotfiles)
+      (setq vc-follow-symlinks t)
+      ;; Theme
+      (load-theme 'modus-vivendi-tinted t)
+      ;; Frame height and width
+      (add-to-list 'default-frame-alist '(height . 24))
+      (add-to-list 'default-frame-alist '(width . 80))
+      ;; Set tab width
+      (setq-default tab-width 4)
+      (setq-default indent-tabs-mode nil)
+      :bind
+      ("M-o" . other-window)
+      ("C-x k" . 'kill-cur-buffer)
+      ("C-x C-b" . ibuffer)
+      ("C-c '" . org-edit-src-code)
+      ("C-c c e" . 'config-edit)
+      :hook
+      ;; Enable line numbers for some modes
+      ((prog-mode . display-line-numbers-mode)
+       (conf-mode . display-line-numbers-mode))
+
+      :config
+      ;; Change default font for new (non special-display) frames:
+      (add-to-list 'default-frame-alist '(font . "Iosevka-16"))
+      (set-face-attribute 'default t :font "Iosevka-16")
+
+      ;; Change default font for the current frame, as well as future frames:
+      (set-face-attribute 'default nil :font "Iosevka-16")
+      (set-frame-font "Iosevka-16" nil t)
+
+      (setq scroll-conservatively 100)
+      (setq scroll-margin 8)
+
+      (setq org-src-window-setup 'current-window)
+
+      (defun kill-cur-buffer ()
+	(interactive)
+	(kill-buffer (current-buffer)))
+      (defun config-edit ()
+	(interactive)
+	(find-file "~/.dotfiles/.config/emacs/emacs.org"))
+     (defalias 'yes-or-no-p 'y-or-n-p)  
+    )
+
+#+end_src
+* Company
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
+  (use-package company
+    :hook
+    ((prog-mode . company-mode)
+     (text-mode . company-mode))
+    )
+  (provide 'el-completion)
+#+end_src
+* Dired
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-dired.el
+  ;; -*- lexical-binding: t; -*-
+  (use-package dired
+    :ensure nil
+    :init
+    :hook
+    (dired-mode . dired-hide-details-mode)
+    :config
+    (setq delete-by-moving-to-trash t)
+    (setq dired-dwim-target t)
+    )
+  (provide 'el-dired)
+#+End_src
+* Eglot
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-eglot.el
+  ;; -*- lexical-binding: t; -*-
+  (use-package eglot 
+    :hook
+    ((html-mode html-ts-code) . eglot-ensure)
+    ((css-ts-mode css-mode) . eglot-ensure)
+    ((go-mode go-ts-mode) . eglot-ensure)
+    :config
+    (fset #'jsonrpc--log-event #'ignore)
+    )
+  (provide 'el-eglot)
+#+end_src
+* Meow
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-meow.el
+  ;; -*- lexical-binding: t; -*-
+  (defun meow-setup ()
+    (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
+    (meow-motion-overwrite-define-key
+     '("j" . meow-next)
+     '("k" . meow-prev)
+     '("<escape>" . ignore))
+    (meow-leader-define-key
+     ;; SPC j/k will run the original command in MOTION state.
+     '("j" . "H-j")
+     '("k" . "H-k")
+     ;; Use SPC (0-9) for digit arguments.
+     '("1" . meow-digit-argument)
+     '("2" . meow-digit-argument)
+     '("3" . meow-digit-argument)
+     '("4" . meow-digit-argument)
+     '("5" . meow-digit-argument)
+     '("6" . meow-digit-argument)
+     '("7" . meow-digit-argument)
+     '("8" . meow-digit-argument)
+     '("9" . meow-digit-argument)
+     '("0" . meow-digit-argument)
+     '("/" . meow-keypad-describe-key)
+     '("?" . meow-cheatsheet))
+    (meow-normal-define-key
+     '("0" . meow-expand-0)
+     '("9" . meow-expand-9)
+     '("8" . meow-expand-8)
+     '("7" . meow-expand-7)
+     '("6" . meow-expand-6)
+     '("5" . meow-expand-5)
+     '("4" . meow-expand-4)
+     '("3" . meow-expand-3)
+     '("2" . meow-expand-2)
+     '("1" . meow-expand-1)
+     '("-" . negative-argument)
+     '(";" . meow-reverse)
+     '("," . meow-inner-of-thing)
+     '("." . meow-bounds-of-thing)
+     '("[" . meow-beginning-of-thing)
+     '("]" . meow-end-of-thing)
+     '("a" . meow-append)
+     '("A" . meow-open-below)
+     '("b" . meow-back-word)
+     '("B" . meow-back-symbol)
+     '("c" . meow-change)
+     '("d" . meow-delete)
+     '("D" . meow-backward-delete)
+     '("e" . meow-next-word)
+     '("E" . meow-next-symbol)
+     '("f" . meow-find)
+     '("g" . meow-cancel-selection)
+     '("G" . meow-grab)
+     '("h" . meow-left)
+     '("H" . meow-left-expand)
+     '("i" . meow-insert)
+     '("I" . meow-open-above)
+     '("j" . meow-next)
+     '("J" . meow-next-expand)
+     '("k" . meow-prev)
+     '("K" . meow-prev-expand)
+     '("l" . meow-right)
+     '("L" . meow-right-expand)
+     '("m" . meow-join)
+     '("n" . meow-search)
+     '("o" . meow-block)
+     '("O" . meow-to-block)
+     '("p" . meow-yank)
+     '("q" . meow-quit)
+     '("Q" . meow-goto-line)
+     '("r" . meow-replace)
+     '("R" . meow-swap-grab)
+     '("s" . meow-kill)
+     '("t" . meow-till)
+     '("u" . meow-undo)
+     '("U" . meow-undo-in-selection)
+     '("v" . meow-visit)
+     '("w" . meow-mark-word)
+     '("W" . meow-mark-symbol)
+     '("x" . meow-line)
+     '("X" . meow-goto-line)
+     '("y" . meow-save)
+     '("Y" . meow-sync-grab)
+     '("z" . meow-pop-selection)
+     '("'" . repeat)
+     '("<escape>" . ignore)))
+
+  (use-package meow
+    :config
+    (meow-setup)
+    (meow-global-mode 1)
+    )
+
+  (provide 'el-meow)
+#+end_src
+* Org
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
+  ;; -*- lexical-binding: t; -*-
+  (use-package org
+    :init
+    ;; org settings
+    (setq org-ellipsis " ")
+    (setq org-src-fontify-natively t)
+    (setq org-src-tab-acts-natively t)
+    (setq org-confirm-babel-evaluate nil)
+    (setq org-export-with-smart-quotes t)
+    (setq org-src-window-setup 'current-window)
+    (setq org-log-into-drawer t)
+    :hook
+    (org-mode . org-indent-mode)
+    (org-mode . visual-line-mode)
+    :config
+    ;; org-agenda
+    (setq org-agenda-files
+	  '("~/Documents/utsa/todo.org"))
+    (setq org-agenda-start-with-log-mode t)
+    (setq org-log-done 'time)
+    ;; indentation
+    (setq org-edit-src-content-indentation 0
+	  org-src-tab-acts-natively t
+	  org-src-preserve-indentation t)
+    ;; org-babel
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((emacs-lisp . t)
+       )
+     )
+    ;; latex
+    (with-eval-after-load 'ox-latex
+      (add-to-list 'org-latex-classes
+		   '("org-plain-latex"
+		     "\\documentclass{article}
+	     [NO-DEFAULT-PACKAGES]
+	     [PACKAGES]
+	     [EXTRA]"
+		     ("\\section{%s}" . "\\section*{%s}")
+		     ("\\subsection{%s}" . "\\subsection*{%s}")
+		     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+		     ("\\paragraph{%s}" . "\\paragraph*{%s}")
+		     ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
+
+    )
+  (provide 'el-org)
+#+end_src
+* Org Superstnar
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/el-org.el
+  (use-package org-superstar
+    :after org
+    :hook
+    (org-mode . org-superstar-mode)
+    :config
+    (setq org-superstar-special-todo-items t)
+    (setq org-superstar-headline-bullets-list
+	  '("◉" "○"))
+    )
+  (provide 'el-org)
+#+end_src
+* Rainbow-delimiters
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-ui.el
+  ;; -*- lexical-binding: t; -*-
+  (use-package rainbow-delimiters
+    :hook
+    (prog-mode . rainbow-delimiters-mode)
+    )
+
+  (provide 'el-ui)
+#+end_src
+* Treesit
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
+  ;; (use-package treesit
+  ;;   :preface
+  ;;   (dolist (mapping '((go-mode . go-ts-mode)))
+  ;;     (add-to-list 'major-mode-remap-alist mapping))
+  ;;   :init
+  ;;   (add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
+  ;;   (add-to-list 'auto-mode-alist '("/go\\.mod\\'" . go-mod-ts-mode))
+  ;;   :config
+  ;;   (setq treesit-language-source-alist
+  ;;         '(
+  ;;           (bash "https://github.com/tree-sitter/tree-sitter-bash")
+  ;;           (css "https://github.com/tree-sitter/tree-sitter-css")
+  ;;           (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+  ;;           (go "https://github.com/tree-sitter/tree-sitter-go")
+  ;;           (html "https://github.com/tree-sitter/tree-sitter-html")
+  ;;           (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
+  ;;           (json "https://github.com/tree-sitter/tree-sitter-json")
+  ;;           (make "https://github.com/alemuller/tree-sitter-make")
+  ;;           (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+  ;;           (php "https://github.com/tree-sitter/tree-sitter-php" "master" "php/src")
+  ;;           (python "https://github.com/tree-sitter/tree-sitter-python")
+  ;;           (yaml "https://github.com/ikatyang/tree-sitter-yaml")
+  ;;           )
+  ;;         )
+  ;;   )
+#+end_src
+* which-key
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
+  ;; (use-package which-key
+  ;;   :diminish which-key-mode
+  ;;   :init
+  ;;   (which-key-mode)
+  ;;   :config
+  ;;   (setq which-key-idle-delay 0.3)
+  ;;   ) 
+#+end_src
