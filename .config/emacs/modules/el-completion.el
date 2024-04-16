@@ -1,6 +1,5 @@
   ;; -*- lexical-binding: t; -*-
   (use-package vertico
-    :ensure t
     :init
     (vertico-mode)
   )
@@ -18,7 +17,6 @@
 
   (provide 'el-completion)
 
-  ;; -*- lexical-binding: t; -*-
   (use-package consult 
     :bind
     ("C-s" . consult-line)
@@ -28,7 +26,6 @@
     )
   (provide 'el-completion)
 
-  ;; -*- lexical-binding: t; -*-
    (use-package orderless
      :init
      (setq completion-styles '(orderless basic)
