@@ -12,6 +12,7 @@
   (require 'el-meow)
   (require 'el-dired)
   (require 'el-eglot)
+  (require 'el-treesit)
 
     (use-package diminish
       )
