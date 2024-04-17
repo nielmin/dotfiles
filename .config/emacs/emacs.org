@@ -154,19 +154,19 @@
       ;; Change default font for the current frame, as well as future frames:
       (set-face-attribute 'default nil :font "Iosevka-16")
       (set-frame-font "Iosevka-16" nil t)
-
+      
       (setq scroll-conservatively 100)
       (setq scroll-margin 8)
 
       (setq org-src-window-setup 'current-window)
 
       (defun kill-cur-buffer ()
-	(interactive)
-	(kill-buffer (current-buffer)))
+	    (interactive)
+	    (kill-buffer (current-buffer)))
       (defun config-edit ()
-	(interactive)
-	(find-file "~/.dotfiles/.config/emacs/emacs.org"))
-     (defalias 'yes-or-no-p 'y-or-n-p)  
+	    (interactive)
+	    (find-file "~/.dotfiles/.config/emacs/emacs.org"))
+      (defalias 'yes-or-no-p 'y-or-n-p)  
     )
 
 #+end_src
