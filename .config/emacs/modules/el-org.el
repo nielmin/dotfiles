@@ -12,7 +12,6 @@
     :hook
     (org-mode . org-indent-mode)
     (org-mode . visual-line-mode)
-    (org-mode . org-modern-mode)
     :config
     ;; org-agenda
     (setq org-agenda-files
@@ -46,3 +45,9 @@
 
     )
   (provide 'el-org)
+
+(use-package org-modern
+  :after org
+  :hook
+  (org-mode . org-modern-mode)
+)

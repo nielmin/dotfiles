@@ -356,6 +356,14 @@
     )
   (provide 'el-org)
 #+end_src
+* Org Modern
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
+(use-package org-modern
+  :after org
+  :hook
+  (org-mode . org-modern-mode)
+)
+  #+end_src
 * Org Superstnar
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/el-org.el
   (use-package org-superstar
