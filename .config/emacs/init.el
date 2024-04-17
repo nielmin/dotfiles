@@ -62,32 +62,6 @@
      (defalias 'yes-or-no-p 'y-or-n-p)  
     )
 
-  ;; (use-package treesit
-  ;;   :preface
-  ;;   (dolist (mapping '((go-mode . go-ts-mode)))
-  ;;     (add-to-list 'major-mode-remap-alist mapping))
-  ;;   :init
-  ;;   (add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
-  ;;   (add-to-list 'auto-mode-alist '("/go\\.mod\\'" . go-mod-ts-mode))
-  ;;   :config
-  ;;   (setq treesit-language-source-alist
-  ;;         '(
-  ;;           (bash "https://github.com/tree-sitter/tree-sitter-bash")
-  ;;           (css "https://github.com/tree-sitter/tree-sitter-css")
-  ;;           (elisp "https://github.com/Wilfred/tree-sitter-elisp")
-  ;;           (go "https://github.com/tree-sitter/tree-sitter-go")
-  ;;           (html "https://github.com/tree-sitter/tree-sitter-html")
-  ;;           (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
-  ;;           (json "https://github.com/tree-sitter/tree-sitter-json")
-  ;;           (make "https://github.com/alemuller/tree-sitter-make")
-  ;;           (markdown "https://github.com/ikatyang/tree-sitter-markdown")
-  ;;           (php "https://github.com/tree-sitter/tree-sitter-php" "master" "php/src")
-  ;;           (python "https://github.com/tree-sitter/tree-sitter-python")
-  ;;           (yaml "https://github.com/ikatyang/tree-sitter-yaml")
-  ;;           )
-  ;;         )
-  ;;   )
-
   ;; (use-package which-key
   ;;   :diminish which-key-mode
   ;;   :init
@@ -95,16 +69,3 @@
   ;;   :config
   ;;   (setq which-key-idle-delay 0.3)
   ;;   )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(magit diminish vertico rainbow-delimiters orderless modus-themes meow marginalia consult company)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
