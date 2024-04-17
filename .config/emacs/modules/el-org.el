@@ -51,3 +51,5 @@
   :hook
   (org-mode . org-modern-mode)
 )
+
+(provide 'el-org)
