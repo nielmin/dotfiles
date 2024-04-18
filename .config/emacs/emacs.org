@@ -111,6 +111,7 @@
   #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-theme.el
     ;; -*- lexical-binding: t; -*-
     (use-package modus-themes
+      :ensure nil
       :init
       )
 
