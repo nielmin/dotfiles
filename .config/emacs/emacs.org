@@ -390,6 +390,7 @@
 * Treesit
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-treesit.el
 (use-package treesit
+  :ensure nil
   :init
   (setq treesit-language-source-alist
         '(
