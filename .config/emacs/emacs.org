@@ -366,7 +366,7 @@
 (provide 'el-org)
 #+end_src
 * Org Superstnar
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/el-org.el
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
   (use-package org-superstar
     :after org
     :hook
