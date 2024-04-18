@@ -409,6 +409,8 @@
           )
         )
   )
+(provide 'el-treesit)
+
 #+end_src
 * which-key
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
