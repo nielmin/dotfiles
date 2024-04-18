@@ -53,3 +53,14 @@
 )
 
 (provide 'el-org)
+
+  (use-package org-superstar
+    :after org
+    :hook
+    (org-mode . org-superstar-mode)
+    :config
+    (setq org-superstar-special-todo-items t)
+    (setq org-superstar-headline-bullets-list
+	  '("◉" "○"))
+    )
+  (provide 'el-org)
