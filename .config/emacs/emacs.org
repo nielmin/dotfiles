@@ -3,42 +3,42 @@
 #+DESCRIPTION: Personal Emacs configuration
 * Early Init
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/early-init.el :mkdrip yes
-  ;; early-init.el --- Emacs pre package.el & GUI configuration -*- lexical-binding: t; -*-
-  ;; Code:
+;; early-init.el --- Emacs pre package.el & GUI configuration -*- lexical-binding: t; -*-
+;; Code:
 
-  (setq backup-inhibited t
-	make-backup-files nil
-	auto-save-default nil)
-  (setq native-comp-async-report-warnings-errors nil)
-  ;; Unneeded UI elemenets
-  (menu-bar-mode -1)
-  (tool-bar-mode -1)      
-  (scroll-bar-mode -1)    
-  (tooltip-mode -1)       
-  (set-fringe-mode 10)
-  (setq inhibit-splash-screen t)
-  (setq use-file-dialog nil)
+(setq backup-inhibited t
+	  make-backup-files nil
+	  auto-save-default nil)
 
-  (provide 'early-init)
+(setq native-comp-async-report-warnings-errors nil)
+;; Unneeded UI elemenets
+(menu-bar-mode -1)
+(tool-bar-mode -1)      
+(scroll-bar-mode -1)    
+(tooltip-mode -1)       
+(set-fringe-mode 10)
+
+(setq inhibit-splash-screen t)
+(setq use-file-dialog nil)
   #+end_src
 
 * Init
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
-  ;; -*- lexical-binding: t; -*-
+;; -*- lexical-binding: t; -*-
 
-  ;; Add configuration modules to load path
-  (add-to-list 'load-path '"~/.dotfiles/.config/emacs/modules")
+;; Add configuration modules to load path
+(add-to-list 'load-path '"~/.dotfiles/.config/emacs/modules")
 
-  ;; Required Modules
-  (require 'el-package)
-  (require 'el-completion)
-  (require 'el-theme)
-  (require 'el-org)
-  (require 'el-ui)
-  (require 'el-meow)
-  (require 'el-dired)
-  (require 'el-eglot)
-  (require 'el-treesit)
+;; Required Modules
+(require 'el-package)
+(require 'el-completion)
+(require 'el-theme)
+(require 'el-org)
+(require 'el-ui)
+(require 'el-meow)
+(require 'el-dired)
+(require 'el-eglot)
+(require 'el-treesit)
   #+end_src
 
 * Use-Package
@@ -52,7 +52,7 @@
     (package-refresh-contents)
     (package-install 'use-package))
 
-  (eval-and-compile
+(eval-and-compile
     (setq use-package-always-ensure t
 	  use-package-expand-minimally t))
 
@@ -66,8 +66,6 @@
     :init
     (vertico-mode)
   )
-
-  (provide 'el-completion)
   #+end_src
   
 * Savehist
@@ -75,15 +73,12 @@
   (use-package savehist
     :init
     (savehist-mode))
-  (provide 'el-completion)
 #+end_src
 * Marginalia
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
   (use-package marginalia 
     :init
     (marginalia-mode))
-
-  (provide 'el-completion)
 #+end_src
 * Consult
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
@@ -94,7 +89,6 @@
     :hook
     (completion-list-mode . consult-preview-at-point-mode)
     )
-  (provide 'el-completion)
 #+end_src
 * Orderless
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
@@ -105,7 +99,6 @@
 	   completion-category-overrides '((file (styles partial-completion)))
 	   )
      )
-  (provide 'el-completion)
 #+end_src
 * Modus Themes
   #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-theme.el
@@ -353,7 +346,6 @@
 
 
     )
-  (provide 'el-org)
 #+end_src
 * Org Modern
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
@@ -363,7 +355,6 @@
   (org-mode . org-modern-mode)
 )
 
-(provide 'el-org)
 #+end_src
 * Org Superstnar
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
@@ -393,12 +384,13 @@
 (use-package treesit
   :ensure nil
   :init
-  (setq treesit-language-source-alist
+  (add-to-list 'treesit-language-source-alist
         '(
           (bash "https://github.com/tree-sitter/tree-sitter-bash")
           (css "https://github.com/tree-sitter/tree-sitter-css")
           (elisp "https://github.com/Wilfred/tree-sitter-elisp")
           (go "https://github.com/tree-sitter/tree-sitter-go")
+          (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
           (html "https://github.com/tree-sitter/tree-sitter-html")
           (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
           (json "https://github.com/tree-sitter/tree-sitter-json")
@@ -410,13 +402,21 @@
           )
         )
   )
+#+end_src
+
+#+RESULTS:
+: treesit
+
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-treesit.el
 (use-package treesit-auto
   :ensure t
   :config
   (global-treesit-auto-mode)
   )
-(provide 'el-treesit)
+#+end_src
 
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-treesit.el
+(provide 'el-treesit)
 #+end_src
 * which-key
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
