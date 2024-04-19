@@ -4,18 +4,13 @@
     (vertico-mode)
   )
 
-  (provide 'el-completion)
-
   (use-package savehist
     :init
     (savehist-mode))
-  (provide 'el-completion)
 
   (use-package marginalia 
     :init
     (marginalia-mode))
-
-  (provide 'el-completion)
 
   (use-package consult 
     :bind
@@ -24,7 +19,6 @@
     :hook
     (completion-list-mode . consult-preview-at-point-mode)
     )
-  (provide 'el-completion)
 
    (use-package orderless
      :init
@@ -33,7 +27,6 @@
 	   completion-category-overrides '((file (styles partial-completion)))
 	   )
      )
-  (provide 'el-completion)
 
   (use-package company
     :hook
