@@ -9,6 +9,6 @@ opt.scrolloff = 10
 opt.ignorecase = true
 opt.smartcase = true
 opt.smartindent = true
+opt.swapfile = false
 opt.cul = true
 opt.colorcolumn = '80'
-
