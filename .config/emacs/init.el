@@ -70,3 +70,20 @@
   ;;   :config
   ;;   (setq which-key-idle-delay 0.3)
   ;;   )
+
+(use-package web-mode
+  :mode "\\.html?\\'" 
+  :mode "\\.css\\'"
+  :mode "\\.phtml\\'"
+  :mode "\\.php\\'"
+  :mode "\\.tpl\\.php\\'"
+  :mode "\\.[agj]sp\\'"
+  :mode "\\.as[cp]x\\'"
+  :mode "\\.erb\\'"
+  :mode "\\.mustache\\'"
+  :mode "\\.djhtml\\'"
+  :config
+  (setq web-mode-markup-indent-offser 2
+        web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2)
+  )

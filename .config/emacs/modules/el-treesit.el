@@ -1,7 +1,7 @@
 (use-package treesit
   :ensure nil
   :init
-  (add-to-list 'treesit-language-source-alist
+  (setq treesit-language-source-alist
         '(
           (bash "https://github.com/tree-sitter/tree-sitter-bash")
           (css "https://github.com/tree-sitter/tree-sitter-css")
