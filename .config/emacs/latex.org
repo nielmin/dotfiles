@@ -1,9 +1,8 @@
 #+LaTeX_CLASS: org-plain-latex
-#+LaTeX_CLASS_OPTIONS: [letter, 11pt]
-
+#+LaTeX_CLASS_OPTIONS: [letter, 12pt]
 #+LATEX_HEADER: \usepackage{lmodern}
 #+LATEX_HEADER: \usepackage[AUTO]{inputenc}
-#+LATEX_HEADER: \usepackage[margin=0.85in]{geometry}
+#+LATEX_HEADER: \usepackage[margin=0.1in]{geometry}
 #+LATEX_HEADER: \usepackage{graphicx}
 #+LATEX_HEADER: \usepackage{xurl}
 #+LATEX_HEADER: \usepackage[hidelinks,breaklinks=true]{hyperref}
