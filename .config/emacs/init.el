@@ -13,6 +13,7 @@
 (require 'el-dired)
 (require 'el-eglot)
 (require 'el-treesit)
+(require 'el-flycheck)
 
     (use-package diminish
       )

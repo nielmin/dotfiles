@@ -39,8 +39,17 @@
 (require 'el-dired)
 (require 'el-eglot)
 (require 'el-treesit)
+(require 'el-flycheck)
   #+end_src
 
+* Flycheck
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-flycheck.el
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode)
+)
+(provide 'el-flycheck)
+#+end_src
 * Use-Package
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-package.el :mkdirp yes
   ;; -*- lexical-binding: t; -*-
