@@ -377,7 +377,24 @@
     (setq org-superstar-headline-bullets-list
 	  '("◉" "○"))
     )
-  (provide 'el-org)
+#+end_src
+
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
+(use-package org-tempo
+  :ensure nil
+  :after org
+  :config
+  (dolist (item '(("sh" . "src")
+                  ("el" . "src emacs-lisp")
+                  ("py" . "src python")
+                  ("go" . "src go")
+                  )
+                )
+    (add-to-list 'org-structure-template-alist item)))
+#+end_src
+
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
+(provide 'el-org)
 #+end_src
 * Rainbow-delimiters
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-ui.el

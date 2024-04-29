@@ -60,4 +60,17 @@
     (setq org-superstar-headline-bullets-list
 	  '("◉" "○"))
     )
-  (provide 'el-org)
+
+(use-package org-tempo
+  :ensure nil
+  :after org
+  :config
+  (dolist (item '(("sh" . "src")
+                  ("el" . "src emacs-lisp")
+                  ("py" . "src python")
+                  ("go" . "src go")
+                  )
+                )
+    (add-to-list 'org-structure-template-alist item)))
+
+(provide 'el-org)
