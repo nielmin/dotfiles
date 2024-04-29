@@ -427,13 +427,13 @@
 #+end_src
 * which-key
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
-  ;; (use-package which-key
-  ;;   :diminish which-key-mode
-  ;;   :init
-  ;;   (which-key-mode)
-  ;;   :config
-  ;;   (setq which-key-idle-delay 0.3)
-  ;;   ) 
+(use-package which-key
+  :diminish which-key-mode
+  :init
+  (which-key-mode)
+  :config
+  (setq which-key-idle-delay 0.3)
+  ) 
 #+end_src
 * web-mode
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el

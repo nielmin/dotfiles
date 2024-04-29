@@ -65,13 +65,13 @@
       (defalias 'yes-or-no-p 'y-or-n-p)  
     )
 
-  ;; (use-package which-key
-  ;;   :diminish which-key-mode
-  ;;   :init
-  ;;   (which-key-mode)
-  ;;   :config
-  ;;   (setq which-key-idle-delay 0.3)
-  ;;   )
+(use-package which-key
+  :diminish which-key-mode
+  :init
+  (which-key-mode)
+  :config
+  (setq which-key-idle-delay 0.3)
+  )
 
 (use-package web-mode
   :mode "\\.html?\\'" 
