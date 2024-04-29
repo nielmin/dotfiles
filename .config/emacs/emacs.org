@@ -123,6 +123,7 @@
 * Diminish
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
     (use-package diminish
+      :ensure t
       )
 #+end_src
 * Emacs

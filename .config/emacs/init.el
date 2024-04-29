@@ -16,6 +16,7 @@
 (require 'el-flycheck)
 
     (use-package diminish
+      :ensure t
       )
 
     (use-package emacs
