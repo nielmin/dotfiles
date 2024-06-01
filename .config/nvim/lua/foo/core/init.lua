@@ -1,2 +1,2 @@
-require("foo.core.keymaps")
 require("foo.core.options")
+require("foo.core.keymaps")
