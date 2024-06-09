@@ -7,7 +7,7 @@
 
 export EDITOR=/usr/bin/nvim
 export VISUAL=$EDITOR
-export PATH=$PATH:~/go/bin:~/.local/bin
+export PATH=~/.local/bin:~/go/bin:$PATH
 export LANG\='en_US.UTF-8'
 export LC_ALL\="en_US.UTF-8"
 export TERM\=xterm-256color
