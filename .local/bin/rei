@@ -1,0 +1,5 @@
+#!/bin/sh
+rsync -urvzhP --del siv:/lake02/data/Documents /run/media/$USER/$1/
+rsync -urvzhP --del siv:/lake02/data/Pictures  /run/media/$USER/$1/
+rsync -urvzhP --del siv:/lake02/data/Videos    /run/media/$USER/$1/
+rsync -urvzhP --del siv:/lake02/data/Music     /run/media/$USER/$1/

@@ -1,0 +1,6 @@
+#!/bin/sh
+USER=daniel
+rsync -urhP --del siv:/lake02/data/Documents    ~/Backup/
+rsync -urhP --del siv:/lake02/data/Pictures     ~/Backup/
+rsync -urhP --del siv:/lake02/data/Videos       ~/Backup/
+rsync -urhP --del siv:/lake01/media/music/      ~/Backup/Music/
