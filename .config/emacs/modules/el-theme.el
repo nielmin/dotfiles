@@ -1,6 +1,6 @@
     ;; -*- lexical-binding: t; -*-
     (use-package modus-themes
-      :ensure nil
+      :ensure t
       :init
       )
 

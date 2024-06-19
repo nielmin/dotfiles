@@ -72,6 +72,7 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
   ;; -*- lexical-binding: t; -*-
   (use-package vertico
+    :ensure t
     :init
     (vertico-mode)
   )
@@ -113,7 +114,7 @@
   #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-theme.el
     ;; -*- lexical-binding: t; -*-
     (use-package modus-themes
-      :ensure nil
+      :ensure t
       :init
       )
 
