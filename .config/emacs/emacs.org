@@ -473,3 +473,8 @@
         web-mode-code-indent-offset 2)
   )
 #+end_src
+* Magit
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
+(use-package magit
+ )
+#+end_src
