@@ -368,19 +368,7 @@
 )
 
 #+end_src
-* Org Superstnar
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
-  (use-package org-superstar
-    :after org
-    :hook
-    (org-mode . org-superstar-mode)
-    :config
-    (setq org-superstar-special-todo-items t)
-    (setq org-superstar-headline-bullets-list
-	  '("◉" "○"))
-    )
-#+end_src
-
+* Org Temp
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
 (use-package org-tempo
   :ensure nil

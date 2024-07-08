@@ -51,16 +51,6 @@
   (org-mode . org-modern-mode)
 )
 
-  (use-package org-superstar
-    :after org
-    :hook
-    (org-mode . org-superstar-mode)
-    :config
-    (setq org-superstar-special-todo-items t)
-    (setq org-superstar-headline-bullets-list
-	  '("◉" "○"))
-    )
-
 (use-package org-tempo
   :ensure nil
   :after org
