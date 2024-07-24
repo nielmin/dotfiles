@@ -1,7 +1,9 @@
-    ;; -*- lexical-binding: t; -*-
-    (use-package modus-themes
-      :ensure t
-      :init
-      )
+;; -*- lexical-binding: t; -*-
+(use-package ef-themes
+  :ensure t
+  :init
+  :config
+  (ef-themes-select 'ef-cyprus)
+  )
 
-    (provide 'el-theme)
+(provide 'el-theme)

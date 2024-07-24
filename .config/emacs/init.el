@@ -23,8 +23,6 @@
       :init
       ;; Follow symlinks (for git dotfiles)
       (setq vc-follow-symlinks t)
-      ;; Theme
-      (load-theme 'modus-operandi-tinted t)
       ;; Frame height and width
       (add-to-list 'default-frame-alist '(height . 24))
       (add-to-list 'default-frame-alist '(width . 80))

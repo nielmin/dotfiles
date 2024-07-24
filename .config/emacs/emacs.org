@@ -110,15 +110,17 @@
 	   )
      )
 #+end_src
-* Modus Themes
+* ef-themes
   #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-theme.el
-    ;; -*- lexical-binding: t; -*-
-    (use-package modus-themes
-      :ensure t
-      :init
-      )
+;; -*- lexical-binding: t; -*-
+(use-package ef-themes
+  :ensure t
+  :init
+  :config
+  (ef-themes-select 'ef-cyprus)
+  )
 
-    (provide 'el-theme)
+(provide 'el-theme)
   #+end_src
   
 * Diminish
@@ -133,8 +135,6 @@
       :init
       ;; Follow symlinks (for git dotfiles)
       (setq vc-follow-symlinks t)
-      ;; Theme
-      (load-theme 'modus-operandi-tinted t)
       ;; Frame height and width
       (add-to-list 'default-frame-alist '(height . 24))
       (add-to-list 'default-frame-alist '(width . 80))
