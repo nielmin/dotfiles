@@ -41,14 +41,15 @@
        (conf-mode . display-line-numbers-mode))
 
       :config
-      ;; Change default font for new (non special-display) frames:
-      (add-to-list 'default-frame-alist '(font . "Iosevka-16"))
-      (set-face-attribute 'default t :font "Iosevka-16")
+      (set-face-attribute 'default nil
+                          :family "Iosevka"
+                          :height 200)
+      (set-face-attribute 'fixed-pitch nil
+                          :family "Iosevka")
+      (set-face-attribute 'variable-pitch nil
+                          :family "Roboto"
+                          :height 180)
 
-      ;; Change default font for the current frame, as well as future frames:
-      (set-face-attribute 'default nil :font "Iosevka-16")
-      (set-frame-font "Iosevka-16" nil t)
-      
       (setq scroll-conservatively 100)
       (setq scroll-margin 8)
 
