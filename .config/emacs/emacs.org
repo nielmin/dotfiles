@@ -475,5 +475,11 @@
 * Magit
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
 (use-package magit
- )
+  :init
+  (message "Loading Magit!")
+  :config
+  (message "Loaded Magit!")
+  :bind (("C-x g" . magit-status)
+         ("C-x C-g" . magit-status))
+  )
 #+end_src
