@@ -12,7 +12,6 @@
     :hook
     (org-mode . org-indent-mode)
     (org-mode . visual-line-mode)
-    (org-mode . variable-pitch-mode)
     :config
     ;; org-agenda
     (setq org-agenda-files
