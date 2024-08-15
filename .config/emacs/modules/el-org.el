@@ -41,18 +41,23 @@
 		     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
 		     ("\\paragraph{%s}" . "\\paragraph*{%s}")
 		     ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
-    
-    ;; Resize Org headings
-    (dolist (face '((org-level-1 . 1.35)
-                    (org-level-2 . 1.3)
-                    (org-level-3 . 1.2)
-                    (org-level-4 . 1.1)
-                    (org-level-5 . 1.1)
-                    (org-level-6 . 1.1)
-                    (org-level-7 . 1.1)
-                    (org-level-8 . 1.1)))
-      (set-face-attribute (car face) nil :font "Roboto" :weight 'bold :height (cdr face)))
     )
+
+(use-package org-faces
+  :ensure nil
+  :after org
+  :config
+  ;; Resize Org headings
+  (dolist (face '((org-level-1 . 1.35)
+                  (org-level-2 . 1.3)
+                  (org-level-3 . 1.2)
+                  (org-level-4 . 1.1)
+                  (org-level-5 . 1.1)
+                  (org-level-6 . 1.1)
+                  (org-level-7 . 1.1)
+                  (org-level-8 . 1.1)))
+    (set-face-attribute (car face) nil :font "Roboto" :weight 'bold :height (cdr face)))
+  )
 
 (use-package org-modern
   :after org
