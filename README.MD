@@ -9,13 +9,21 @@ Ensure you have the following installed on your system
 ### Git
 
 ```
+// Arch Linux
 pacman -S git
+
+// Fedora Linux
+dnf install git
 ```
 
 ### Stow
 
 ```
+// Arch Linux
 pacman -S stow
+
+// Fedora Linux
+dnf install stow
 ```
 
 ## Installation
@@ -30,5 +38,5 @@ $ cd .dotfiles
 then use GNU stow to create symlinks
 
 ```
-$ stow .
+stow .
 ```
