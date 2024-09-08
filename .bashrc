@@ -33,3 +33,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# distrobox
+[ -e /etc/profile.d/distrobox_profile.sh ] && . /etc/profile.d/distrobox_profile.sh
+
