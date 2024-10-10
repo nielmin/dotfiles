@@ -9,6 +9,9 @@ export LANG\='en_US.UTF-8'
 export LC_ALL\="en_US.UTF-8"
 export TERM\=xterm-256color
 
+# https://nixos.wiki/wiki/Locales
+export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+
 export PATH=~/.local/bin:~/go/bin:$PATH
 export EDITOR=/usr/bin/nvim
 export VISUAL=$EDITOR
