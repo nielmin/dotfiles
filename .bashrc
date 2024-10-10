@@ -36,5 +36,5 @@ fi
 # distrobox
 [ -e /etc/profile.d/distrobox_profile.sh ] && . /etc/profile.d/distrobox_profile.sh
 
-# Homebrew
-[ -d /home/linuxbrew/.linuxbrew/ ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# devbox
+eval "$(devbox global shellenv)"
