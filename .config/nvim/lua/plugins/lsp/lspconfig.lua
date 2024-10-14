@@ -8,7 +8,7 @@ return {
   },
   config = function()
 
-    require "config.plugins.lsp.lspconfig"
+    require "plugins.lsp.lspconfig"
 
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
@@ -71,9 +71,9 @@ return {
     })
 
     -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities =  require("config.plugins.lsp.lspconfig").capabilities
+    local capabilities =  require("plugins.lsp.lspconfig").capabilities
     local util = require("lspconfig/util")
-    local on_attach = require("config.plugins.lsp.lspconfig").on_attach
+    local on_attach = require("plugins.lsp.lspconfig").on_attach
 
     lspconfig.gopls.setup {
       on_attach = on_attach,
