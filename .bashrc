@@ -38,6 +38,3 @@ fi
 
 # distrobox
 [ -e /etc/profile.d/distrobox_profile.sh ] && . /etc/profile.d/distrobox_profile.sh
-
-# devbox
-eval "$(devbox global shellenv)"
