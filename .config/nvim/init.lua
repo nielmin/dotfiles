@@ -1,2 +1,2 @@
-require("foo.core")
-require("foo.lazy")
+require("config.core")
+require("config.lazy")
