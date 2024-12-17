@@ -173,16 +173,18 @@
       (defun config-edit ()
 	    (interactive)
 	    (find-file "~/.dotfiles/.config/emacs/emacs.org"))
-      (defalias 'yes-or-no-p 'y-or-n-p)  
+      (defalias 'yes-or-no-p 'y-or-n-p)
+      :custom
+      (tab-always-indent 'complete)
+      (read-extended-command-predicate #'command-completion-default-include-p)
     )
 
 #+end_src
-* Company
+* Corfu
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
-  (use-package company
-    :hook
-    ((prog-mode . company-mode)
-     (text-mode . company-mode))
+  (use-package corfu
+    :init
+    (global-corfu-mode)
     )
   (provide 'el-completion)
 #+end_src

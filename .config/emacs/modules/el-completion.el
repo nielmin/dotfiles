@@ -29,9 +29,8 @@
 	   )
      )
 
-  (use-package company
-    :hook
-    ((prog-mode . company-mode)
-     (text-mode . company-mode))
+  (use-package corfu
+    :init
+    (global-corfu-mode)
     )
   (provide 'el-completion)

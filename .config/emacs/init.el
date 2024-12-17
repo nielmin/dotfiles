@@ -61,7 +61,10 @@
       (defun config-edit ()
 	    (interactive)
 	    (find-file "~/.dotfiles/.config/emacs/emacs.org"))
-      (defalias 'yes-or-no-p 'y-or-n-p)  
+      (defalias 'yes-or-no-p 'y-or-n-p)
+      :custom
+      (tab-always-indent 'complete)
+      (read-extended-command-predicate #'command-completion-default-include-p)
     )
 
 (use-package which-key
