@@ -155,12 +155,12 @@
       :config
       (set-face-attribute 'default nil
                           :family "Iosevka"
-                          :height 200)
+                          :height 140)
       (set-face-attribute 'fixed-pitch nil
                           :family "Iosevka")
       (set-face-attribute 'variable-pitch nil
                           :family "Roboto"
-                          :height 180)
+                          :height 160)
 
       (setq scroll-conservatively 100)
       (setq scroll-margin 8)

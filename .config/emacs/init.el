@@ -43,12 +43,12 @@
       :config
       (set-face-attribute 'default nil
                           :family "Iosevka"
-                          :height 200)
+                          :height 140)
       (set-face-attribute 'fixed-pitch nil
                           :family "Iosevka")
       (set-face-attribute 'variable-pitch nil
                           :family "Roboto"
-                          :height 180)
+                          :height 160)
 
       (setq scroll-conservatively 100)
       (setq scroll-margin 8)
@@ -97,16 +97,3 @@
   :bind (("C-x g" . magit-status)
          ("C-x C-g" . magit-status))
   )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(magit which-key web-mode vertico treesit-auto rainbow-delimiters org-modern orderless meow marginalia magit-section git-commit flycheck ef-themes diminish consult company)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
