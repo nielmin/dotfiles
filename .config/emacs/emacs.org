@@ -334,8 +334,6 @@
     (org-mode . visual-line-mode)
     :config
     ;; org-agenda
-    (setq org-agenda-files
-	  '("~/Documents/utsa/todo.org"))
     (setq org-agenda-start-with-log-mode t)
     (setq org-log-done 'time)
     ;; indentation
