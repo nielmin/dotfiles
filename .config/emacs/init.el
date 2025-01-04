@@ -15,6 +15,9 @@
 (require 'el-treesit)
 (require 'el-flycheck)
 
+(when (daemonp)
+  (exec-path-from-shell-initialize))
+
     (use-package diminish
       :ensure t
       )

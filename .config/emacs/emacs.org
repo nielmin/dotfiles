@@ -40,6 +40,9 @@
 (require 'el-eglot)
 (require 'el-treesit)
 (require 'el-flycheck)
+
+(when (daemonp)
+  (exec-path-from-shell-initialize))
   #+end_src
 
 * Flycheck
