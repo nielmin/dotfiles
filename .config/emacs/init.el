@@ -9,7 +9,6 @@
 (require 'el-theme)
 (require 'el-org)
 (require 'el-ui)
-(require 'el-meow)
 (require 'el-dired)
 (require 'el-eglot)
 (require 'el-treesit)
