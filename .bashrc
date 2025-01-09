@@ -21,6 +21,7 @@ alias ls='ls -h --color=auto --group-directories-first'
 alias ll='ls -Ahl --group-directories-first --color=auto'
 alias grep='grep --color=auto'
 alias rm="echo -e 'If you want to use rm really, then use \"\\\\rm\" instead.'; false"
+alias tmux='tmux -2'
 
 # Functions
 dbe() {
