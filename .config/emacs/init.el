@@ -17,6 +17,8 @@
 (when (daemonp)
   (exec-path-from-shell-initialize))
 
+(setq-default create-lockfiles nil)
+
     (use-package diminish
       :ensure t
       )

@@ -42,6 +42,8 @@
 
 (when (daemonp)
   (exec-path-from-shell-initialize))
+
+(setq-default create-lockfiles nil)
   #+end_src
 
 * Flycheck
