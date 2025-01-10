@@ -10,8 +10,26 @@ return {
 
     opts = {
         servers = {
-            lua_ls = {}, -- Lua LSP configuration
-            gopls = {    -- Go LSP configuration
+            lua_ls = { -- Lua LSP configuration
+                settings = {
+                    Lua = {
+                        runtime = {
+                            version = 'LuaJIT', -- Lua runtime version (LuaJIT is common for Neovim)
+                        },
+                        diagnostics = {
+                            globals = { 'vim' }, -- Define globals for Lua (e.g., vim API)
+                        },
+                        workspace = {
+                            library = vim.api.nvim_get_runtime_file("", true), -- Include runtime files in the workspace
+                        },
+                        telemetry = {
+                            enable = false, -- Disable telemetry if not needed
+                        },
+                    },
+                },
+            },
+
+            gopls = { -- Go LSP configuration
                 settings = {
                     gopls = {
                         analyses = {
