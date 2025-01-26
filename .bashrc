@@ -29,6 +29,7 @@ dbe() {
 }
 
 # Prompt
+export PROMPT_DIRTRIM=2
 PS1="\e[0;34m\u\e[0;33m@\e[0;35m\h\e[0;31m \e[0;36m\w \e[0;37m$ \e[0m"
 
 # enable programmable completion features (you don't need to enable
