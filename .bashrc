@@ -29,7 +29,7 @@ dbe() {
 }
 
 # Prompt
-[ "$PS1" = "\\s-\\v\\\$ " ] && PS1="[\u@\h \W]\\$ "
+PS1="\e[0;34m\u\e[0;33m@\e[0;35m\h\e[0;31m \e[0;36m\W \e[0;37m$ \e[0m"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
