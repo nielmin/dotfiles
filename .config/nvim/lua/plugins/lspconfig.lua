@@ -51,8 +51,14 @@ return {
       },
 
       ruff = { -- ruff LSP configuration
+        cmd = { "ruff", "server" },
+        filetypes = { 'python' },
         settings = {
-          args = {},
+          ruff = {
+            linting = {
+              enabled = true,
+            },
+          },
         },
       },
     }

@@ -27,6 +27,7 @@ return {
         "lua_ls",
         "gopls",
         "pyright",
+        "ruff",
         "tinymist",
       },
     })
