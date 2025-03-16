@@ -54,6 +54,7 @@
 )
 (provide 'el-flycheck)
 #+end_src
+
 * Use-Package
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-package.el :mkdirp yes
   ;; -*- lexical-binding: t; -*-
@@ -88,12 +89,14 @@
     :init
     (savehist-mode))
 #+end_src
+
 * Marginalia
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
   (use-package marginalia 
     :init
     (marginalia-mode))
 #+end_src
+
 * Consult
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
   (use-package consult 
@@ -104,6 +107,7 @@
     (completion-list-mode . consult-preview-at-point-mode)
     )
 #+end_src
+
 * Orderless
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
    (use-package orderless
@@ -114,6 +118,7 @@
 	   )
      )
 #+end_src
+
 * ef-themes
   #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-theme.el
 ;; -*- lexical-binding: t; -*-
@@ -133,6 +138,7 @@
       :ensure t
       )
 #+end_src
+
 * Emacs
   #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
     (use-package emacs
@@ -184,6 +190,7 @@
     )
 
 #+end_src
+
 * Corfu
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
   (use-package corfu
@@ -192,6 +199,7 @@
     )
   (provide 'el-completion)
 #+end_src
+
 * Dired
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-dired.el
   ;; -*- lexical-binding: t; -*-
@@ -206,6 +214,7 @@
     )
   (provide 'el-dired)
 #+End_src
+
 * Eglot
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-eglot.el
   ;; -*- lexical-binding: t; -*-
@@ -220,6 +229,7 @@
     )
   (provide 'el-eglot)
 #+end_src
+
 * Org
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
   ;; -*- lexical-binding: t; -*-
@@ -294,6 +304,7 @@
 )
 
 #+end_src
+
 * Org Temp
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
 (use-package org-tempo
@@ -312,6 +323,7 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
 (provide 'el-org)
 #+end_src
+
 * Rainbow-delimiters
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-ui.el
   ;; -*- lexical-binding: t; -*-
@@ -322,6 +334,7 @@
 
   (provide 'el-ui)
 #+end_src
+
 * Treesit
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-treesit.el
 (use-package treesit
@@ -358,6 +371,7 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-treesit.el
 (provide 'el-treesit)
 #+end_src
+
 * which-key
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
 (use-package which-key
@@ -368,6 +382,7 @@
   (setq which-key-idle-delay 0.3)
   ) 
 #+end_src
+
 * Magit
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
 (use-package magit
