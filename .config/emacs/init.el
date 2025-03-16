@@ -15,6 +15,7 @@
 (require 'el-flycheck)
 
 (when (daemonp)
+  (use-package exec-path-from-shell)
   (exec-path-from-shell-initialize))
 
 (setq-default create-lockfiles nil)
@@ -69,7 +70,7 @@
       :custom
       (tab-always-indent 'complete)
       (read-extended-command-predicate #'command-completion-default-include-p)
-    )
+      )
 
 (use-package which-key
   :diminish which-key-mode
