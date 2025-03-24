@@ -13,6 +13,7 @@
 (require 'el-eglot)
 (require 'el-treesit)
 (require 'el-flycheck)
+(require 'el-meow)
 
 (when (daemonp)
   (use-package exec-path-from-shell)
