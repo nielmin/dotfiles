@@ -3,7 +3,7 @@
   :ensure t
   :init
   :config
-  (ef-themes-select 'ef-cyprus)
+  (ef-themes-select 'ef-owl)
   )
 
 (provide 'el-theme)
