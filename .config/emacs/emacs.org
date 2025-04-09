@@ -52,7 +52,8 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-flycheck.el
 (use-package flycheck
   :ensure t
-  :init (global-flycheck-mode)
+  :hook
+  (prog-mode . flycheck-mode)
 )
 (provide 'el-flycheck)
 #+end_src
