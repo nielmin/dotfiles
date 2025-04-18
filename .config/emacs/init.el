@@ -79,15 +79,6 @@
   :config
   (setopt which-key-idle-delay 0.3)
   )
-
-(use-package magit
-  :init
-  (message "Loading Magit!")
-  :config
-  (message "Loaded Magit!")
-  :bind (("C-x g" . magit-status)
-         ("C-x C-g" . magit-status))
-  )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

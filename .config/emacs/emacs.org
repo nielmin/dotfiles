@@ -402,7 +402,7 @@
 #+end_src
 
 * Magit
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/el-magit.el
 (use-package magit
   :init
   (message "Loading Magit!")
