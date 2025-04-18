@@ -22,8 +22,7 @@
 
 (use-package treesit-auto
   :ensure t
-  :config
-  (global-treesit-auto-mode)
+  :hook (prog-mode . global-treesit-auto-mode)
   )
 
 (provide 'el-treesit)

@@ -382,8 +382,7 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-treesit.el
 (use-package treesit-auto
   :ensure t
-  :config
-  (global-treesit-auto-mode)
+  :hook (prog-mode . global-treesit-auto-mode)
   )
 #+end_src
 
