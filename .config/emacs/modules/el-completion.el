@@ -1,17 +1,18 @@
   ;; -*- lexical-binding: t; -*-
   (use-package vertico
     :ensure t
-    :init
-    (vertico-mode)
+    :hook (after-init . vertico-mode)
   )
 
   (use-package savehist
-    :init
-    (savehist-mode))
+    :ensure nil
+    :hook (after-init . savehist-mode)
+    )
 
-  (use-package marginalia 
-    :init
-    (marginalia-mode))
+  (use-package marginalia
+    :ensure t
+    :hook (after-init . marginalia-mode)
+    )
 
   (use-package consult 
     :bind
