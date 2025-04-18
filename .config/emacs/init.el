@@ -28,7 +28,7 @@
     (use-package emacs
       :init
       ;; Follow symlinks (for git dotfiles)
-      (setq vc-follow-symlinks t)
+      (setopt vc-follow-symlinks t)
       ;; Frame height and width
       (add-to-list 'default-frame-alist '(height . 24))
       (add-to-list 'default-frame-alist '(width . 80))
@@ -56,10 +56,10 @@
                           :family "Roboto"
                           :height 160)
 
-      (setq scroll-conservatively 100)
-      (setq scroll-margin 8)
+      (setopt scroll-conservatively 100)
+      (setopt scroll-margin 8)
 
-      (setq org-src-window-setup 'current-window)
+      (setopt org-src-window-setup 'current-window)
 
       (defun kill-cur-buffer ()
 	    (interactive)
@@ -75,10 +75,9 @@
 
 (use-package which-key
   :diminish which-key-mode
-  :init
-  (which-key-mode)
+  :hook (after-init . which-key-mode)
   :config
-  (setq which-key-idle-delay 0.3)
+  (setopt which-key-idle-delay 0.3)
   )
 
 (use-package magit

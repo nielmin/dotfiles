@@ -6,11 +6,11 @@
 ;; early-init.el --- Emacs pre package.el & GUI configuration -*- lexical-binding: t; -*-
 ;; Code:
 
-(setq backup-inhibited t
+(setopt backup-inhibited t
 	  make-backup-files nil
 	  auto-save-default nil)
 
-(setq native-comp-async-report-warnings-errors nil)
+(setopt native-comp-async-report-warnings-errors nil)
 ;; Unneeded UI elemenets
 (menu-bar-mode -1)
 (tool-bar-mode -1)      
@@ -18,8 +18,8 @@
 (tooltip-mode -1)       
 (set-fringe-mode 10)
 
-(setq inhibit-splash-screen t)
-(setq use-file-dialog nil)
+(setopt inhibit-splash-screen t)
+(setopt use-file-dialog nil)
   #+end_src
 
 * Init
@@ -70,7 +70,7 @@
     (package-install 'use-package))
 
 (eval-and-compile
-    (setq use-package-always-ensure t
+    (setopt use-package-always-ensure t
 	  use-package-expand-minimally t))
 
   (provide 'el-package)
@@ -149,7 +149,7 @@
     (use-package emacs
       :init
       ;; Follow symlinks (for git dotfiles)
-      (setq vc-follow-symlinks t)
+      (setopt vc-follow-symlinks t)
       ;; Frame height and width
       (add-to-list 'default-frame-alist '(height . 24))
       (add-to-list 'default-frame-alist '(width . 80))
@@ -177,10 +177,10 @@
                           :family "Roboto"
                           :height 160)
 
-      (setq scroll-conservatively 100)
-      (setq scroll-margin 8)
+      (setopt scroll-conservatively 100)
+      (setopt scroll-margin 8)
 
-      (setq org-src-window-setup 'current-window)
+      (setopt org-src-window-setup 'current-window)
 
       (defun kill-cur-buffer ()
 	    (interactive)
@@ -255,22 +255,22 @@
   (use-package org
     :init
     ;; org settings
-    (setq org-ellipsis " ")
-    (setq org-src-fontify-natively t)
-    (setq org-src-tab-acts-natively t)
-    (setq org-confirm-babel-evaluate nil)
-    (setq org-export-with-smart-quotes t)
-    (setq org-src-window-setup 'current-window)
-    (setq org-log-into-drawer t)
+    (setopt org-ellipsis " ")
+    (setopt org-src-fontify-natively t)
+    (setopt org-src-tab-acts-natively t)
+    (setopt org-confirm-babel-evaluate nil)
+    (setopt org-export-with-smart-quotes t)
+    (setopt org-src-window-setup 'current-window)
+    (setopt org-log-into-drawer t)
     :hook
     (org-mode . org-indent-mode)
     (org-mode . visual-line-mode)
     :config
     ;; org-agenda
-    (setq org-agenda-start-with-log-mode t)
-    (setq org-log-done 'time)
+    (setopt org-agenda-start-with-log-mode t)
+    (setopt org-log-done 'time)
     ;; indentation
-    (setq org-edit-src-content-indentation 0
+    (setopt org-edit-src-content-indentation 0
 	  org-src-tab-acts-natively t
 	  org-src-preserve-indentation t)
     ;; org-babel
@@ -359,7 +359,7 @@
 (use-package treesit
   :ensure nil
   :init
-  (setq treesit-language-source-alist
+  (setopt treesit-language-source-alist
         '(
           (bash "https://github.com/tree-sitter/tree-sitter-bash")
           (css "https://github.com/tree-sitter/tree-sitter-css")
@@ -395,10 +395,9 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
 (use-package which-key
   :diminish which-key-mode
-  :init
-  (which-key-mode)
+  :hook (after-init . which-key-mode)
   :config
-  (setq which-key-idle-delay 0.3)
+  (setopt which-key-idle-delay 0.3)
   ) 
 #+end_src
 
@@ -419,7 +418,7 @@
 (use-package meow
   :config
   (defun meow-setup ()
-  (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
+  (setopt meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   (meow-motion-define-key
    '("j" . meow-next)
    '("k" . meow-prev)

@@ -2,22 +2,22 @@
   (use-package org
     :init
     ;; org settings
-    (setq org-ellipsis " ")
-    (setq org-src-fontify-natively t)
-    (setq org-src-tab-acts-natively t)
-    (setq org-confirm-babel-evaluate nil)
-    (setq org-export-with-smart-quotes t)
-    (setq org-src-window-setup 'current-window)
-    (setq org-log-into-drawer t)
+    (setopt org-ellipsis " ")
+    (setopt org-src-fontify-natively t)
+    (setopt org-src-tab-acts-natively t)
+    (setopt org-confirm-babel-evaluate nil)
+    (setopt org-export-with-smart-quotes t)
+    (setopt org-src-window-setup 'current-window)
+    (setopt org-log-into-drawer t)
     :hook
     (org-mode . org-indent-mode)
     (org-mode . visual-line-mode)
     :config
     ;; org-agenda
-    (setq org-agenda-start-with-log-mode t)
-    (setq org-log-done 'time)
+    (setopt org-agenda-start-with-log-mode t)
+    (setopt org-log-done 'time)
     ;; indentation
-    (setq org-edit-src-content-indentation 0
+    (setopt org-edit-src-content-indentation 0
 	  org-src-tab-acts-natively t
 	  org-src-preserve-indentation t)
     ;; org-babel
