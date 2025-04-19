@@ -40,6 +40,7 @@
 (require 'el-treesit)
 (require 'el-flycheck)
 (require 'el-meow)
+(require 'el-magit)
 
 (when (daemonp)
   (use-package exec-path-from-shell)
@@ -401,7 +402,7 @@
 #+end_src
 
 * Magit
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/el-magit.el
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-magit.el
 (use-package magit
   :init
   (message "Loading Magit!")
@@ -410,6 +411,11 @@
   :bind (("C-x g" . magit-status)
          ("C-x C-g" . magit-status))
   )
+
+(provide 'el-magit)
+#+end_src
+
+
 #+end_src
 
 * Meow

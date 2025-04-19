@@ -14,6 +14,7 @@
 (require 'el-treesit)
 (require 'el-flycheck)
 (require 'el-meow)
+(require 'el-magit)
 
 (when (daemonp)
   (use-package exec-path-from-shell)
