@@ -15,6 +15,7 @@
 (require 'el-flycheck)
 (require 'el-meow)
 (require 'el-magit)
+(require 'modes)
 
 (when (daemonp)
   (use-package exec-path-from-shell)
