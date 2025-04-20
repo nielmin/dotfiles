@@ -42,7 +42,6 @@
       :bind
       ("M-o" . other-window)
       ("C-x k" . 'kill-cur-buffer)
-      ("C-x C-b" . ibuffer)
       ("C-c '" . org-edit-src-code)
       ("C-c c e" . 'config-edit)
       :hook
