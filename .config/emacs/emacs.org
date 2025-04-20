@@ -158,7 +158,7 @@
       (add-to-list 'default-frame-alist '(height . 24))
       (add-to-list 'default-frame-alist '(width . 80))
       ;; Set tab width
-      (setq-default tab-width 4)
+      (setq-default tab-width 2)
       (setq-default indent-tabs-mode nil)
       :bind
       ("M-o" . other-window)
