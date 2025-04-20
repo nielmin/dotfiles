@@ -3,6 +3,8 @@
 ;; Add configuration modules to load path
 (add-to-list 'load-path '"~/.dotfiles/.config/emacs/modules")
 
+(setopt custom-file "~/.dotfiles/.config/emacs/custom.el")
+
 ;; Required Modules
 (require 'el-package)
 (require 'el-completion)
@@ -81,16 +83,3 @@
   :config
   (setopt which-key-idle-delay 0.3)
   )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(meow which-key vertico treesit-auto rainbow-delimiters org-modern orderless marginalia magit flycheck exec-path-from-shell ef-themes diminish corfu consult)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
