@@ -45,6 +45,7 @@
 (require 'el-meow)
 (require 'el-magit)
 (require 'modes)
+(require 'terminal)
 
 (when (daemonp)
   (use-package exec-path-from-shell)
@@ -557,4 +558,13 @@
 )
 
 (provide 'el-meow)
+#+end_src
+
+* eat
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/terminal.el
+(use-package eat
+  :ensure t
+  )
+
+(provide 'terminal)
 #+end_src

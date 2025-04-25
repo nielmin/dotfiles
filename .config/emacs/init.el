@@ -19,6 +19,7 @@
 (require 'el-meow)
 (require 'el-magit)
 (require 'modes)
+(require 'terminal)
 
 (when (daemonp)
   (use-package exec-path-from-shell)
