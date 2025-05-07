@@ -6,5 +6,8 @@ return {
     require('mini.statusline').setup()
     require('mini.git').setup()
     require('mini.diff').setup()
+
+    require('mini.snippets').setup()
+    require('mini.completion').setup()
   end,
 }
