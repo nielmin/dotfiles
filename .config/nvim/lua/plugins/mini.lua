@@ -9,5 +9,7 @@ return {
 
     require('mini.snippets').setup()
     require('mini.completion').setup()
+
+    require('mini.pick').setup()
   end,
 }
