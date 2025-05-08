@@ -15,6 +15,7 @@ return {
     local keymap = vim.keymap -- for conciseness
 
     keymap.set("n", "<leader>ff", "<cmd>Pick files<cr>", { desc = "Search files" })
+    keymap.set("n", "<leader>fb", "<cmd>Pick buffers<cr>", { desc = "Search buffers" })
     keymap.set("n", "<leader>fs", "<cmd>Pick grep_live<cr>", { desc = "Search string in files" })
 
     local miniclue = require('mini.clue')
