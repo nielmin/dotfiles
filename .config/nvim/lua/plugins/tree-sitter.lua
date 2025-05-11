@@ -17,6 +17,7 @@ return {
           "c",
           "lua",
           "go",
+          "zig",
           "typst"
         },
         sync_install = false,
