@@ -27,6 +27,7 @@ return {
         "lua_ls",
         "gopls",
         "basedpyright",
+        "zls@0.13.0",
         "ruff",
         "tinymist",
       },
