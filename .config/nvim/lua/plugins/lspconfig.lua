@@ -28,9 +28,9 @@ return {
         },
       },
 
-      pyright = { -- Python LSP configuration
+      basedpyright = { -- Python LSP configuration
         settings = {
-          pyright = {
+          basedpyright = {
             autoImportsCompletion = true,
             disableOrganizeImports = true
           },
