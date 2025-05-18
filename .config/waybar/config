@@ -1,0 +1,26 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+
+  "modules-left": ["niri/workspaces"],
+  "modules-center": ["niri/window"],
+  "modules-right": ["tray", "clock"],
+
+  "tray": {
+    "spacing": 5,
+  },
+
+  "wlr/taskbar": {
+    "format": "{icon}   {title:.25}",
+    "markup": true,
+    "icon-size": 20,
+    "on-click": "activate",
+  },
+
+  "clock": {
+    "format": "{:>%H:%M \n %m/%d/%Y}",
+    "align": 1,
+    "justify": "right",
+  },
+}
