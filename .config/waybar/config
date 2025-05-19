@@ -52,6 +52,7 @@
     },
 
     "temperature": {
+        "thermal-zone": 4,
         "format": "  {temperatureC}°C"
     },
 
