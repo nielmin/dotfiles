@@ -3,8 +3,8 @@
   "position": "top",
   "height": 32,
 
-  "modules-left": ["niri/workspaces"],
-  "modules-center": ["niri/window"],
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["hyprland/window"],
   "modules-right": ["tray", "clock"],
 
   "tray": {
