@@ -27,7 +27,10 @@
     },
 
     "clock": {
-        "format": "{:%d.%m.%Y | %H:%M}"
+        "interval": 60,
+        "tooltip": true,
+        "format": "{:%H:%M}",
+        "tooltip-format": "{:%Y-%m-%d}",
     },
 
     "wireplumber": {
