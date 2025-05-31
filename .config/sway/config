@@ -18,6 +18,8 @@ set $term alacritty
 # Your preferred application launcher
 set $menu fuzzel
 
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
