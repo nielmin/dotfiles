@@ -4,9 +4,9 @@
     "height": 24,
     "spacing": 5,
 
-    "modules-left": ["hyprland/workspaces", "memory", "temperature"],
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["wireplumber", "battery", "backlight", "hyprland/language", "network", "bluetooth", "tray"],
+    "modules-right": ["memory", "temperature", "wireplumber", "battery", "backlight", "network", "bluetooth", "tray"],
 
     "hyprland/workspaces": {
         "format": "<span size='larger'>{icon}</span>",
