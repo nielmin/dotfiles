@@ -54,10 +54,11 @@ exec swayidle -w \
        natural_scroll enabled
        middle_emulation enabled
    }
-#
-#   input type:keyboard {
-#       xkb_layout "eu"
-#   }
+
+   input type:keyboard {
+       xkb_layout "us"
+       xkb_options ctrl:nocaps
+   }
 #
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
