@@ -12,10 +12,9 @@ decorations_theme_variant = "Light" # "Dark"
 
 [font]
 
-normal.family = "Iosevka Nerd Font"
-bold.family = "Iosevka Nerd Font"
-italic.family = "Iosevka Nerd Font"
-bold_italic.family = "Iosevka Nerd Font"
+normal.family = "0xProto Nerd Font"
+bold.family = "0xProto Nerd Font"
+italic.family = "0xProto Nerd Font"
 
 size = 15.0
 
