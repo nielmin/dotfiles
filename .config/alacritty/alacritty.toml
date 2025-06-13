@@ -18,40 +18,70 @@ italic.family = "0xProto Nerd Font"
 
 size = 14.0
 
-# Kanso Zen Alacritty Colors
+# Colors (Catppuccin-macchiato)
 
 [colors.primary]
-background = '#090E13'
-foreground = '#C5C9C7'
+background = "#24273a"
+foreground = "#cad3f5"
+dim_foreground = "#8087a2"
+bright_foreground = "#cad3f5"
 
-[colors.normal]
-black = '#090E13'
-red = '#c4746e'
-green = '#8a9a7b'
-yellow = '#c4b28a'
-blue = '#8ba4b0'
-magenta = '#a292a3'
-cyan = '#8ea4a2'
-white = '#c8c093'
+[colors.cursor]
+text = "#24273a"
+cursor = "#f4dbd6"
 
-[colors.bright]
-black = '#A4A7A4'
-red = '#e46876'
-green = '#87a987'
-yellow = '#e6c384'
-blue = '#7fb4ca'
-magenta = '#938aa9'
-cyan = '#7aa89f'
-white = '#C5C9C7'
+[colors.vi_mode_cursor]
+text = "#24273a"
+cursor = "#b7bdf8"
+
+[colors.search.matches]
+foreground = "#24273a"
+background = "#a5adcb"
+
+[colors.search.focused_match]
+foreground = "#24273a"
+background = "#a6da95"
+
+[colors.footer_bar]
+foreground = "#24273a"
+background = "#a5adcb"
+
+[colors.hints.start]
+foreground = "#24273a"
+background = "#eed49f"
+
+[colors.hints.end]
+foreground = "#24273a"
+background = "#a5adcb"
 
 [colors.selection]
-background = '#393B44'
-foreground = '#C5C9C7'
+text = "#24273a"
+background = "#f4dbd6"
+
+[colors.normal]
+black = "#494d64"
+red = "#ed8796"
+green = "#a6da95"
+yellow = "#eed49f"
+blue = "#8aadf4"
+magenta = "#f5bde6"
+cyan = "#8bd5ca"
+white = "#b8c0e0"
+
+[colors.bright]
+black = "#5b6078"
+red = "#ed8796"
+green = "#a6da95"
+yellow = "#eed49f"
+blue = "#8aadf4"
+magenta = "#f5bde6"
+cyan = "#8bd5ca"
+white = "#a5adcb"
 
 [[colors.indexed_colors]]
 index = 16
-color = '#b6927b'
+color = "#f5a97f"
 
 [[colors.indexed_colors]]
 index = 17
-color = '#b98d7b'
+color = "#f4dbd6"
