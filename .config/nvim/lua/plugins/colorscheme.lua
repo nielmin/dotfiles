@@ -1,11 +1,10 @@
 return {
   {
-    "zenbones-theme/zenbones.nvim",
-    dependencies = "rktjmp/lush.nvim",
+    "webhooked/kanso.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme('zenbones')
+      vim.cmd.colorscheme('kanso')
     end,
   },
 }
