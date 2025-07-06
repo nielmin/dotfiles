@@ -65,7 +65,5 @@ return {
 
     require('mini.files').setup()
     keymap.set("n", "<leader>fm", "<cmd>lua MiniFiles.open()<cr>", { desc = "File manager" })
-
-    require('mini.starter').setup()
   end,
 }
