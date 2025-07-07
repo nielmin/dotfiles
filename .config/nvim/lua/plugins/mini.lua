@@ -62,8 +62,5 @@ return {
         miniclue.gen_clues.z(),
       },
     })
-
-    require('mini.files').setup()
-    keymap.set("n", "<leader>fm", "<cmd>lua MiniFiles.open()<cr>", { desc = "File manager" })
   end,
 }
