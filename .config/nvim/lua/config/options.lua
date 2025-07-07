@@ -37,3 +37,7 @@ opt.splitbelow = true
 -- no generated files
 opt.backup = false
 opt.swapfile = false
+
+-- undo
+opt.undofile = true
+opt.undolevels = 10000
