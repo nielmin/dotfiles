@@ -19,6 +19,8 @@ opt.scrolloff = 10
 -- search settings
 opt.ignorecase = true
 opt.smartcase = true
+opt.hlsearch = true
+opt.incsearch = true
 
 -- cursor line & column
 opt.cul = true
