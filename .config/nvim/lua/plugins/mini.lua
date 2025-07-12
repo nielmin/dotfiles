@@ -8,7 +8,5 @@ return {
     require('mini.diff').setup()
 
     require('mini.snippets').setup()
-    require('mini.completion').setup()
-
   end,
 }
