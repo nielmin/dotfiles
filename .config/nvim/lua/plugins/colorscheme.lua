@@ -1,10 +1,10 @@
 return {
-  {
-    "webhooked/kanso.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme('kanso')
-    end,
-  },
+  "nyoom-engineering/oxocarbon.nvim",
+  -- Add in any other configuration; 
+  --   event = foo, 
+  --   config = bar
+  --   end,
+  config = function()
+    vim.cmd.colorscheme('oxocarbon')
+  end,
 }
