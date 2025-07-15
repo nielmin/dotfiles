@@ -12,7 +12,7 @@ export TERM\=xterm-256color
 # https://nixos.wiki/wiki/Locales
 export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 
-export PATH=$PATH:~/.local/bin:~/go/bin
+export PATH=$PATH:~/.local/bin
 export EDITOR=/usr/bin/nvim
 export VISUAL=$EDITOR
 
