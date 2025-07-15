@@ -1,36 +1,36 @@
 return {
-  "williamboman/mason.nvim",
-  dependencies = {
-    "williamboman/mason-lspconfig.nvim",
-  },
-  config = function()
-    -- import mason
-    local mason = require("mason")
+  -- "williamboman/mason.nvim",
+  -- dependencies = {
+  --   "williamboman/mason-lspconfig.nvim",
+  -- },
+  -- config = function()
+  --   -- import mason
+  --   local mason = require("mason")
 
-    -- import mason-lspconfig
-    local mason_lspconfig = require("mason-lspconfig")
+  --   -- import mason-lspconfig
+  --   local mason_lspconfig = require("mason-lspconfig")
 
-    -- enable mason and configure icons
-    mason.setup({
-      ui = {
-        icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗",
-        },
-      },
-    })
+  --   -- enable mason and configure icons
+  --   mason.setup({
+  --     ui = {
+  --       icons = {
+  --         package_installed = "✓",
+  --         package_pending = "➜",
+  --         package_uninstalled = "✗",
+  --       },
+  --     },
+  --   })
 
-    mason_lspconfig.setup({
-      -- list of servers for mason to install
-      ensure_installed = {
-        "lua_ls",
-        "gopls",
-        "basedpyright",
-        "zls@0.13.0",
-        "ruff",
-        "tinymist",
-      },
-    })
-  end,
+  --   mason_lspconfig.setup({
+  --     -- list of servers for mason to install
+  --     ensure_installed = {
+  --       "lua_ls",
+  --       "gopls",
+  --       "basedpyright",
+  --       "zls@0.13.0",
+  --       "ruff",
+  --       "tinymist",
+  --     },
+  --   })
+  -- end,
 }
