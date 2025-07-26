@@ -2,6 +2,8 @@ vim.cmd("let g:netrw_liststyle = 3")
 
 local opt = vim.opt -- for conciseness
 
+opt.wrap = false
+
 -- line numbers
 opt.nu = true
 opt.rnu = true
