@@ -19,6 +19,9 @@ return {
           "go",
           "zig",
           "typst"
+          "html"
+          "css"
+          "javascript"
         },
         sync_install = false,
         incremental_selection = {
