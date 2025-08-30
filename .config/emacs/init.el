@@ -53,12 +53,12 @@
 
       :config
       (set-face-attribute 'default nil
-                          :family "Iosevka"
+                          :family "0xProto Nerd Font"
                           :height 140)
       (set-face-attribute 'fixed-pitch nil
-                          :family "Iosevka")
+                          :family "0xProto Nerd Font")
       (set-face-attribute 'variable-pitch nil
-                          :family "Roboto"
+                          :family "Atkinson Hyperlegible"
                           :height 160)
 
       (setopt scroll-conservatively 100)
