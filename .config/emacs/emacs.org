@@ -61,7 +61,6 @@
   :hook
   (prog-mode . flycheck-mode)
 )
-(provide 'el-flycheck)
 #+end_src
 
 * Flyspell
@@ -72,9 +71,6 @@
   (prog-mode . flyspell-prog-mode)
   (text-mode . flyspell-mode)
   )
-
-(provide 'el-flyspell)
-
 #+end_src
 
 * Use-Package
@@ -92,7 +88,6 @@
     (setopt use-package-always-ensure t
 	  use-package-expand-minimally t))
 
-  (provide 'el-package)
 #+end_src
 
 * Vertico
@@ -154,7 +149,6 @@
   (ef-themes-select 'ef-owl)
   )
 
-(provide 'el-theme)
   #+end_src
   
 * Diminish
@@ -235,7 +229,6 @@
       (corfu-history-mode 1)
       (add-to-list 'savehist-additional-variables 'corfu-history))
     )
-  (provide 'el-completion)
 #+end_src
 
 * Dired
@@ -253,7 +246,6 @@
     (setopt delete-by-moving-to-trash t)
     (setopt dired-dwim-target t)
     )
-  (provide 'el-dired)
 #+End_src
 
 * Eglot
@@ -268,7 +260,6 @@
     :config
     (fset #'jsonrpc--log-event #'ignore)
     )
-  (provide 'el-eglot)
 #+end_src
 
 * Org
@@ -362,8 +353,30 @@
     (add-to-list 'org-structure-template-alist item)))
 #+end_src
 
+* Rainbow-delimiters
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-ui.el
+  ;; -*- lexical-binding: t; -*-
+  (use-package rainbow-delimiters
+    :hook
+    (prog-mode . rainbow-delimiters-mode)
+    )
+
+#+end_src
+
+* Org Temp
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
-(provide 'el-org)
+(use-package org-tempo
+  :ensure nil
+  :after org
+  :config
+  (dolist (item '(("sh" . "src")
+                  ("el" . "src emacs-lisp")
+                  ("py" . "src python")
+                  ("go" . "src go")
+                  )
+                )
+    (add-to-list 'org-structure-template-alist item)))
+
 #+end_src
 
 * Rainbow-delimiters
@@ -374,7 +387,6 @@
     (prog-mode . rainbow-delimiters-mode)
     )
 
-  (provide 'el-ui)
 #+end_src
 
 * Treesit
@@ -409,10 +421,6 @@
   )
 #+end_src
 
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-treesit.el
-(provide 'el-treesit)
-#+end_src
-
 * which-key
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
 (use-package which-key
@@ -434,9 +442,7 @@
          ("C-x C-g" . magit-status))
   )
 
-(provide 'el-magit)
 #+end_src
-
 
 * go-mode
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/modes.el
@@ -462,8 +468,6 @@
          ("C-c C-d" . go-compile-debug))
   :hook ((before-save . eglot-format-buffer))
   )
-
-(provide 'modes)
 #+end_src
 
 * Meow
@@ -558,7 +562,6 @@
   (meow-global-mode 1)
 )
 
-(provide 'el-meow)
 #+end_src
 
 * eat
@@ -566,6 +569,73 @@
 (use-package eat
   :ensure t
   )
+#+end_src
 
+* Provide custom modules
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-flycheck.el
+(provide 'el-flycheck)
+
+#+end_src
+
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-flyspell.el
+(provide 'el-flyspell)
+
+#+end_src
+
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-package.el
+  (provide 'el-package)
+
+#+end_src
+
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-theme.el
+(provide 'el-theme)
+
+#+end_src
+
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
+  (provide 'el-completion)
+
+#+end_src
+
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-dired.el
+  (provide 'el-dired)
+
+#+end_src
+
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-eglot.el
+  (provide 'el-eglot)
+
+#+end_src
+
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
+(provide 'el-org)
+
+#+end_src
+
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-ui.el
+  (provide 'el-ui)
+
+#+end_src
+
+#+BEGIN_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-treesit.el
+(provide 'el-treesit)
+#+end_src
+
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-magit.el
+(provide 'el-magit)
+#+end_src
+
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/modes.el
+(provide 'modes)
+
+#+end_src
+
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-meow.el
+(provide 'el-meow)
+
+#+end_src
+
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/terminal.el
 (provide 'terminal)
+
 #+end_src

@@ -8,4 +8,5 @@
     :config
     (fset #'jsonrpc--log-event #'ignore)
     )
+
   (provide 'el-eglot)

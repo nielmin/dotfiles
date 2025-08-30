@@ -3,4 +3,5 @@
   :hook
   (prog-mode . flycheck-mode)
 )
+
 (provide 'el-flycheck)

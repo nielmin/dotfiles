@@ -11,4 +11,5 @@
     (setopt delete-by-moving-to-trash t)
     (setopt dired-dwim-target t)
     )
+
   (provide 'el-dired)
