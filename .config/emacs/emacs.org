@@ -342,8 +342,9 @@
   :after org
   :hook
   (org-mode . org-modern-mode)
+  :custom
+  (org-modern-star 'replace)
 )
-
 #+end_src
 
 * Org Temp

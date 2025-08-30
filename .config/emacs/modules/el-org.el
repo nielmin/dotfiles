@@ -61,6 +61,8 @@
   :after org
   :hook
   (org-mode . org-modern-mode)
+  :custom
+  (org-modern-star 'replace)
 )
 
 (use-package org-tempo
