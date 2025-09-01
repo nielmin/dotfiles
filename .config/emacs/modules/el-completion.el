@@ -1,17 +1,6 @@
-  ;; -*- lexical-binding: t; -*-
-  (use-package vertico
-    :ensure t
-    :hook (after-init . vertico-mode)
-  )
-
   (use-package savehist
     :ensure nil
     :hook (after-init . savehist-mode)
-    )
-
-  (use-package marginalia
-    :ensure t
-    :hook (after-init . marginalia-mode)
     )
 
   (use-package consult 
@@ -23,6 +12,11 @@
     (completion-list-mode . consult-preview-at-point-mode)
     )
 
+  (use-package marginalia
+    :ensure t
+    :hook (after-init . marginalia-mode)
+    )
+
    (use-package orderless
      :ensure t
      :config
@@ -31,6 +25,12 @@
 	   completion-category-overrides '((file (styles partial-completion)))
 	   )
      )
+
+  ;; -*- lexical-binding: t; -*-
+  (use-package vertico
+    :ensure t
+    :hook (after-init . vertico-mode)
+  )
 
   (use-package corfu
     :ensure t

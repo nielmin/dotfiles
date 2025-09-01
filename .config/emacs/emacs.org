@@ -54,110 +54,6 @@
 (setq-default create-lockfiles nil)
   #+end_src
 
-* Flycheck
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-flycheck.el
-(use-package flycheck
-  :ensure t
-  :hook
-  (prog-mode . flycheck-mode)
-)
-#+end_src
-
-* Flyspell
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-flyspell.el
-(use-package flyspell
-  :ensure nil
-  :hook
-  (prog-mode . flyspell-prog-mode)
-  (text-mode . flyspell-mode)
-  )
-#+end_src
-
-* Use-Package
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-package.el :mkdirp yes
-  ;; -*- lexical-binding: t; -*-
-  (require 'package)
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-  (package-initialize)
-
-  (unless (package-installed-p 'use-package)
-    (package-refresh-contents)
-    (package-install 'use-package))
-
-(eval-and-compile
-    (setopt use-package-always-ensure t
-	  use-package-expand-minimally t))
-
-#+end_src
-
-* Vertico
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
-  ;; -*- lexical-binding: t; -*-
-  (use-package vertico
-    :ensure t
-    :hook (after-init . vertico-mode)
-  )
-  #+end_src
-  
-* Savehist
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
-  (use-package savehist
-    :ensure nil
-    :hook (after-init . savehist-mode)
-    )
-#+end_src
-
-* Marginalia
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
-  (use-package marginalia
-    :ensure t
-    :hook (after-init . marginalia-mode)
-    )
-#+end_src
-
-* Consult
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
-  (use-package consult 
-    :bind
-    ("C-s" . consult-line)
-    ("C-x b" . consult-buffer)
-    ("C-x C-b" . consult-buffer)
-    :hook
-    (completion-list-mode . consult-preview-at-point-mode)
-    )
-#+end_src
-
-* Orderless
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
-   (use-package orderless
-     :ensure t
-     :config
-     (setopt completion-styles '(orderless basic)
-	   completion-category-defaults nil
-	   completion-category-overrides '((file (styles partial-completion)))
-	   )
-     )
-#+end_src
-
-* ef-themes
-  #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-theme.el
-;; -*- lexical-binding: t; -*-
-(use-package ef-themes
-  :ensure t
-  :init
-  :config
-  (ef-themes-select 'ef-owl)
-  )
-
-  #+end_src
-  
-* Diminish
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
-    (use-package diminish
-      :ensure t
-      )
-#+end_src
-
 * Emacs
   #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
     (use-package emacs
@@ -211,6 +107,120 @@
       )
 #+end_src
 
+* Diminish
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
+    (use-package diminish
+      :ensure t
+      )
+#+end_src
+
+* which-key
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
+(use-package which-key
+  :diminish which-key-mode
+  :hook (after-init . which-key-mode)
+  :config
+  (setopt which-key-idle-delay 0.3)
+  ) 
+#+end_src
+
+* Use-Package
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-package.el :mkdirp yes
+  ;; -*- lexical-binding: t; -*-
+  (require 'package)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  (package-initialize)
+
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+
+(eval-and-compile
+    (setopt use-package-always-ensure t
+	  use-package-expand-minimally t))
+
+#+end_src
+
+* Flycheck
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-flycheck.el
+(use-package flycheck
+  :ensure t
+  :hook
+  (prog-mode . flycheck-mode)
+)
+#+end_src
+
+* Flyspell
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-flyspell.el
+(use-package flyspell
+  :ensure nil
+  :hook
+  (prog-mode . flyspell-prog-mode)
+  (text-mode . flyspell-mode)
+  )
+#+end_src
+
+* Savehist
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
+  (use-package savehist
+    :ensure nil
+    :hook (after-init . savehist-mode)
+    )
+#+end_src
+
+* Consult
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
+  (use-package consult 
+    :bind
+    ("C-s" . consult-line)
+    ("C-x b" . consult-buffer)
+    ("C-x C-b" . consult-buffer)
+    :hook
+    (completion-list-mode . consult-preview-at-point-mode)
+    )
+#+end_src
+
+* Marginalia
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
+  (use-package marginalia
+    :ensure t
+    :hook (after-init . marginalia-mode)
+    )
+#+end_src
+
+* Orderless
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
+   (use-package orderless
+     :ensure t
+     :config
+     (setopt completion-styles '(orderless basic)
+	   completion-category-defaults nil
+	   completion-category-overrides '((file (styles partial-completion)))
+	   )
+     )
+#+end_src
+
+* Vertico
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
+  ;; -*- lexical-binding: t; -*-
+  (use-package vertico
+    :ensure t
+    :hook (after-init . vertico-mode)
+  )
+  #+end_src
+  
+* ef-themes
+  #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-theme.el
+;; -*- lexical-binding: t; -*-
+(use-package ef-themes
+  :ensure t
+  :init
+  :config
+  (ef-themes-select 'ef-owl)
+  )
+
+  #+end_src
+  
 * Corfu
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
   (use-package corfu
@@ -363,6 +373,7 @@
     )
 
 #+end_src
+
 * Treesit
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-treesit.el
 (use-package treesit
@@ -393,16 +404,6 @@
   :ensure t
   :hook (prog-mode . global-treesit-auto-mode)
   )
-#+end_src
-
-* which-key
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
-(use-package which-key
-  :diminish which-key-mode
-  :hook (after-init . which-key-mode)
-  :config
-  (setopt which-key-idle-delay 0.3)
-  ) 
 #+end_src
 
 * Magit

@@ -27,10 +27,6 @@
 
 (setq-default create-lockfiles nil)
 
-    (use-package diminish
-      :ensure t
-      )
-
     (use-package emacs
       :init
       ;; Follow symlinks (for git dotfiles)
@@ -79,6 +75,10 @@
       (tab-always-indent 'complete)
       (read-extended-command-predicate #'command-completion-default-include-p)
 
+      )
+
+    (use-package diminish
+      :ensure t
       )
 
 (use-package which-key
