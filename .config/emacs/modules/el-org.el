@@ -57,13 +57,13 @@
     (set-face-attribute (car face) nil :font "Atkinson Hyperlegible" :weight 'bold :height (cdr face)))
   )
 
-(use-package org-modern
-  :after org
-  :hook
-  (org-mode . org-modern-mode)
-  :custom
-  (org-modern-star 'replace)
-)
+;; (use-package org-modern
+;;   :after org
+;;   :hook
+;;   (org-mode . org-modern-mode)
+;;   :custom
+;;   (org-modern-star 'replace)
+;; )
 
 (use-package org-tempo
   :ensure nil
