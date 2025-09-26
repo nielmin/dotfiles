@@ -558,7 +558,7 @@
 #+end_src
 
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-package.el
-  (provide 'el-package)
+(provide 'el-package)
 
 #+end_src
 
@@ -568,17 +568,17 @@
 #+end_src
 
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
-  (provide 'el-completion)
+(provide 'el-completion)
 
 #+end_src
 
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-dired.el
-  (provide 'el-dired)
+(provide 'el-dired)
 
 #+end_src
 
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-eglot.el
-  (provide 'el-eglot)
+(provide 'el-eglot)
 
 #+end_src
 
@@ -588,7 +588,7 @@
 #+end_src
 
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-ui.el
-  (provide 'el-ui)
+(provide 'el-ui)
 
 #+end_src
 

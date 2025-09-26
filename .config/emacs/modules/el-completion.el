@@ -49,4 +49,4 @@
       (add-to-list 'savehist-additional-variables 'corfu-history))
     )
 
-  (provide 'el-completion)
+(provide 'el-completion)

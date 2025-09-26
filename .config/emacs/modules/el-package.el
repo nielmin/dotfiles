@@ -11,4 +11,4 @@
     (setopt use-package-always-ensure t
 	  use-package-expand-minimally t))
 
-  (provide 'el-package)
+(provide 'el-package)

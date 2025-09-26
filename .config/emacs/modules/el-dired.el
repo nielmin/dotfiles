@@ -12,4 +12,4 @@
     (setopt dired-dwim-target t)
     )
 
-  (provide 'el-dired)
+(provide 'el-dired)

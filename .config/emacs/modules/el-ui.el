@@ -4,4 +4,4 @@
     (prog-mode . rainbow-delimiters-mode)
     )
 
-  (provide 'el-ui)
+(provide 'el-ui)

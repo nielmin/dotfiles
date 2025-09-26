@@ -9,4 +9,4 @@
     (fset #'jsonrpc--log-event #'ignore)
     )
 
-  (provide 'el-eglot)
+(provide 'el-eglot)
