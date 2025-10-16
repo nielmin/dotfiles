@@ -1,10 +1,10 @@
 {
   "blink.cmp": { "branch": "main", "commit": "327fff91fe6af358e990be7be1ec8b78037d2138" },
-  "conform.nvim": { "branch": "master", "commit": "9d859cbfbde7a1bd1770e7c97aef30ec5a237a71" },
+  "conform.nvim": { "branch": "master", "commit": "fbcb4fa7f34bfea9be702ffff481a8e336ebf6ed" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
-  "lazy.nvim": { "branch": "main", "commit": "59334064f8604ca073791c25dcc5c9698865406e" },
+  "lazy.nvim": { "branch": "main", "commit": "1ea3c4085785f460fb0e46d2fe1ee895f5f9e7c1" },
   "mellow.nvim": { "branch": "main", "commit": "5cd188489bcc7eb512f0a30581ad972070f8e5cd" },
-  "mini.nvim": { "branch": "main", "commit": "9a2798a584a55ccd3027a7e36f38971da619c9a2" },
+  "mini.nvim": { "branch": "main", "commit": "8a7cf7eee8d89bd1b83f6d72f7f3b5598e7ae2cb" },
   "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
   "nvim-ts-autotag": { "branch": "main", "commit": "c4ca798ab95b316a768d51eaaaee48f64a4a46bc" }
 }
