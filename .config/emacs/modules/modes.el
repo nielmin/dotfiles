@@ -19,6 +19,6 @@
          ("C-c C-c" . go-compile)
          ("C-c C-d" . go-compile-debug))
   :hook ((before-save . eglot-format-buffer))
-  )
+)
 
 (provide 'modes)

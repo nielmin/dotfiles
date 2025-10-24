@@ -139,6 +139,7 @@
     (setopt use-package-always-ensure t
 	  use-package-expand-minimally t))
 
+(provide 'el-package)
 #+end_src
 
 * Flycheck
@@ -148,6 +149,8 @@
   :hook
   (prog-mode . flycheck-mode)
 )
+
+(provide 'el-flycheck)
 #+end_src
 
 * Flyspell
@@ -158,9 +161,14 @@
   (prog-mode . flyspell-prog-mode)
   (text-mode . flyspell-mode)
   )
+(provide 'el-flyspell)
 #+end_src
 
-* Savehist
+* Completion
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
+;; -*- lexical-binding: t; -*-
+#+end_src
+** Savehist
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
   (use-package savehist
     :ensure nil
@@ -168,7 +176,7 @@
     )
 #+end_src
 
-* Consult
+** Consult
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
   (use-package consult 
     :bind
@@ -180,7 +188,7 @@
     )
 #+end_src
 
-* Marginalia
+** Marginalia
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
   (use-package marginalia
     :ensure t
@@ -188,7 +196,7 @@
     )
 #+end_src
 
-* Orderless
+** Orderless
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
    (use-package orderless
      :ensure t
@@ -200,15 +208,38 @@
      )
 #+end_src
 
-* Vertico
+** Vertico
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
-  ;; -*- lexical-binding: t; -*-
+
   (use-package vertico
     :ensure t
     :hook (after-init . vertico-mode)
   )
   #+end_src
   
+** Corfu
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
+(use-package corfu
+  :ensure t
+  :hook (after-init . global-corfu-mode)
+  :bind (:map corfu-map ("<tab>" . corfu-complete))
+  :config
+  (setopt tab-alwals-indent 'complete)
+  (setopt corfu-preview-current nil)
+  (setopt corfu-min-width 20)
+
+  (setopt corfu-popupinto-delay '(1.25 . 0.5))
+  (corfu-popupinfo-mode 1)
+
+  (with-eval-after-load 'savehist
+    (corfu-history-mode 1)
+    (add-to-list 'savehist-additional-variables 'corfu-history))
+  )
+#+end_src
+
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
+(provide 'el-completion)
+#+end_src
 * ef-themes
   #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-theme.el
 ;; -*- lexical-binding: t; -*-
@@ -219,57 +250,42 @@
   (ef-themes-select 'ef-owl)
   )
 
+(provide 'el-theme)
   #+end_src
   
-* Corfu
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
-  (use-package corfu
-    :ensure t
-    :hook (after-init . global-corfu-mode)
-    :bind (:map corfu-map ("<tab>" . corfu-complete))
-    :config
-    (setopt tab-alwals-indent 'complete)
-    (setopt corfu-preview-current nil)
-    (setopt corfu-min-width 20)
-
-    (setopt corfu-popupinto-delay '(1.25 . 0.5))
-    (corfu-popupinfo-mode 1)
-
-    (with-eval-after-load 'savehist
-      (corfu-history-mode 1)
-      (add-to-list 'savehist-additional-variables 'corfu-history))
-    )
-#+end_src
-
 * Dired
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-dired.el
-  ;; -*- lexical-binding: t; -*-
-  (use-package dired
-    :ensure nil
-    :commands (dired)
-    :hook
-    (dired-mode . dired-hide-details-mode)
-    (dired-mode . hl-line-mode)
-    :config
-    (setopt dired-recursive-copies 'always)
-    (setopt dired-recursive-deletes 'always)
-    (setopt delete-by-moving-to-trash t)
-    (setopt dired-dwim-target t)
-    )
-#+End_src
+;; -*- lexical-binding: t; -*-
+(use-package dired
+  :ensure nil
+  :commands (dired)
+  :hook
+  (dired-mode . dired-hide-details-mode)
+  (dired-mode . hl-line-mode)
+  :config
+  (setopt dired-recursive-copies 'always)
+  (setopt dired-recursive-deletes 'always)
+  (setopt delete-by-moving-to-trash t)
+  (setopt dired-dwim-target t)
+  )
+
+(provide 'el-dired)
+  #+end_src
 
 * Eglot
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-eglot.el
-  ;; -*- lexical-binding: t; -*-
-  (use-package eglot 
-    :hook
-    ((html-mode html-ts-code) . eglot-ensure)
-    ((css-ts-mode css-mode) . eglot-ensure)
-    ((go-mode go-ts-mode) . eglot-ensure)
-    ((python-mode python-ts-mode) . eglot-ensure)
-    :config
-    (fset #'jsonrpc--log-event #'ignore)
-    )
+;; -*- lexical-binding: t; -*-
+(use-package eglot
+  :hook
+  ((html-mode html-ts-code) . eglot-ensure)
+  ((css-ts-mode css-mode) . eglot-ensure)
+  ((go-mode go-ts-mode) . eglot-ensure)
+  ((python-mode python-ts-mode) . eglot-ensure)
+  :config
+  (fset #'jsonrpc--log-event #'ignore)
+)
+
+(provide 'el-eglot)
 #+end_src
 
 * Org
@@ -316,10 +332,7 @@
 		     ("\\paragraph{%s}" . "\\paragraph*{%s}")
 		     ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
     )
-#+end_src
 
-* org-faces
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
 (use-package org-faces
   :ensure nil
   :after org
@@ -335,21 +348,7 @@
                   (org-level-8 . 1.1)))
     (set-face-attribute (car face) nil :font "Atkinson Hyperlegible" :weight 'bold :height (cdr face)))
   )
-#+end_src
 
-* Org Modern
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
-;; (use-package org-modern
-;;   :after org
-;;   :hook
-;;   (org-mode . org-modern-mode)
-;;   :custom
-;;   (org-modern-star 'replace)
-;; )
-#+end_src
-
-* Org Temp
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
 (use-package org-tempo
   :ensure nil
   :after org
@@ -362,16 +361,18 @@
                 )
     (add-to-list 'org-structure-template-alist item)))
 
+(provide 'el-org)
 #+end_src
 
 * Rainbow-delimiters
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-ui.el
-  ;; -*- lexical-binding: t; -*-
-  (use-package rainbow-delimiters
-    :hook
-    (prog-mode . rainbow-delimiters-mode)
-    )
+;; -*- lexical-binding: t; -*-
+(use-package rainbow-delimiters
+  :hook
+  (prog-mode . rainbow-delimiters-mode)
+  )
 
+(provide 'el-ui)
 #+end_src
 
 * Treesit
@@ -397,13 +398,13 @@
           )
         )
   )
-#+end_src
 
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-treesit.el
 (use-package treesit-auto
   :ensure t
   :hook (prog-mode . global-treesit-auto-mode)
   )
+
+(provide 'el-treesit)
 #+end_src
 
 * Magit
@@ -417,6 +418,7 @@
          ("C-x C-g" . magit-status))
   )
 
+(provide 'el-magit)
 #+end_src
 
 * go-mode
@@ -442,101 +444,9 @@
          ("C-c C-c" . go-compile)
          ("C-c C-d" . go-compile-debug))
   :hook ((before-save . eglot-format-buffer))
-  )
-#+end_src
+)
 
-* Meow
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-meow.el
-;; (use-package meow
-;;   :config
-;;   (defun meow-setup ()
-;;   (setopt meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
-;;   (meow-motion-define-key
-;;    '("j" . meow-next)
-;;    '("k" . meow-prev)
-;;    '("<escape>" . ignore))
-;;   (meow-leader-define-key
-;;    ;; Use SPC (0-9) for digit arguments.
-;;    '("1" . meow-digit-argument)
-;;    '("2" . meow-digit-argument)
-;;    '("3" . meow-digit-argument)
-;;    '("4" . meow-digit-argument)
-;;    '("5" . meow-digit-argument)
-;;    '("6" . meow-digit-argument)
-;;    '("7" . meow-digit-argument)
-;;    '("8" . meow-digit-argument)
-;;    '("9" . meow-digit-argument)
-;;    '("0" . meow-digit-argument)
-;;    '("/" . meow-keypad-describe-key)
-;;    '("?" . meow-cheatsheet))
-;;   (meow-normal-define-key
-;;    '("0" . meow-expand-0)
-;;    '("9" . meow-expand-9)
-;;    '("8" . meow-expand-8)
-;;    '("7" . meow-expand-7)
-;;    '("6" . meow-expand-6)
-;;    '("5" . meow-expand-5)
-;;    '("4" . meow-expand-4)
-;;    '("3" . meow-expand-3)
-;;    '("2" . meow-expand-2)
-;;    '("1" . meow-expand-1)
-;;    '("-" . negative-argument)
-;;    '(";" . meow-reverse)
-;;    '("," . meow-inner-of-thing)
-;;    '("." . meow-bounds-of-thing)
-;;    '("[" . meow-beginning-of-thing)
-;;    '("]" . meow-end-of-thing)
-;;    '("a" . meow-append)
-;;    '("A" . meow-open-below)
-;;    '("b" . meow-back-word)
-;;    '("B" . meow-back-symbol)
-;;    '("c" . meow-change)
-;;    '("d" . meow-delete)
-;;    '("D" . meow-backward-delete)
-;;    '("e" . meow-next-word)
-;;    '("E" . meow-next-symbol)
-;;    '("f" . meow-find)
-;;    '("g" . meow-cancel-selection)
-;;    '("G" . meow-grab)
-;;    '("h" . meow-left)
-;;    '("H" . meow-left-expand)
-;;    '("i" . meow-insert)
-;;    '("I" . meow-open-above)
-;;    '("j" . meow-next)
-;;    '("J" . meow-next-expand)
-;;    '("k" . meow-prev)
-;;    '("K" . meow-prev-expand)
-;;    '("l" . meow-right)
-;;    '("L" . meow-right-expand)
-;;    '("m" . meow-join)
-;;    '("n" . meow-search)
-;;    '("o" . meow-block)
-;;    '("O" . meow-to-block)
-;;    '("p" . meow-yank)
-;;    '("q" . meow-quit)
-;;    '("Q" . meow-goto-line)
-;;    '("r" . meow-replace)
-;;    '("R" . meow-swap-grab)
-;;    '("s" . meow-kill)
-;;    '("t" . meow-till)
-;;    '("u" . meow-undo)
-;;    '("U" . meow-undo-in-selection)
-;;    '("v" . meow-visit)
-;;    '("w" . meow-mark-word)
-;;    '("W" . meow-mark-symbol)
-;;    '("x" . meow-line)
-;;    '("X" . meow-goto-line)
-;;    '("y" . meow-save)
-;;    '("Y" . meow-sync-grab)
-;;    '("z" . meow-pop-selection)
-;;    '("'" . repeat)
-;;    '("<escape>" . ignore)))
-
-;;   (require 'meow)
-;;   (meow-setup)
-;;   (meow-global-mode 1)
-;; )
-
+(provide 'modes)
 #+end_src
 
 * eat
@@ -544,73 +454,6 @@
 (use-package eat
   :ensure t
   )
-#+end_src
-
-* Provide custom modules
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-flycheck.el
-(provide 'el-flycheck)
-
-#+end_src
-
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-flyspell.el
-(provide 'el-flyspell)
-
-#+end_src
-
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-package.el
-(provide 'el-package)
-
-#+end_src
-
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-theme.el
-(provide 'el-theme)
-
-#+end_src
-
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
-(provide 'el-completion)
-
-#+end_src
-
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-dired.el
-(provide 'el-dired)
-
-#+end_src
-
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-eglot.el
-(provide 'el-eglot)
-
-#+end_src
-
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
-(provide 'el-org)
-
-#+end_src
-
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-ui.el
-(provide 'el-ui)
-
-#+end_src
-
-#+BEGIN_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-treesit.el
-(provide 'el-treesit)
-#+end_src
-
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-magit.el
-(provide 'el-magit)
-#+end_src
-
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/modes.el
-(provide 'modes)
-
-#+end_src
-
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-meow.el
-(provide 'el-meow)
-
-#+end_src
-
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/terminal.el
 (provide 'terminal)
-
 #+end_src
+
