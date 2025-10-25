@@ -6,6 +6,10 @@ function ll
   command ls -ahl --color=auto --group-directories-first $argv
 end
 
+function nv
+  command nvim $argv
+end
+
 function butane
   command podman run -i --rm -v "$PWD":/pwd quay.io/coreos/butane:release $argv
 end
