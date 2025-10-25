@@ -53,65 +53,65 @@
 
 (setq-default create-lockfiles nil)
   #+end_src
-
+  
 * Emacs
-  #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
-    (use-package emacs
-      :init
-      ;; Follow symlinks (for git dotfiles)
-      (setopt vc-follow-symlinks t)
-      ;; Frame height and width
-      (add-to-list 'default-frame-alist '(height . 24))
-      (add-to-list 'default-frame-alist '(width . 80))
-      ;; Set tab width
-      (setq-default tab-width 2)
-      (setq-default indent-tabs-mode nil)
-      :bind
-      ("M-o" . other-window)
-      ("C-x k" . 'kill-cur-buffer)
-      ("C-c '" . org-edit-src-code)
-      ("C-c c e" . 'config-edit)
-      :hook
-      ;; Enable line numbers for some modes
-      ((prog-mode . display-line-numbers-mode)
-       (conf-mode . display-line-numbers-mode))
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
+(use-package emacs
+  :init
+  ;; Follow symlinks (for git dotfiles)
+  (setopt vc-follow-symlinks t)
+  ;; Frame height and width
+  (add-to-list 'default-frame-alist '(height . 24))
+  (add-to-list 'default-frame-alist '(width . 80))
+  ;; Set tab width
+  (setq-default tab-width 2)
+  (setq-default indent-tabs-mode nil)
+  :bind
+  ("M-o" . other-window)
+  ("C-x k" . 'kill-cur-buffer)
+  ("C-c '" . org-edit-src-code)
+  ("C-c c e" . 'config-edit)
+  :hook
+  ;; Enable line numbers for some modes
+  ((prog-mode . display-line-numbers-mode)
+   (conf-mode . display-line-numbers-mode))
 
-      :config
-      (set-face-attribute 'default nil
-                          :family "0xProto Nerd Font"
-                          :height 140)
-      (set-face-attribute 'fixed-pitch nil
-                          :family "0xProto Nerd Font")
-      (set-face-attribute 'variable-pitch nil
-                          :family "Atkinson Hyperlegible"
-                          :height 160)
+  :config
+  (set-face-attribute 'default nil
+                      :family "0xProto Nerd Font"
+                      :height 140)
+  (set-face-attribute 'fixed-pitch nil
+                      :family "0xProto Nerd Font")
+  (set-face-attribute 'variable-pitch nil
+                      :family "Atkinson Hyperlegible"
+                      :height 160)
 
-      (setopt scroll-conservatively 100)
-      (setopt scroll-margin 8)
+  (setopt scroll-conservatively 100)
+  (setopt scroll-margin 8)
 
-      (setopt org-src-window-setup 'current-window)
+  (setopt org-src-window-setup 'current-window)
 
-      (defun kill-cur-buffer ()
-        (interactive)
-        (kill-buffer (current-buffer)))
+  (defun kill-cur-buffer ()
+    (interactive)
+    (kill-buffer (current-buffer)))
 
-      (defun config-edit ()
-        (interactive)
-        (find-file "~/.dotfiles/.config/emacs/emacs.org"))
-      (defalias 'yes-or-no-p 'y-or-n-p)
+  (defun config-edit ()
+    (interactive)
+    (find-file "~/.dotfiles/.config/emacs/emacs.org"))
+  (defalias 'yes-or-no-p 'y-or-n-p)
 
-      :custom
-      (tab-always-indent 'complete)
-      (read-extended-command-predicate #'command-completion-default-include-p)
+  :custom
+  (tab-always-indent 'complete)
+  (read-extended-command-predicate #'command-completion-default-include-p)
 
-      )
+  )
 #+end_src
 
 * Diminish
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
-    (use-package diminish
-      :ensure t
-      )
+(use-package diminish
+  :ensure t
+  )
 #+end_src
 
 * which-key
@@ -126,18 +126,18 @@
 
 * Use-Package
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-package.el :mkdirp yes
-  ;; -*- lexical-binding: t; -*-
-  (require 'package)
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-  (package-initialize)
+;; -*- lexical-binding: t; -*-
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
 
-  (unless (package-installed-p 'use-package)
-    (package-refresh-contents)
-    (package-install 'use-package))
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 (eval-and-compile
-    (setopt use-package-always-ensure t
-	  use-package-expand-minimally t))
+  (setopt use-package-always-ensure t
+	        use-package-expand-minimally t))
 
 (provide 'el-package)
 #+end_src
@@ -170,50 +170,49 @@
 #+end_src
 ** Savehist
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
-  (use-package savehist
-    :ensure nil
-    :hook (after-init . savehist-mode)
-    )
+(use-package savehist
+  :ensure nil
+  :hook (after-init . savehist-mode)
+  )
 #+end_src
 
 ** Consult
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
-  (use-package consult 
-    :bind
-    ("C-s" . consult-line)
-    ("C-x b" . consult-buffer)
-    ("C-x C-b" . consult-buffer)
-    :hook
-    (completion-list-mode . consult-preview-at-point-mode)
-    )
+(use-package consult 
+  :bind
+  ("C-s" . consult-line)
+  ("C-x b" . consult-buffer)
+  ("C-x C-b" . consult-buffer)
+  :hook
+  (completion-list-mode . consult-preview-at-point-mode)
+  )
 #+end_src
 
 ** Marginalia
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
-  (use-package marginalia
-    :ensure t
-    :hook (after-init . marginalia-mode)
-    )
+(use-package marginalia
+  :ensure t
+  :hook (after-init . marginalia-mode)
+  )
 #+end_src
 
 ** Orderless
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
-   (use-package orderless
-     :ensure t
-     :config
-     (setopt completion-styles '(orderless basic)
-	   completion-category-defaults nil
-	   completion-category-overrides '((file (styles partial-completion)))
-	   )
-     )
+(use-package orderless
+  :ensure t
+g  :config
+  (setopt completion-styles '(orderless basic)
+	        completion-category-defaults nil
+	        completion-category-overrides '((file (styles partial-completion)))
+	        )
+  )
 #+end_src
 
 ** Vertico
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
-
-  (use-package vertico
-    :ensure t
-    :hook (after-init . vertico-mode)
+(use-package vertico
+  :ensure t
+  :hook (after-init . vertico-mode)
   )
   #+end_src
   
@@ -241,7 +240,7 @@
 (provide 'el-completion)
 #+end_src
 * ef-themes
-  #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-theme.el
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-theme.el
 ;; -*- lexical-binding: t; -*-
 (use-package ef-themes
   :ensure t
@@ -251,7 +250,7 @@
   )
 
 (provide 'el-theme)
-  #+end_src
+#+end_src
   
 * Dired
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-dired.el
@@ -270,7 +269,8 @@
   )
 
 (provide 'el-dired)
-  #+end_src
+
+#+end_src
 
 * Eglot
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-eglot.el
@@ -290,48 +290,36 @@
 
 * Org
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
-  ;; -*- lexical-binding: t; -*-
-  (use-package org
-    :init
-    ;; org settings
-    (setopt org-ellipsis " ")
-    (setopt org-src-fontify-natively t)
-    (setopt org-src-tab-acts-natively t)
-    (setopt org-confirm-babel-evaluate nil)
-    (setopt org-export-with-smart-quotes t)
-    (setopt org-src-window-setup 'current-window)
-    (setopt org-log-into-drawer t)
-    :hook
-    (org-mode . org-indent-mode)
-    (org-mode . visual-line-mode)
-    :config
-    ;; org-agenda
-    (setopt org-agenda-start-with-log-mode t)
-    (setopt org-log-done 'time)
-    ;; indentation
-    (setopt org-edit-src-content-indentation 0
-	  org-src-tab-acts-natively t
-	  org-src-preserve-indentation t)
-    ;; org-babel
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((emacs-lisp . t)
-       )
+;; -*- lexical-binding: t; -*-
+
+(use-package org
+  :init
+  ;; org settings
+  (setopt org-ellipsis " ")
+  (setopt org-src-fontify-natively t)
+  (setopt org-src-tab-acts-natively t)
+  (setopt org-confirm-babel-evaluate nil)
+  (setopt org-export-with-smart-quotes t)
+  (setopt org-src-window-setup 'current-window)
+  (setopt org-log-into-drawer t)
+  :hook
+  (org-mode . org-indent-mode)
+  (org-mode . visual-line-mode)
+  :config
+  ;; org-agenda
+  (setopt org-agenda-start-with-log-mode t)
+  (setopt org-log-done 'time)
+  ;; indentation
+  (setopt org-edit-src-content-indentation 0
+	        org-src-tab-acts-natively t
+	        org-src-preserve-indentation t)
+  ;; org-babel
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
      )
-    ;; latex
-    (with-eval-after-load 'ox-latex
-      (add-to-list 'org-latex-classes
-		   '("org-plain-latex"
-		     "\\documentclass{article}
-	     [NO-DEFAULT-PACKAGES]
-	     [PACKAGES]
-	     [EXTRA]"
-		     ("\\section{%s}" . "\\section*{%s}")
-		     ("\\subsection{%s}" . "\\subsection*{%s}")
-		     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-		     ("\\paragraph{%s}" . "\\paragraph*{%s}")
-		     ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
-    )
+   )
+  )
 
 (use-package org-faces
   :ensure nil

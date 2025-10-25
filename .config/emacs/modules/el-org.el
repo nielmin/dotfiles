@@ -1,45 +1,33 @@
-  ;; -*- lexical-binding: t; -*-
-  (use-package org
-    :init
-    ;; org settings
-    (setopt org-ellipsis " ")
-    (setopt org-src-fontify-natively t)
-    (setopt org-src-tab-acts-natively t)
-    (setopt org-confirm-babel-evaluate nil)
-    (setopt org-export-with-smart-quotes t)
-    (setopt org-src-window-setup 'current-window)
-    (setopt org-log-into-drawer t)
-    :hook
-    (org-mode . org-indent-mode)
-    (org-mode . visual-line-mode)
-    :config
-    ;; org-agenda
-    (setopt org-agenda-start-with-log-mode t)
-    (setopt org-log-done 'time)
-    ;; indentation
-    (setopt org-edit-src-content-indentation 0
-	  org-src-tab-acts-natively t
-	  org-src-preserve-indentation t)
-    ;; org-babel
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((emacs-lisp . t)
-       )
+;; -*- lexical-binding: t; -*-
+
+(use-package org
+  :init
+  ;; org settings
+  (setopt org-ellipsis " ")
+  (setopt org-src-fontify-natively t)
+  (setopt org-src-tab-acts-natively t)
+  (setopt org-confirm-babel-evaluate nil)
+  (setopt org-export-with-smart-quotes t)
+  (setopt org-src-window-setup 'current-window)
+  (setopt org-log-into-drawer t)
+  :hook
+  (org-mode . org-indent-mode)
+  (org-mode . visual-line-mode)
+  :config
+  ;; org-agenda
+  (setopt org-agenda-start-with-log-mode t)
+  (setopt org-log-done 'time)
+  ;; indentation
+  (setopt org-edit-src-content-indentation 0
+	        org-src-tab-acts-natively t
+	        org-src-preserve-indentation t)
+  ;; org-babel
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
      )
-    ;; latex
-    (with-eval-after-load 'ox-latex
-      (add-to-list 'org-latex-classes
-		   '("org-plain-latex"
-		     "\\documentclass{article}
-	     [NO-DEFAULT-PACKAGES]
-	     [PACKAGES]
-	     [EXTRA]"
-		     ("\\section{%s}" . "\\section*{%s}")
-		     ("\\subsection{%s}" . "\\subsection*{%s}")
-		     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-		     ("\\paragraph{%s}" . "\\paragraph*{%s}")
-		     ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
-    )
+   )
+  )
 
 (use-package org-faces
   :ensure nil

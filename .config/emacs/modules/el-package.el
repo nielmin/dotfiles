@@ -1,14 +1,14 @@
-  ;; -*- lexical-binding: t; -*-
-  (require 'package)
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-  (package-initialize)
+;; -*- lexical-binding: t; -*-
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
 
-  (unless (package-installed-p 'use-package)
-    (package-refresh-contents)
-    (package-install 'use-package))
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 (eval-and-compile
-    (setopt use-package-always-ensure t
-	  use-package-expand-minimally t))
+  (setopt use-package-always-ensure t
+	        use-package-expand-minimally t))
 
 (provide 'el-package)
