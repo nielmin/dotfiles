@@ -3,7 +3,7 @@
   :ensure t
   :init
   :config
-  (ef-themes-select 'ef-owl)
+  (ef-themes-select 'ef-dream)
   )
 
 (provide 'el-theme)
