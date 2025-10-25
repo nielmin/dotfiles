@@ -200,7 +200,7 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
 (use-package orderless
   :ensure t
-g  :config
+  :config
   (setopt completion-styles '(orderless basic)
 	        completion-category-defaults nil
 	        completion-category-overrides '((file (styles partial-completion)))
@@ -239,6 +239,7 @@ g  :config
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
 (provide 'el-completion)
 #+end_src
+
 * ef-themes
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-theme.el
 ;; -*- lexical-binding: t; -*-
