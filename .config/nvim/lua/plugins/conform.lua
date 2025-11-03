@@ -19,7 +19,7 @@ return {
     formatters_by_ft = {
       go = { "goimports", "gofmt" },
       python = { "ruff format", },
-      -- html = { "prettier" },
+      html = { "prettier" },
     },
     -- Set default options
     default_format_opts = {
