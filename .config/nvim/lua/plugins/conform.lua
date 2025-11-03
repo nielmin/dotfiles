@@ -1,5 +1,5 @@
 return {
-  'stevearc/conform.nvim',
+  "stevearc/conform.nvim",
   event = { "BufWritePre" },
   cmd = { "ConformInfo" },
   keys = {
@@ -19,7 +19,7 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
       go = { "goimports", "gofumpt" },
-      python = { "ruff format", },
+      python = { "ruff format" },
       html = { "prettier" },
     },
     -- Set default options
