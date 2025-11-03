@@ -17,7 +17,8 @@ return {
   opts = {
     -- Define your formatters
     formatters_by_ft = {
-      go = { "goimports", "gofmt" },
+      lua = { "stylua" },
+      go = { "goimports", "gofumpt" },
       python = { "ruff format", },
       html = { "prettier" },
     },
