@@ -1,10 +1,9 @@
 return {
-  "mellow-theme/mellow.nvim",
-  -- Add in any other configuration; 
-  --   event = foo, 
-  --   config = bar
-  --   end,
+  "vague-theme/vague.nvim",
+  lazy = false,
+  priority = 1000,
   config = function()
-    vim.cmd.colorscheme('mellow')
+    require("vague").setup({})
+    vim.cmd("colorscheme vague")
   end,
 }
