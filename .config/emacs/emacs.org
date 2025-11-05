@@ -107,6 +107,17 @@
   )
 #+end_src
 
+* Ibuffer
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
+(use-package ibuffer
+  :ensure nil
+  :bind
+  ("C-x C-b" . ibuffer)
+  :custom
+  (ibuffer-use-other-window t)
+ )
+#+end_src
+
 * Diminish
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
 (use-package diminish
@@ -182,7 +193,6 @@
   :bind
   ("C-s" . consult-line)
   ("C-x b" . consult-buffer)
-  ("C-x C-b" . consult-buffer)
   :hook
   (completion-list-mode . consult-preview-at-point-mode)
   )

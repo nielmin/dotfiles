@@ -77,6 +77,14 @@
 
   )
 
+(use-package ibuffer
+  :ensure nil
+  :bind
+  ("C-x C-b" . ibuffer)
+  :custom
+  (ibuffer-use-other-window t)
+ )
+
 (use-package diminish
   :ensure t
   )
