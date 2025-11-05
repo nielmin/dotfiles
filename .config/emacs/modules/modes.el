@@ -1,3 +1,8 @@
+(use-package direnv
+  :hook
+  (prog-mode . direnv-mode)
+)
+
 (defun go-run-this-file ()
   "go run"
   (interactive)

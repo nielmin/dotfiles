@@ -410,6 +410,17 @@
 (provide 'el-magit)
 #+end_src
 
+* direnv
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/modes.el
+(use-package direnv
+  :hook
+  (prog-mode . direnv-mode)
+)
+#+end_src
+
+#+RESULTS:
+: direnv
+
 * go-mode
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/modes.el
 (defun go-run-this-file ()
