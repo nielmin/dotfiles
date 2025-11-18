@@ -21,7 +21,3 @@ end
 function qmk
   command podman run -it --rm -v "$PWD":/pwd ghcr.io/qmk/qmk_cli:latest $argv
 end
-
-function cadviewer
-  command podman run -it --rm -p 3939:3939 ghcr.io/nilcons/cad-viewer
-end
