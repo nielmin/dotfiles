@@ -19,7 +19,7 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
       go = { "goimports", "gofumpt" },
-      python = { "ruff format" },
+      python = { "ruff_format" },
       html = { "prettier" },
     },
     -- Set default options
