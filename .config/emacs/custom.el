@@ -7,7 +7,7 @@
  '(package-selected-packages
    '(consult corfu diminish direnv eat ef-themes exec-path-from-shell
              flycheck go-mode magit marginalia orderless
-             rainbow-delimiters treesit-auto vertico)))
+             rainbow-delimiters transient treesit-auto vertico)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
