@@ -186,7 +186,6 @@
   :hook (after-init . savehist-mode)
   )
 #+end_src
-
 ** Consult
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
 (use-package consult 
