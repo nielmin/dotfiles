@@ -74,7 +74,13 @@
   :custom
   (tab-always-indent 'complete)
   (read-extended-command-predicate #'command-completion-default-include-p)
+  (use-short-answers t)
 
+  (setq display-time-dae-and-date nil)
+  (setq display-time-load-average nil)
+  (setq display-time-24hr-format t)
+  (display-time-mode 1)
+  (setq-default mode-line-format '(" %b %* %z " display-time-string " (%l, %c)"))
   )
 
 (use-package ibuffer
