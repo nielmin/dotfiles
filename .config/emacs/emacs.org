@@ -21,7 +21,7 @@
 (setopt inhibit-splash-screen t)
 (setopt use-file-dialog nil)
   #+end_src
-
+  
 * Init
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
 ;; -*- lexical-binding: t; -*-
@@ -46,6 +46,7 @@
 (require 'el-magit)
 (require 'modes)
 (require 'terminal)
+(require 'anki)
 
 (when (daemonp)
   (use-package exec-path-from-shell)
@@ -480,4 +481,6 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/anki.el
 (use-package anki-editor
   :vc (:url "https://github.com/anki-editor/anki-editor" :rev :newest))
+
+(provide 'anki)
 #+end_src

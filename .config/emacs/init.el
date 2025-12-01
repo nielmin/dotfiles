@@ -20,6 +20,7 @@
 (require 'el-magit)
 (require 'modes)
 (require 'terminal)
+(require 'anki)
 
 (when (daemonp)
   (use-package exec-path-from-shell)
