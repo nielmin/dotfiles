@@ -50,11 +50,12 @@
   :after org
   :config
   (dolist (item '(("s" . "src")
-                  ("e" . "src emacs-lisp")
+                  ("el" . "src emacs-lisp")
                   ("p" . "src python")
                   ("g" . "src go")
                   )
                 )
-    (add-to-list 'org-structure-template-alist item)))
+    (add-to-list 'org-structure-template-alist item))
+  )
 
 (provide 'el-org)
