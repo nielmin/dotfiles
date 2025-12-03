@@ -15,7 +15,7 @@
 (require 'el-eglot)
 (require 'el-treesit)
 (require 'el-flycheck)
-(require 'el-flyspell)
+;; (require 'el-flyspell)
 (require 'el-meow)
 (require 'el-magit)
 (require 'modes)
