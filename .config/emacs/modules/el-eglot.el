@@ -14,11 +14,11 @@
   ((css-ts-mode css-mode) . eglot-ensure)
   ((go-mode go-ts-mode) . eglot-ensure)
   ((python-mode python-ts-mode) . eglot-ensure)
-  ((markdown-mode org-mode text-mode) . eglot-ensure)
+  ((markdown-mode text-mode) . eglot-ensure)
   :config
   (fset #'jsonrpc--log-event #'ignore)
   (add-to-list 'eglot-server-programs
-               '((markdown-mode text-mode org-mode) . ("harper-ls" "--stdio")))
+               '((markdown-mode text-mode) . ("harper-ls" "--stdio")))
   )
 
 (provide 'el-eglot)
