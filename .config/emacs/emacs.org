@@ -47,6 +47,7 @@
 (require 'modes)
 (require 'terminal)
 ;; (require 'anki)
+(require 'jinx)
 
 (when (daemonp)
   (use-package exec-path-from-shell)
@@ -497,4 +498,15 @@
   :vc (:url "https://github.com/anki-editor/anki-editor" :rev :newest))
 
 (provide 'anki)
+#+end_src
+
+* jinx
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/jinx.el
+(use-package jinx
+  :hook (emacs-startup . global-jinx-mode)
+  :bind (("M-$" . jinx-correct)
+         ("C-M-$" . jinx-languages))
+  )
+
+(provide 'jinx)
 #+end_src
