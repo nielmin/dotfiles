@@ -1,4 +1,5 @@
 (use-package magit
+  :ensure nil
   :init
   (message "Loading Magit!")
   :config
