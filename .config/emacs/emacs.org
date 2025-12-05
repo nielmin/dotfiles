@@ -447,9 +447,6 @@
 )
 #+end_src
 
-#+RESULTS:
-: direnv
-
 * go-mode
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/modes.el
 (defun go-run-this-file ()
