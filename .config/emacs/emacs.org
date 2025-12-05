@@ -47,7 +47,7 @@
 (require 'modes)
 (require 'terminal)
 ;; (require 'anki)
-(require 'jinx)
+(require 'el-jinx)
 
 (when (daemonp)
   (use-package exec-path-from-shell)
@@ -493,12 +493,12 @@
 #+end_src
 
 * jinx
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/jinx.el
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-jinx.el
 (use-package jinx
   :hook (emacs-startup . global-jinx-mode)
   :bind (("M-$" . jinx-correct)
          ("C-M-$" . jinx-languages))
   )
 
-(provide 'jinx)
+(provide 'el-jinx)
 #+end_src

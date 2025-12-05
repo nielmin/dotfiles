@@ -21,7 +21,7 @@
 (require 'modes)
 (require 'terminal)
 ;; (require 'anki)
-(require 'jinx)
+(require 'el-jinx)
 
 (when (daemonp)
   (use-package exec-path-from-shell)
