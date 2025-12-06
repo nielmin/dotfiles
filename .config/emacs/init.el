@@ -78,6 +78,32 @@
   (use-short-answers t)
   )
 
+(setq-default mode-line-format
+  '("%e"
+     " %o "
+     "%* "
+     my-modeline-buffer-name
+     my-modeline-major-mode))
+
+(defvar-local my-modeline-buffer-name
+  '(:eval
+     (when (mode-line-window-selected-p)
+       (propertize (format " %s " (buffer-name))
+         'face '(t :background "#3355bb" :foreground "white" :inherit bold))))
+  "Mode line construct to display the buffer name.")
+
+(put 'my-modeline-buffer-name 'risky-local-variable t)
+
+(defvar-local my-modeline-major-mode
+  '(:eval
+     (list
+       (propertize " λ" 'face 'shadow)
+       " "
+       (propertize (capitalize (symbol-name major-mode)) 'face 'bold)))
+  "Mode line construct to display the major mode.")
+
+(put 'my-modeline-major-mode 'risky-local-variable t)
+
 (use-package ibuffer
   :ensure nil
   :bind
