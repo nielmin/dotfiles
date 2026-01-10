@@ -1,42 +1,68 @@
-# Vague for Alacritty
-# Upstream: https://github.com/vague-theme/vague-alacritty/blob/main/vague.toml
+# Generated with ChatGPT
 
 [colors.primary]
-background = '#141415'
-foreground = '#cdcdcd'
+background = "#101010"
+foreground = "#b0b0b0"
+
+[colors.cursor]
+text   = "#101010"
+cursor = "#ffffff"
+
+[colors.selection]
+text       = "#ffffff"
+background = "#0058d0"
 
 [colors.normal]
-black = '#252530'
-red = '#d8647e'
-green = '#7fa563'
-yellow = '#f3be7c'
-blue = '#6e94b2'
-magenta = '#bb9dbd'
-cyan = '#aeaed1'
-white = '#cdcdcd'
+black   = "#101010"
+red     = "#ff7676"
+green   = "#86cd82"
+yellow  = "#d9ba73"
+blue    = "#8ebeec"
+magenta = "#777777"
+cyan    = "#8ebeec"
+white   = "#b0b0b0"
 
 [colors.bright]
-black = '#606079'
-red = '#e08398'
-green = '#99b782'
-yellow = '#f5cb96'
-blue = '#8ba9c1'
-magenta = '#c9b1ca'
-cyan = '#bebeda'
-white = '#d7d7d7'
+black   = "#272727"
+red     = "#ff9a9a"
+green   = "#9fe29b"
+yellow  = "#e6cf8a"
+blue    = "#b3d4f5"
+magenta = "#a0a0a0"
+cyan    = "#b3d4f5"
+white   = "#ffffff"
 
-[colors.hints.start]
-foreground = "CellBackground"
-background = "CellForeground"
-
-[colors.hints.end]
-foreground = "CellBackground"
-background = "CellForeground"
+[colors.dim]
+black   = "#101010"
+red     = "#c65f5f"
+green   = "#6aa866"
+yellow  = "#b59a5f"
+blue    = "#6f93b8"
+magenta = "#666666"
+cyan    = "#6f93b8"
+white   = "#50585d"
 
 [colors.search.matches]
-foreground = "CellBackground"
-background = "CellForeground"
+foreground = "#101010"
+background = "#d9ba73"
 
 [colors.search.focused_match]
-foreground = "CellBackground"
-background = '#f3be7c'
+foreground = "#101010"
+background = "#0058d0"
+
+[colors.hints.start]
+foreground = "#101010"
+background = "#8ebeec"
+
+[colors.hints.end]
+foreground = "#101010"
+background = "#50585d"
+
+[colors.line_indicator]
+foreground = "None"
+background = "#272727"
+
+[colors.footer_bar]
+foreground = "#b0b0b0"
+background = "#101010"
+
