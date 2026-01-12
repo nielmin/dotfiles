@@ -35,7 +35,7 @@
   :after org
   :config
   ;; Resize Org headings
-  (dolist (face '((org-level-1 . 1.35)
+  (dolist (face '((org-level-1 . 1.4)
                   (org-level-2 . 1.3)
                   (org-level-3 . 1.2)
                   (org-level-4 . 1.1)
