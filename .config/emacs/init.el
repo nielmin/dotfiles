@@ -59,7 +59,7 @@
                       :height 160)
 
   (setopt scroll-conservatively 100)
-  (setopt scroll-margin 8)
+  (setopt scroll-margin 4)
 
   (setopt org-src-window-setup 'current-window)
 
