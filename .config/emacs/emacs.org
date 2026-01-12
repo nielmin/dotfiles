@@ -361,6 +361,7 @@
   (setopt org-export-with-smart-quotes t)
   (setopt org-src-window-setup 'current-window)
   (setopt org-log-into-drawer t)
+  (setopt org-hide-emphasis-markers t)
   :hook
   (org-mode . org-indent-mode)
   (org-mode . visual-line-mode)
