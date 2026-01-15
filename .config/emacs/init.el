@@ -50,12 +50,13 @@
 
   :config
   (set-face-attribute 'default nil
-                      :family "0xProto Nerd Font"
+                      :family "AtkynsonMono Nerd Font"
                       :height 140)
   (set-face-attribute 'fixed-pitch nil
-                      :family "0xProto Nerd Font")
+                      :family "AtkynsonMono Nerd Font"
+                      )
   (set-face-attribute 'variable-pitch nil
-                      :family "Atkinson Hyperlegible"
+                      :family "Atkinson Hyperlegible Next"
                       :height 160)
 
   (setopt scroll-conservatively 100)
