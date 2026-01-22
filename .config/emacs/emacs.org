@@ -79,10 +79,10 @@
 
   :config
   (set-face-attribute 'default nil
-                      :family "AtkynsonMono Nerd Font"
+                      :family "Atkinson Hyperlegible Mono"
                       :height 140)
   (set-face-attribute 'fixed-pitch nil
-                      :family "AtkynsonMono Nerd Font"
+                      :family "Atkinson Hyperlegible Mono"
                       )
   (set-face-attribute 'variable-pitch nil
                       :family "Atkinson Hyperlegible Next"
