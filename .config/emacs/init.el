@@ -21,6 +21,7 @@
 (require 'terminal)
 ;; (require 'anki)
 (require 'el-jinx)
+(require 'el-denote)
 
 (when (daemonp)
   (use-package exec-path-from-shell)
