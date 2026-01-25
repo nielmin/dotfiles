@@ -51,10 +51,10 @@
 
   :config
   (set-face-attribute 'default nil
-                      :family "Atkinson Hyperlegible Mono"
+                      :family "Maple Mono NF"
                       :height 140)
   (set-face-attribute 'fixed-pitch nil
-                      :family "Atkinson Hyperlegible Mono"
+                      :family "Maple Mono NF"
                       )
   (set-face-attribute 'variable-pitch nil
                       :family "Atkinson Hyperlegible Next"
