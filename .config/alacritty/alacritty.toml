@@ -15,8 +15,8 @@ decorations_theme_variant = "Dark" # "Dark"
 
 [font]
 
-normal.family = "AtkynsonMono Nerd Font Propo"
-bold.family = "AtkynsonMono Nerd Font Propo"
-italic.family = "AtkynsonMono Nerd Font Propo"
+normal.family = "Maple Mono NF"
+bold.family = "Maple Mono NF"
+italic.family = "Maple Mono NF"
 
 size = 14.0
