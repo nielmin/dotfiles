@@ -540,14 +540,6 @@
 (provide 'terminal)
 #+end_src
 
-* anki-editor
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/anki.el
-(use-package anki-editor
-  :vc (:url "https://github.com/anki-editor/anki-editor" :rev :newest))
-
-(provide 'anki)
-#+end_src
-
 * jinx
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-jinx.el
 (use-package jinx
