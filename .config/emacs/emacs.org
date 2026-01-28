@@ -1,6 +1,7 @@
 #+TITLE: Emacs Configuration
 #+AUTHOR: Daniel Hwang
 #+DESCRIPTION: Personal Emacs configuration
+#+STARTUP: overview
 * Early Init
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/early-init.el :mkdrip yes
 ;; early-init.el --- Emacs pre package.el & GUI configuration -*- lexical-binding: t; -*-
