@@ -90,8 +90,7 @@
 (defvar-local my-modeline-buffer-name
   '(:eval
      (when (mode-line-window-selected-p)
-       (propertize (format " %s " (buffer-name))
-         'face '(t :background "#3355bb" :foreground "white" :inherit bold))))
+       (propertize (format " %s " (buffer-name)))))
   "Mode line construct to display the buffer name.")
 
 (put 'my-modeline-buffer-name 'risky-local-variable t)
