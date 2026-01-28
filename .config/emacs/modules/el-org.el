@@ -30,26 +30,28 @@
    )
   )
 
-;; (use-package org-roam
-;;   :ensure t
-;;   :custom
-;;   (org-roam-directory "~/Documents/org")
-;;   (org-roam-completion-everywhere t)
-;;   (org-roam-capture-templates
-;;    '(("d" "default" plain
-;;       "%?"
-;;       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
-;;       :unarrowed t))
-;;    )
-;;   :bind (("C-c n l" . org-roam-buffer-toggle)
-;;          ("C-c n f" . org-roam-node-find)
-;;          ("C-c n i" . org-roam-node-insert)
-;;          :map org-mode-map
-;;          ("C-M-i" . completion-at-point)
-;;          )
-;;   :config
-;;   (org-roam-setup)
-;;   )
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory "~/Documents/org")
+  (org-roam-db-location "~/Documents/org/org-roam.db")
+  (org-roam-completion-everywhere t)
+  (org-roam-capture-templates
+   '(("d" "default" plain
+      "%?"
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+      :unarrowed t))
+   )
+  :bind (("C-c r l" . org-roam-buffer-toggle)
+         ("C-c r f" . org-roam-node-find)
+         ("C-c r i" . org-roam-node-insert)
+         ("C-c r c" . org-roam-node-capture)
+         :map org-mode-map
+         ("C-M-i" . completion-at-point)
+         )
+  :config
+  (org-roam-setup)
+  )
 
 (use-package org-faces
   :ensure nil
