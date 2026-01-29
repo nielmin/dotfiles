@@ -20,4 +20,8 @@
   (denote-rename-buffer-mode 1)
   )
 
+(use-package denote-org
+  :ensure t
+  )
+
 (provide 'el-denote)
