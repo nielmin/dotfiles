@@ -7,18 +7,23 @@
 	      ("C-c l f" . eglot-format)
 	      ("C-c l F" . eglot-format-buffer)
 	      ("C-c l d" . xref-find-definitions-at-mouse)
-	      ;; sometimes ionide acts up
 	      ("C-c l R" . eglot-reconnect))
   :hook
   ((html-mode html-ts-code) . eglot-ensure)
   ((css-ts-mode css-mode) . eglot-ensure)
   ((go-mode go-ts-mode) . eglot-ensure)
   ((python-mode python-ts-mode) . eglot-ensure)
-  (markdown-mode . eglot-ensure)
+  (org-mode . eglot-ensure)
   :config
-  (fset #'jsonrpc--log-event #'ignore)
+  (setq-default eglot-workspace-configuration
+                '(:harper-ls (:linters (:SpellCheck t
+                                                    :SentenceCapitalization :json-false
+                                                    :LongSentences :json-false
+                                                    :Spaces :json-false))))
   (add-to-list 'eglot-server-programs
-               '(markdown-mode . ("harper-ls" "--stdio")))
+               '(org-mode . ("harper-ls" "--stdio"))
+               )
+  :custom
+  (eglot-autoshutdown t)
   )
-
 (provide 'el-eglot)
