@@ -15,12 +15,9 @@
 (require 'el-eglot)
 (require 'el-treesit)
 (require 'el-flycheck)
-;; (require 'el-flyspell)
 (require 'el-magit)
 (require 'modes)
 (require 'terminal)
-;; (require 'anki)
-(require 'el-jinx)
 (require 'el-denote)
 
 (when (daemonp)

@@ -42,12 +42,9 @@
 (require 'el-eglot)
 (require 'el-treesit)
 (require 'el-flycheck)
-;; (require 'el-flyspell)
 (require 'el-magit)
 (require 'modes)
 (require 'terminal)
-;; (require 'anki)
-(require 'el-jinx)
 (require 'el-denote)
 
 (when (daemonp)
@@ -194,17 +191,6 @@
 )
 
 (provide 'el-flycheck)
-#+end_src
-
-* Flyspell
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-flyspell.el
-(use-package flyspell
-  :ensure nil
-  :hook
-  (prog-mode . flyspell-prog-mode)
-  (text-mode . flyspell-mode)
-  )
-(provide 'el-flyspell)
 #+end_src
 
 * Completion
