@@ -24,4 +24,13 @@
   :ensure t
   )
 
+(use-package consult-denote
+  :ensure t
+  :bind
+  (("C-c n f" . consult-denote-find)
+   ("C-c n g" . consult-denote-grep))
+  :config
+  (consult-denote-mode 1)
+  )
+
 (provide 'el-denote)
