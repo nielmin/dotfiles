@@ -7,7 +7,6 @@
 
 (use-package consult 
   :bind
-  ("C-s" . consult-line)
   ("C-x b" . consult-buffer)
   :hook
   (completion-list-mode . consult-preview-at-point-mode)

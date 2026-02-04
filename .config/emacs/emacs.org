@@ -215,7 +215,6 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
 (use-package consult 
   :bind
-  ("C-s" . consult-line)
   ("C-x b" . consult-buffer)
   :hook
   (completion-list-mode . consult-preview-at-point-mode)
