@@ -1,11 +1,8 @@
 (use-package flycheck
-  :ensure t
-  :hook
-  (prog-mode . flycheck-mode)
+  :init (global-flycheck-mode)
   )
 
 (use-package flycheck-eglot
-  :ensure t
   :after (flycheck eglot)
   :hook
   (prog-mode . flycheck-eglot-mode)

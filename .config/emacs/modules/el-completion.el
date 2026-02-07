@@ -2,10 +2,10 @@
 
 (use-package savehist
   :ensure nil
-  :hook (after-init . savehist-mode)
+  :hook (elpaca-after-init . savehist-mode)
   )
 
-(use-package consult 
+(use-package consult
   :bind
   ("C-x b" . consult-buffer)
   :hook
@@ -13,12 +13,10 @@
   )
 
 (use-package marginalia
-  :ensure t
-  :hook (after-init . marginalia-mode)
+  :hook (elpaca-after-init . marginalia-mode)
   )
 
 (use-package orderless
-  :ensure t
   :config
   (setopt completion-styles '(orderless basic)
 	        completion-category-defaults nil
@@ -27,16 +25,14 @@
   )
 
 (use-package vertico
-  :ensure t
-  :hook (after-init . vertico-mode)
+  :hook (elpaca-after-init . vertico-mode)
   )
 
 (use-package corfu
-  :ensure t
-  :hook (after-init . global-corfu-mode)
+  :hook (elpaca-after-init . global-corfu-mode)
   :bind (:map corfu-map ("<tab>" . corfu-complete))
   :config
-  (setopt tab-alwals-indent 'complete)
+  (setopt tab-always-indent 'complete)
   (setopt corfu-preview-current nil)
   (setopt corfu-min-width 20)
 

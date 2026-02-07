@@ -4,60 +4,126 @@
 #+STARTUP: overview
 * Early Init
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/early-init.el :mkdrip yes
-;; early-init.el --- Emacs pre package.el & GUI configuration -*- lexical-binding: t; -*-
-;; Code:
+  ;; early-init.el --- Emacs pre package.el & GUI configuration -*- lexical-binding: t; -*-
+  ;; Code:
+  (setopt backup-inhibited t
+  	  make-backup-files nil
+  	  auto-save-default nil)
 
-(setopt backup-inhibited t
-	  make-backup-files nil
-	  auto-save-default nil)
+  (setopt native-comp-async-report-warnings-errors nil)
 
-(setopt native-comp-async-report-warnings-errors nil)
-;; Unneeded UI elemenets
-(menu-bar-mode -1)
-(tool-bar-mode -1)      
-(scroll-bar-mode -1)    
-(tooltip-mode -1)       
-(set-fringe-mode 10)
+  ;; Unneeded UI elemenets
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)      
+  (scroll-bar-mode -1)    
+  (tooltip-mode -1)       
+  (set-fringe-mode 10)
 
-(setopt inhibit-splash-screen t)
-(setopt use-file-dialog nil)
+  (setopt inhibit-splash-screen t)
+  (setopt use-file-dialog nil)
+
+  (setq package-enable-at-startup nil)
   #+end_src
-  
 * Init
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
 ;; -*- lexical-binding: t; -*-
+#+end_src
 
-;; Add configuration modules to load path
-(add-to-list 'load-path '"~/.dotfiles/.config/emacs/modules")
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
+(defvar elpaca-installer-version 0.11)
+(defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
+(defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
+(defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
+(defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
+                              :ref nil :depth 1 :inherit ignore
+                              :files (:defaults "elpaca-test.el" (:exclude "extensions"))
+                              :build (:not elpaca--activate-package)))
+(let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
+       (build (expand-file-name "elpaca/" elpaca-builds-directory))
+       (order (cdr elpaca-order))
+       (default-directory repo))
+  (add-to-list 'load-path (if (file-exists-p build) build repo))
+  (unless (file-exists-p repo)
+    (make-directory repo t)
+    (when (<= emacs-major-version 28) (require 'subr-x))
+    (condition-case-unless-debug err
+        (if-let* ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
+                  ((zerop (apply #'call-process `("git" nil ,buffer t "clone"
+                                                  ,@(when-let* ((depth (plist-get order :depth)))
+                                                      (list (format "--depth=%d" depth) "--no-single-branch"))
+                                                  ,(plist-get order :repo) ,repo))))
+                  ((zerop (call-process "git" nil buffer t "checkout"
+                                        (or (plist-get order :ref) "--"))))
+                  (emacs (concat invocation-directory invocation-name))
+                  ((zerop (call-process emacs nil buffer nil "-Q" "-L" "." "--batch"
+                                        "--eval" "(byte-recompile-directory \".\" 0 'force)")))
+                  ((require 'elpaca))
+                  ((elpaca-generate-autoloads "elpaca" repo)))
+            (progn (message "%s" (buffer-string)) (kill-buffer buffer))
+          (error "%s" (with-current-buffer buffer (buffer-string))))
+      ((error) (warn "%s" err) (delete-directory repo 'recursive))))
+  (unless (require 'elpaca-autoloads nil t)
+    (require 'elpaca)
+    (elpaca-generate-autoloads "elpaca" repo)
+    (let ((load-source-file-function nil)) (load "./elpaca-autoloads"))))
+(add-hook 'after-init-hook #'elpaca-process-queues)
+(elpaca `(,@elpaca-order))
 
-(setopt custom-file "~/.dotfiles/.config/emacs/custom.el")
+;; Uncomment for systems which cannot create symlinks:
+;; (elpaca-no-symlink-mode)
 
-;; Required Modules
-(require 'el-package)
-(require 'el-completion)
-(require 'el-theme)
-(require 'el-org)
-(require 'el-ui)
-(require 'el-dired)
-(require 'el-eglot)
-(require 'el-treesit)
-(require 'el-flycheck)
-(require 'el-magit)
-(require 'modes)
-(require 'terminal)
-(require 'el-denote)
+;; Install a package via the elpaca macro
+;; See the "recipes" section of the manual for more details.
 
-(when (daemonp)
-  (use-package exec-path-from-shell)
-  (exec-path-from-shell-initialize))
+;; (elpaca example-package)
 
-(setq-default create-lockfiles nil)
-  #+end_src
-  
+;; Install use-package support
+(elpaca elpaca-use-package
+  ;; Enable use-package :ensure support for Elpaca.
+  (elpaca-use-package-mode))
+
+(setq use-package-always-ensure t)
+
+;;When installing a package used in the init file itself,
+;;e.g. a package which adds a use-package key word,
+;;use the :wait recipe keyword to block until that package is installed/configured.
+;;For example:
+;; (use-package general :ensure (:wait t) :demand t)
+
+;; Local Variables:
+;; no-byte-compile: t
+;; no-native-compile: t
+;; no-update-autoloads: t
+;; End:
+#+end_src
+* Modules
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
+  ;; Add configuration modules to load path
+  (add-to-list 'load-path '"~/.dotfiles/.config/emacs/modules")
+
+  ;; Required Modules
+  ;; (require 'el-package)
+  (require 'el-completion)
+  (require 'el-theme)
+  (require 'el-org)
+  (require 'el-ui)
+  (require 'el-dired)
+  (require 'el-eglot)
+  (require 'el-treesit)
+  (require 'el-flycheck)
+  (require 'el-magit)
+  (require 'modes)
+  (require 'terminal)
+  (require 'el-denote)
+#+end_src
+
 * Emacs
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
 (use-package emacs
+  :ensure nil
   :init
+  ;; Set custom custom.el
+  (setopt custom-file "~/.dotfiles/.config/emacs/custom.el")  
   ;; Follow symlinks (for git dotfiles)
   (setopt vc-follow-symlinks t)
   ;; Frame height and width
@@ -66,6 +132,8 @@
   ;; Set tab width
   (setq-default tab-width 2)
   (setq-default indent-tabs-mode nil)
+  ;; Do not create lock files
+  (setq-default create-lockfiles nil)
   :bind
   ("M-o" . other-window)
   ("C-x k" . 'kill-cur-buffer)
@@ -107,7 +175,6 @@
   (use-short-answers t)
   )
 #+end_src
-
 * Modeline
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
 (setq-default mode-line-format
@@ -150,7 +217,6 @@
 * Diminish
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
 (use-package diminish
-  :ensure t
   )
 #+end_src
 
@@ -158,17 +224,18 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
 (use-package which-key
   :diminish which-key-mode
-  :hook (after-init . which-key-mode)
+  :hook (elpaca-after-init . which-key-mode)
   :config
   (setopt which-key-idle-delay 0.3)
   ) 
 #+end_src
 
-* Use-Package
+* use-Package
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-package.el :mkdirp yes
 ;; -*- lexical-binding: t; -*-
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -177,7 +244,7 @@
 
 (eval-and-compile
   (setopt use-package-always-ensure t
-	        use-package-expand-minimally t))
+  	      use-package-expand-minimally t))
 
 (provide 'el-package)
 #+end_src
@@ -185,13 +252,10 @@
 * Flycheck
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-flycheck.el
 (use-package flycheck
-  :ensure t
-  :hook
-  (prog-mode . flycheck-mode)
+  :init (global-flycheck-mode)
   )
 
 (use-package flycheck-eglot
-  :ensure t
   :after (flycheck eglot)
   :hook
   (prog-mode . flycheck-eglot-mode)
@@ -208,12 +272,12 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
 (use-package savehist
   :ensure nil
-  :hook (after-init . savehist-mode)
+  :hook (elpaca-after-init . savehist-mode)
   )
 #+end_src
 ** Consult
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
-(use-package consult 
+(use-package consult
   :bind
   ("C-x b" . consult-buffer)
   :hook
@@ -224,15 +288,13 @@
 ** Marginalia
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
 (use-package marginalia
-  :ensure t
-  :hook (after-init . marginalia-mode)
+  :hook (elpaca-after-init . marginalia-mode)
   )
 #+end_src
 
 ** Orderless
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
 (use-package orderless
-  :ensure t
   :config
   (setopt completion-styles '(orderless basic)
 	        completion-category-defaults nil
@@ -244,19 +306,17 @@
 ** Vertico
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
 (use-package vertico
-  :ensure t
-  :hook (after-init . vertico-mode)
+  :hook (elpaca-after-init . vertico-mode)
   )
   #+end_src
   
 ** Corfu
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
 (use-package corfu
-  :ensure t
-  :hook (after-init . global-corfu-mode)
+  :hook (elpaca-after-init . global-corfu-mode)
   :bind (:map corfu-map ("<tab>" . corfu-complete))
   :config
-  (setopt tab-alwals-indent 'complete)
+  (setopt tab-always-indent 'complete)
   (setopt corfu-preview-current nil)
   (setopt corfu-min-width 20)
 
@@ -277,7 +337,6 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-theme.el
   ;; -*- lexical-binding: t; -*-
   (use-package ef-themes
-    :ensure t
     :init
     (ef-themes-take-over-modus-themes-mode 1)
     :config
@@ -292,7 +351,7 @@
 
   (provide 'el-theme)
 #+end_src
-  
+
 * Dired
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-dired.el
 ;; -*- lexical-binding: t; -*-
@@ -317,6 +376,7 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-eglot.el
 ;; -*- lexical-binding: t; -*-
 (use-package eglot
+  :ensure nil
   :bind (:map eglot-mode-map
         ("C-c l a" . eglot-code-actions)
 	      ("C-c l r" . eglot-rename)
@@ -351,6 +411,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package org
+  :ensure nil
   :init
   ;; org settings
   (setopt org-ellipsis " ")
@@ -379,29 +440,6 @@
      )
    )
   )
-
-;; (use-package org-roam
-;;   :ensure t
-;;   :custom
-;;   (org-roam-directory "~/Documents/org")
-;;   (org-roam-db-location "~/Documents/org/org-roam.db")
-;;   (org-roam-completion-everywhere t)
-;;   (org-roam-capture-templates
-;;    '(("d" "default" plain
-;;       "%?"
-;;       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
-;;       :unarrowed t))
-;;    )
-;;   :bind (("C-c r l" . org-roam-buffer-toggle)
-;;          ("C-c r f" . org-roam-node-find)
-;;          ("C-c r i" . org-roam-node-insert)
-;;          ("C-c r c" . org-roam-node-capture)
-;;          :map org-mode-map
-;;          ("C-M-i" . completion-at-point)
-;;          )
-;;   :config
-;;   (org-roam-setup)
-;;   )
 
 (use-package org-faces
   :ensure nil
@@ -472,7 +510,7 @@
 
 (use-package treesit-auto
   :ensure t
-  :hook (prog-mode . global-treesit-auto-mode)
+  :hook (prog-mode . treesit-auto-mode)
   )
 
 (provide 'el-treesit)
@@ -480,8 +518,10 @@
 
 * Magit
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-magit.el
+(use-package transient
+
+  )
 (use-package magit
-  :ensure nil
   :init
   (message "Loading Magit!")
   :config

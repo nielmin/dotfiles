@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package org
+  :ensure nil
   :init
   ;; org settings
   (setopt org-ellipsis " ")
@@ -29,29 +30,6 @@
      )
    )
   )
-
-;; (use-package org-roam
-;;   :ensure t
-;;   :custom
-;;   (org-roam-directory "~/Documents/org")
-;;   (org-roam-db-location "~/Documents/org/org-roam.db")
-;;   (org-roam-completion-everywhere t)
-;;   (org-roam-capture-templates
-;;    '(("d" "default" plain
-;;       "%?"
-;;       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
-;;       :unarrowed t))
-;;    )
-;;   :bind (("C-c r l" . org-roam-buffer-toggle)
-;;          ("C-c r f" . org-roam-node-find)
-;;          ("C-c r i" . org-roam-node-insert)
-;;          ("C-c r c" . org-roam-node-capture)
-;;          :map org-mode-map
-;;          ("C-M-i" . completion-at-point)
-;;          )
-;;   :config
-;;   (org-roam-setup)
-;;   )
 
 (use-package org-faces
   :ensure nil
