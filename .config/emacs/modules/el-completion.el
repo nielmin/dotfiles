@@ -39,6 +39,11 @@
   (setopt corfu-popupinto-delay '(1.25 . 0.5))
   (corfu-popupinfo-mode 1)
 
+  (setq corfu-auto t
+        corfu-auto-delay 0.2
+        corfu-auto-trigger "."
+        corfu-quit-no-match 'separator)
+  
   (with-eval-after-load 'savehist
     (corfu-history-mode 1)
     (add-to-list 'savehist-additional-variables 'corfu-history))
