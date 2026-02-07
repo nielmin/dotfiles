@@ -66,24 +66,6 @@
 ;; no-update-autoloads: t
 ;; End:
 
-  ;; Add configuration modules to load path
-  (add-to-list 'load-path '"~/.dotfiles/.config/emacs/modules")
-
-  ;; Required Modules
-  ;; (require 'el-package)
-  (require 'el-completion)
-  (require 'el-theme)
-  (require 'el-org)
-  (require 'el-ui)
-  (require 'el-dired)
-  (require 'el-eglot)
-  (require 'el-treesit)
-  (require 'el-flycheck)
-  (require 'el-magit)
-  (require 'modes)
-  (require 'terminal)
-  (require 'el-denote)
-
 (use-package emacs
   :ensure nil
   :init
@@ -182,3 +164,20 @@
   :config
   (setopt which-key-idle-delay 0.3)
   )
+
+;; Add configuration modules to load path
+(add-to-list 'load-path '"~/.dotfiles/.config/emacs/modules")
+
+;; Required Modules
+;; (require 'el-package)
+(require 'el-completion)
+(require 'el-theme)
+(require 'el-org)
+(require 'el-ui)
+(require 'el-dired)
+(require 'el-eglot)
+(require 'el-treesit)
+(require 'el-flycheck)
+(require 'el-magit)
+(require 'el-denote)
+(require 'modes)
