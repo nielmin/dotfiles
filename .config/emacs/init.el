@@ -94,7 +94,7 @@
 
 (use-package which-key
   :diminish which-key-mode
-  :hook (elpaca-after-init . which-key-mode)
+  :hook (after-init . which-key-mode)
   :config
   (setopt which-key-idle-delay 0.3)
   )

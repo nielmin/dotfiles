@@ -2,7 +2,7 @@
 
 (use-package savehist
   :ensure nil
-  :hook (elpaca-after-init . savehist-mode)
+  :hook (after-init . savehist-mode)
   )
 
 (use-package consult
@@ -13,7 +13,7 @@
   )
 
 (use-package marginalia
-  :hook (elpaca-after-init . marginalia-mode)
+  :hook (after-init . marginalia-mode)
   )
 
 (use-package orderless
@@ -25,11 +25,11 @@
   )
 
 (use-package vertico
-  :hook (elpaca-after-init . vertico-mode)
+  :hook (after-init . vertico-mode)
   )
 
 (use-package corfu
-  :hook (elpaca-after-init . global-corfu-mode)
+  :hook (after-init . global-corfu-mode)
   :bind (:map corfu-map ("<tab>" . corfu-complete))
   :config
   (setopt tab-always-indent 'complete)
