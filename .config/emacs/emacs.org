@@ -229,7 +229,7 @@
 (require 'modes)
 #+end_src
 
-* use-Package
+* use-package
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-package.el :mkdirp yes
 ;; -*- lexical-binding: t; -*-
 (require 'package)
@@ -248,7 +248,7 @@
 (provide 'el-package)
 #+end_src
 
-* Flycheck
+* flycheck
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-flycheck.el
 (use-package flycheck
   :init (global-flycheck-mode)
@@ -263,7 +263,7 @@
 (provide 'el-flycheck)
 #+end_src
 
-* Completion
+* completion
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
 ;; -*- lexical-binding: t; -*-
 #+end_src
@@ -351,7 +351,7 @@
   (provide 'el-theme)
 #+end_src
 
-* Dired
+* dired
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-dired.el
 ;; -*- lexical-binding: t; -*-
 (use-package dired
@@ -371,7 +371,7 @@
 
 #+end_src
 
-* Eglot
+* eglot
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-eglot.el
 ;; -*- lexical-binding: t; -*-
 (use-package eglot
@@ -405,7 +405,7 @@
 (provide 'el-eglot)
 #+end_src
 
-* Org
+* org
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-org.el
 ;; -*- lexical-binding: t; -*-
 
@@ -472,7 +472,7 @@
 (provide 'el-org)
 #+end_src
 
-* Rainbow-delimiters
+* rainbow-delimiters
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-ui.el
 ;; -*- lexical-binding: t; -*-
 (use-package rainbow-delimiters
@@ -483,7 +483,7 @@
 (provide 'el-ui)
 #+end_src
 
-* Treesit
+* treesit
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-treesit.el
 (use-package treesit
   :ensure nil
@@ -515,7 +515,7 @@
 (provide 'el-treesit)
 #+end_src
 
-* Magit
+* magit
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-magit.el
 (use-package transient
 
