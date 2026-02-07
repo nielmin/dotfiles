@@ -15,5 +15,3 @@
 
   (setopt inhibit-splash-screen t)
   (setopt use-file-dialog nil)
-
-  (setq package-enable-at-startup nil)
