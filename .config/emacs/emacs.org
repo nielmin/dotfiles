@@ -570,14 +570,6 @@
 (provide 'modes)
 #+end_src
 
-* eat
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/terminal.el
-(use-package eat
-  :ensure t
-  )
-(provide 'terminal)
-#+end_src
-
 * denote
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-denote.el
 ;; -*- lexical-binding: t; -*-
