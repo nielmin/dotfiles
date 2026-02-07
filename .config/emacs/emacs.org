@@ -448,8 +448,10 @@
 * magit
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-magit.el
 (use-package transient
-
+  :init
+  (message "Loading transient")
   )
+
 (use-package magit
   :init
   (message "Loading Magit!")

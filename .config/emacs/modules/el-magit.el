@@ -1,6 +1,8 @@
 (use-package transient
-
+  :init
+  (message "Loading transient")
   )
+
 (use-package magit
   :init
   (message "Loading Magit!")
