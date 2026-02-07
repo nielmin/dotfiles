@@ -125,8 +125,7 @@
 
 * Diminish
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
-(use-package diminish
-  )
+(use-package diminish)
 #+end_src
 
 * which-key

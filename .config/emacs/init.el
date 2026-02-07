@@ -89,8 +89,7 @@
   (ibuffer-use-other-window t)
  )
 
-(use-package diminish
-  )
+(use-package diminish)
 
 (use-package which-key
   :diminish which-key-mode
