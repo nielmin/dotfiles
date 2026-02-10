@@ -241,7 +241,9 @@
 ** Corfu
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
 (use-package corfu
-  :hook (after-init . global-corfu-mode)
+  :hook
+  (prog-mode . corfu-mode)
+  (prog-mode . corfu-popupinfo-mode)
   :bind (:map corfu-map ("<tab>" . corfu-complete))
   :config
   (setopt tab-always-indent 'complete)
@@ -249,8 +251,7 @@
   (setopt corfu-min-width 20)
 
   (setopt corfu-popupinto-delay '(1.25 . 0.5))
-  (corfu-popupinfo-mode 1)
-
+  
   (setq corfu-auto t
         corfu-auto-delay 0.2
         corfu-auto-trigger "."
