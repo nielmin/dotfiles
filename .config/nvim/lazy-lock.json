@@ -1,8 +1,8 @@
 {
-  "conform.nvim": { "branch": "master", "commit": "238f542a118984a88124fc915d5b981680418707" },
-  "koda.nvim": { "branch": "main", "commit": "b21e91effca3b6238a6ee970699ee93c04f5e602" },
+  "conform.nvim": { "branch": "master", "commit": "c2526f1cde528a66e086ab1668e996d162c75f4f" },
+  "koda.nvim": { "branch": "main", "commit": "908dc4a1e01eb4087f9ac97e8cfd84d5f407d7dd" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
-  "mini.nvim": { "branch": "main", "commit": "19973fa2c13399d68bf8d2cd98b0cb7367a8a72a" },
+  "mini.nvim": { "branch": "main", "commit": "e5a9a3830f9c37211df4c82cac45bf728b95739d" },
   "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
-  "nvim-ts-autotag": { "branch": "main", "commit": "c4ca798ab95b316a768d51eaaaee48f64a4a46bc" }
+  "nvim-ts-autotag": { "branch": "main", "commit": "8e1c0a389f20bf7f5b0dd0e00306c1247bda2595" }
 }
