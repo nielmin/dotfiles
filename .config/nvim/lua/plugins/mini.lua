@@ -39,7 +39,5 @@ return {
         { mode = "x", keys = "z" },
       },
     })
-    require("mini.completion").setup()
-    require("mini.snippets").setup()
   end,
 }
