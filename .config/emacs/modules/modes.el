@@ -1,6 +1,8 @@
 (use-package direnv
   :hook
   (prog-mode . direnv-mode)
+  :bind (("C-c d d" . direnv-mode)
+         ("C-c d a" . direnv-allow))
 )
 
 (defun go-run-this-file ()
