@@ -15,8 +15,8 @@ decorations_theme_variant = "Dark" # "Dark"
 
 [font]
 
-normal.family = "Maple Mono NF"
-bold.family = "Maple Mono NF"
-italic.family = "Maple Mono NF"
+normal.family = "Agave"
+bold.family = "Agave"
+italic.family = "Agave"
 
-size = 14.0
+size = 16.0
