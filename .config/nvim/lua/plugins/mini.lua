@@ -39,5 +39,11 @@ return {
         { mode = "x", keys = "z" },
       },
     })
+
+    require("mini.completion").setup()
+    require("mini.snippets").setup()
+
+    require("mini.files").setup()
+    require("mini.comment").setup()
   end,
 }
