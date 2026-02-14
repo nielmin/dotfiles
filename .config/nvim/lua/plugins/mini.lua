@@ -45,5 +45,7 @@ return {
 
     require("mini.files").setup()
     require("mini.comment").setup()
+
+    require("mini.pick").setup()
   end,
 }
