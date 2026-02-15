@@ -471,13 +471,11 @@
 (provide 'el-magit)
 #+end_src
 
-* direnv
+* envrc
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/modes.el
-(use-package direnv
+(use-package envrc
   :hook
-  (prog-mode . direnv-mode)
-  :bind (("C-c d d" . direnv-mode)
-         ("C-c d a" . direnv-allow))
+  (after-init . envrc-global-mode)
 )
 #+end_src
 

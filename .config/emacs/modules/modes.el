@@ -1,8 +1,6 @@
-(use-package direnv
+(use-package envrc
   :hook
-  (prog-mode . direnv-mode)
-  :bind (("C-c d d" . direnv-mode)
-         ("C-c d a" . direnv-allow))
+  (after-init . envrc-global-mode)
 )
 
 (defun go-run-this-file ()
