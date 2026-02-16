@@ -74,7 +74,7 @@
 (defvar-local my-modeline-major-mode
   '(:eval
      (list
-       (propertize " λ" 'face 'shadow)
+       (propertize "λ" 'face 'shadow)
        " "
        (propertize (capitalize (symbol-name major-mode)) 'face 'bold)))
   "Mode line construct to display the major mode.")
