@@ -4,20 +4,21 @@
   :ensure nil
   :init
   ;; org settings
-  (setopt org-ellipsis " ")
-  (setopt org-src-fontify-natively t)
-  (setopt org-src-tab-acts-natively t)
-  (setopt org-confirm-babel-evaluate nil)
-  (setopt org-export-with-smart-quotes t)
-  (setopt org-src-window-setup 'current-window)
-  (setopt org-log-into-drawer t)
-  (setopt org-hide-emphasis-markers t)
+  (setopt org-ellipsis " "
+          org-src-fontify-natively t
+          org-src-tab-acts-natively t
+          org-confirm-babel-evaluate nil
+          org-export-with-smart-quotes t
+          org-src-window-setup 'current-window
+          org-log-into-drawer t
+          org-hide-emphasis-markers t
+   )
   :hook
   (org-mode . org-indent-mode)
   (org-mode . visual-line-mode)
   :config
   ;; org-agenda
-  (setopt org-agenda-start-with-log-mode t)
+  (setopt org-agenda-start-with-log-macode nil)
   (setopt org-log-done 'time)
   ;; indentation
   (setopt org-edit-src-content-indentation 0
