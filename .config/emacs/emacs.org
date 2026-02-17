@@ -298,14 +298,14 @@
   (dired-mode . dired-hide-details-mode)
   (dired-mode . hl-line-mode)
   :config
-  (setopt dired-recursive-copies 'always)
-  (setopt dired-recursive-deletes 'always)
-  (setopt delete-by-moving-to-trash t)
-  (setopt dired-dwim-target t)
-  )
+  (setopt dired-recursive-copies 'always
+          dired-recursive-deletes 'always
+          delete-by-moving-to-trash t
+          dired-dwim-target t
+          dired-kill-when-opening-new-dired-buffer t
+          )
 
 (provide 'el-dired)
-
 #+end_src
 
 * eglot
