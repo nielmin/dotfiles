@@ -24,9 +24,10 @@
   :config
   (set-face-attribute 'default nil
                       :family "Agave"
-                      :height 140)
+                      :height 160)
   (set-face-attribute 'fixed-pitch nil
                       :family "Agave"
+                      :height 160
                       )
   (set-face-attribute 'variable-pitch nil
                       :family "Atkinson Hyperlegible Next"
