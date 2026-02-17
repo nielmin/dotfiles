@@ -3,10 +3,6 @@
 (use-package emacs
   :ensure nil
   :init
-  ;; Set custom custom.el
-  (setopt custom-file "~/.dotfiles/.config/emacs/custom.el")  
-  ;; Follow symlinks (for git dotfiles)
-  (setopt vc-follow-symlinks t)
   ;; Frame height and width
   (add-to-list 'default-frame-alist '(height . 24))
   (add-to-list 'default-frame-alist '(width . 80))
