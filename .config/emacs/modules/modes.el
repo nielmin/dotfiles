@@ -3,6 +3,10 @@
   (after-init . envrc-global-mode)
 )
 
+;; -*- lexical-binding: t; -*-
+
+(use-package diminish)
+
 (defun go-run-this-file ()
   "go run"
   (interactive)
