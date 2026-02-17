@@ -52,13 +52,10 @@
   :ensure nil
   :after org
   :config
-  (dolist (item '(("s" . "src")
-                  ("el" . "src emacs-lisp")
-                  ("p" . "src python")
-                  ("g" . "src go")
-                  )
-                )
-    (add-to-list 'org-structure-template-alist item))
-  )
+  (setopt org-structure-template-alist
+          '(("s" . "src")
+            ("e" . "src emacs-lisp")
+            ("p" . "src python")
+            ("g" . "src go"))))
 
 (provide 'el-org)
