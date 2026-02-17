@@ -17,4 +17,4 @@
         ;; Set custom custom.el
         custom-file "~/.dotfiles/.config/emacs/custom.el"
         ;; Follow symlinks (for git dotfiles)
-        vc-follow-symlinks t
+        vc-follow-symlinks t)
