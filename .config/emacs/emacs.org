@@ -124,6 +124,22 @@
  )
 #+end_src
 
+* isearch
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
+(use-package isearch
+  :ensure nil
+  :bind
+  :custom
+	isearch-lax-whitespace t
+	isearch-lazy-count t
+	isearch-repeat-on-direction-change t
+	isearch-wrap-pause 'no-ding
+	lazy-count-prefix-format "[%s of %s] => "
+	search-whitespace-regexp ".*?"
+  )
+#+end_src
+
+
 * Diminish
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
 (use-package diminish)

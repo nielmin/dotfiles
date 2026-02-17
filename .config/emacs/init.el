@@ -86,6 +86,18 @@
   (ibuffer-use-other-window t)
  )
 
+(use-package isearch
+  :ensure nil
+  :bind
+  :custom
+	isearch-lax-whitespace t
+	isearch-lazy-count t
+	isearch-repeat-on-direction-change t
+	isearch-wrap-pause 'no-ding
+	lazy-count-prefix-format "[%s of %s] => "
+	search-whitespace-regexp ".*?"
+  )
+
 (use-package diminish)
 
 (use-package which-key
