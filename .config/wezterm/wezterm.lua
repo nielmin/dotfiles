@@ -1,3 +1,5 @@
+local theme = require("theme")
+
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
@@ -15,7 +17,7 @@ config.initial_rows = 28
 -- or, changing the font size and color scheme.
 config.font_size = 18
 config.font = wezterm.font("Agave")
-config.color_scheme = "tokyonight"
+config.colors = theme
 
 -- Finally, return the configuration to wezterm:
 return config
