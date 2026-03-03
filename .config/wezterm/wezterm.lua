@@ -19,5 +19,17 @@ config.font_size = 18
 config.font = wezterm.font("Agave")
 config.colors = theme
 
+config.keys = {
+	{
+		key = "|",
+		mods = "SUPER",
+		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		key = "-",
+		mods = "SUPER",
+		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+}
 -- Finally, return the configuration to wezterm:
 return config
