@@ -21,6 +21,11 @@ config.colors = theme
 
 config.keys = {
 	{
+		key = "w",
+		mods = "SUPER",
+		action = wezterm.action.CloseCurrentPane({ confirm = false }),
+	},
+	{
 		key = "|",
 		mods = "SUPER|SHIFT",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
