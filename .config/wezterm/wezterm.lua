@@ -22,7 +22,7 @@ config.colors = theme
 config.keys = {
 	{
 		key = "|",
-		mods = "SUPER",
+		mods = "SUPER|SHIFT",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
 	{
@@ -31,5 +31,6 @@ config.keys = {
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 }
+
 -- Finally, return the configuration to wezterm:
 return config
