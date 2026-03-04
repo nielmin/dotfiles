@@ -11,8 +11,8 @@ local config = wezterm.config_builder()
 config.enable_tab_bar = false
 
 -- For example, changing the initial geometry for new windows:
-config.initial_cols = 120
-config.initial_rows = 28
+config.initial_cols = 80
+config.initial_rows = 36
 
 -- or, changing the font size and color scheme.
 config.font_size = 18
