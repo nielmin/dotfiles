@@ -241,7 +241,8 @@
 * flycheck
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-flycheck.el
 (use-package flycheck
-  :init (global-flycheck-mode)
+  :hook
+  (after-init . flycheck-mode)
   )
 
 (use-package flycheck-eglot

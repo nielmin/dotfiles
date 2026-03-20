@@ -1,5 +1,6 @@
 (use-package flycheck
-  :init (global-flycheck-mode)
+  :hook
+  (after-init . flycheck-mode)
   )
 
 (use-package flycheck-eglot
