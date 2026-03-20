@@ -8,8 +8,6 @@
 (use-package consult
   :bind
   ("C-x b" . consult-buffer)
-  :hook
-  (completion-list-mode . consult-preview-at-point-mode)
   )
 
 (use-package marginalia
