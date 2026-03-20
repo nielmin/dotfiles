@@ -21,7 +21,6 @@
   )
 
 (use-package treesit-auto
-  :ensure t
   :hook (prog-mode . treesit-auto-mode)
   )
 

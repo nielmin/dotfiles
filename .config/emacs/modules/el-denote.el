@@ -1,7 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package denote
-  :ensure t
   :hook (dired-mode . denote-dired-mode)
   :bind
   (("C-c n n" . denote)
@@ -20,12 +19,9 @@
   (denote-rename-buffer-mode 1)
   )
 
-(use-package denote-org
-  :ensure t
-  )
+(use-package denote-org)
 
 (use-package consult-denote
-  :ensure t
   :bind
   (("C-c n f" . consult-denote-find)
    ("C-c n g" . consult-denote-grep))
