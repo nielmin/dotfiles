@@ -18,3 +18,5 @@
         custom-file "~/.dotfiles/.config/emacs/custom.el"
         ;; Follow symlinks (for git dotfiles)
         vc-follow-symlinks t)
+
+(setq package-enable-at-startup nil)
