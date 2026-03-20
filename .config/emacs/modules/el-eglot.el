@@ -19,6 +19,7 @@
   (setq-default eglot-workspace-configuration
                 '(:harper-ls (:linters (:SpellCheck t
                                                     :SentenceCapitalization :json-false
+                                                    :NoFrenchSpaces :json-false
                                                     :LongSentences :json-false
                                                     :Spaces :json-false))))
   (add-to-list 'eglot-server-programs
