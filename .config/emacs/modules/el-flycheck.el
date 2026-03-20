@@ -1,6 +1,6 @@
 (use-package flycheck
   :hook
-  (after-init . flycheck-mode)
+  (elpaca-after-init . flycheck-mode)
   )
 
 (use-package flycheck-eglot

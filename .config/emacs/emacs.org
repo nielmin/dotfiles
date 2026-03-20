@@ -193,7 +193,7 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/init.el
 (use-package which-key
   :diminish which-key-mode
-  :hook (after-init . which-key-mode)
+  :hook (elpaca-after-init . which-key-mode)
   :config
   (setopt which-key-idle-delay 0.3)
   ) 
@@ -242,7 +242,7 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-flycheck.el
 (use-package flycheck
   :hook
-  (after-init . flycheck-mode)
+  (elpaca-after-init . flycheck-mode)
   )
 
 (use-package flycheck-eglot
@@ -262,9 +262,16 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
 (use-package savehist
   :ensure nil
-  :hook (after-init . savehist-mode)
+  :hook (elpaca-after-init . savehist-mode)
   )
 #+end_src
+** Vertico
+#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
+(use-package vertico
+  :hook (elpaca-after-init . vertico-mode)
+  )
+  #+end_src
+  
 ** Consult
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
 (use-package consult
@@ -276,7 +283,7 @@
 ** Marginalia
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
 (use-package marginalia
-  :hook (after-init . marginalia-mode)
+  :hook (elpaca-after-init . marginalia-mode)
   )
 #+end_src
 
@@ -291,13 +298,6 @@
   )
 #+end_src
 
-** Vertico
-#+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
-(use-package vertico
-  :hook (after-init . vertico-mode)
-  )
-  #+end_src
-  
 ** Corfu
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/el-completion.el
 (use-package corfu
@@ -534,7 +534,7 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/modes.el
 (use-package envrc
   :hook
-  (after-init . envrc-global-mode)
+  (eplaca-after-init . envrc-global-mode)
 )
 #+end_src
 

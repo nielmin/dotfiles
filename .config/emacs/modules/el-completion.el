@@ -2,7 +2,11 @@
 
 (use-package savehist
   :ensure nil
-  :hook (after-init . savehist-mode)
+  :hook (elpaca-after-init . savehist-mode)
+  )
+
+(use-package vertico
+  :hook (elpaca-after-init . vertico-mode)
   )
 
 (use-package consult
@@ -11,7 +15,7 @@
   )
 
 (use-package marginalia
-  :hook (after-init . marginalia-mode)
+  :hook (elpaca-after-init . marginalia-mode)
   )
 
 (use-package orderless
@@ -20,10 +24,6 @@
 	        completion-category-defaults nil
 	        completion-category-overrides '((file (styles partial-completion)))
 	        )
-  )
-
-(use-package vertico
-  :hook (after-init . vertico-mode)
   )
 
 (use-package corfu
