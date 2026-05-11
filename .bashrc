@@ -46,3 +46,4 @@ fi
 
 # distrobox
 [ -e /etc/profile.d/distrobox_profile.sh ] && . /etc/profile.d/distrobox_profile.sh
+. "/home/dawh/.deno/env"
