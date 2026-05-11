@@ -16,9 +16,6 @@ autocmd("LspAttach", {
       vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
     end
 
-    -- defaults:
-    -- https://neovim.io/doc/user/news-0.11.html#_defaults
-
     map("gl", vim.diagnostic.open_float, "Open Diagnostic Float")
     map("K", vim.lsp.buf.hover, "Hover Documentation")
     map("gs", vim.lsp.buf.signature_help, "Signature Documentation")
@@ -41,19 +38,6 @@ autocmd("LspAttach", {
       client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
     then
       local highlight_augroup = augroup("lsp-highlight", { clear = false })
-
-      -- When cursor stops moving: Highlights all instances of the symbol under the cursor
-      -- When cursor moves: Clears the highlighting
-      autocmd({ "CursorHold", "CursorHoldI" }, {
-        buffer = event.buf,
-        group = highlight_augroup,
-        callback = vim.lsp.buf.document_highlight,
-      })
-      autocmd({ "CursorMoved", "CursorMovedI" }, {
-        buffer = event.buf,
-        group = highlight_augroup,
-        callback = vim.lsp.buf.clear_references,
-      })
 
       -- When LSP detaches: Clears the highlighting
       autocmd("LspDetach", {
