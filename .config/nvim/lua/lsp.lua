@@ -3,4 +3,5 @@ vim.lsp.enable({
   "lua_ls",
   "html",
   "pylsp",
+  "marksman",
 })
