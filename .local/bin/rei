@@ -1,5 +1,6 @@
 #!/bin/sh
 rsync -urvzhP --del siv:/kpool/data/Documents /run/media/$USER/$1/
+rsync -urvzhP --del siv:/kpool/data/keepassxc /run/media/$USER/$1/
 rsync -urvzhP --del siv:/kpool/data/Pictures  /run/media/$USER/$1/
 rsync -urvzhP --del siv:/kpool/data/Videos    /run/media/$USER/$1/
 rsync -urvzhP --del siv:/kpool/media/music/   /run/media/$USER/$1/Music/
