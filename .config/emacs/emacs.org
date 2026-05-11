@@ -1,5 +1,4 @@
 #+TITLE: Emacs Configuration
-#+AUTHOR: Daniel Hwang
 #+DESCRIPTION: Personal Emacs configuration
 #+STARTUP: overview
 * Early Init
@@ -534,7 +533,7 @@
 #+begin_src emacs-lisp :tangle ~/.dotfiles/.config/emacs/modules/modes.el
 (use-package envrc
   :hook
-  (eplaca-after-init . envrc-global-mode)
+  (elpaca-after-init . envrc-global-mode)
 )
 #+end_src
 
