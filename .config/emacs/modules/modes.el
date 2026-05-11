@@ -1,6 +1,6 @@
 (use-package envrc
   :hook
-  (eplaca-after-init . envrc-global-mode)
+  (elpaca-after-init . envrc-global-mode)
 )
 
 ;; -*- lexical-binding: t; -*-
