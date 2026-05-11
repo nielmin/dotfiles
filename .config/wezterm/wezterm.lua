@@ -22,7 +22,7 @@ config.colors = theme
 config.keys = {
 	{
 		key = "w",
-		mods = "SUPER",
+		mods = "CTRL|SHIFT",
 		action = wezterm.action.CloseCurrentPane({ confirm = false }),
 	},
 	{
