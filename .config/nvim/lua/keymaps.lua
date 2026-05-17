@@ -6,10 +6,10 @@ local s = { silent = true }
 keymap("n", "<space>", "<Nop>")
 
 keymap("n", "j", function()
-  return tonumber(vim.api.nvim_get_vvar("count")) > 0 and "j" or "gj"
+  return vim.v.count > 0 and "j" or "gj"
 end, { expr = true, silent = true }) -- Move down, but use 'gj' if no count is given
 keymap("n", "k", function()
-  return tonumber(vim.api.nvim_get_vvar("count")) > 0 and "k" or "gk"
+  return vim.v.count > 0 and "k" or "gk"
 end, { expr = true, silent = true }) -- Move up, but use 'gk' if no count is given
 keymap("n", "<C-d>", "<C-d>zz") -- Scroll down and center the cursor
 keymap("n", "<C-u>", "<C-u>zz") -- Scroll up and center the cursor
