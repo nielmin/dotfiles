@@ -24,3 +24,9 @@ keymap("t", "<Esc>", "<C-\\><C-N>") -- Exit terminal mode
 
 -- Change directory to the current file's directory
 keymap("n", "<leader>cd", '<cmd>lua vim.fn.chdir(vim.fn.expand("%:p:h"))<CR>')
+
+-- Pane navigation
+keymap("n", "<M-up>", "<C-w><up>", s)
+keymap("n", "<M-down>", "<C-w><down>", s)
+keymap("n", "<M-left>", "<C-w><left>", s)
+keymap("n", "<M-right>", "<C-w><right>", s)
